@@ -1,0 +1,116 @@
+<html>
+<head>
+	<title>AngularAIR Booking System</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script type="text/javascript" src="lib/angular-route.min.js"></script>
+	<script type="text/javascript" src="lib/angular-resource.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	var module = angular.module("myApp", ["ngRoute", "ngResource"]);
+	module.config(function($routeProvider){
+		$routeProvider
+		.when("/", {
+			templateUrl : "partials/destinations.html",
+			controller : 'DestinationsCtrl'
+		})
+		.when("/flights", {
+			templateUrl : "partials/flights.html",
+			controller : "FlightsCtrl"
+		})
+		.when('/reservations', {
+			templateUrl : "partials/reservations.html",
+			controller : "ReservationsCtrl"
+		})
+		.when('/airports/:airportCode', {
+			templateUrl : "partials/airport.html",
+			controller : 'AirportCtrl'
+		})
+	});
+
+	module.controller("AirportCtrl", function($scope, $routeParams, Airport){
+		$scope.currentAirport = Airport.get({
+			airportCode : $routeParams.airportCode
+		})
+	});
+
+
+	module.controller("myCtrl", function($scope, Airport){
+		$scope.setActive = function(type){
+			$scope.destinationsActive = '';
+			$scope.flightsActive = '';
+			$scope.reservationsActive ='';
+
+			$scope[type + 'Active'] ='active';
+		}
+
+		$scope.setAirport = function(airportCode){
+			$scope.currentAirport = $scope.airports[airportCode];
+		}
+
+		$scope.sidebarUrl = "partials/airport.html";
+
+		$scope.airports = Airport.get();		
+	});
+
+	module.controller("DestinationsCtrl", function($scope){
+		$scope.setActive("destinations");
+	});
+
+	module.controller("FlightsCtrl", function($scope, Flights){
+		$scope.setActive("flights");
+		$scope.flights = Flights.query();
+	});
+
+	module.controller("ReservationsCtrl", function($scope, Flights, Reservations){
+		$scope.setActive('reservations');
+		$scope.flights = Flights.query();
+
+		$scope.reservations = Reservations.query();
+
+		$scope.reserveFlight = function(){
+			Reservations.save($scope.reserve, function(data){
+				$scope.reserve.origin='';
+				$scope.reserve.destination = '';
+
+				$scope.reservations.push(data);
+			});
+		}
+	});
+
+
+	module.factory("Airport", function($resource){
+		return $resource('/airports/:airportCode');
+	});
+
+	module.factory("Flights", function($resource){
+		return $resource('/flights');
+	});
+
+	module.factory("Reservations", function($resource){
+		return $resource('/reservations');
+	})
+
+</script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl" class="container">
+		<h1>AngulAir Booking System</h1>
+		<ul class="nav nav-pills">
+			<li ng-class="destinationsActive"><a href="#/">Destinations</a></li>
+			<li ng-class="flightsActive"><a href="#/flights">Flights</a></li>
+			<li ng-class="reservationsActive"><a href="#/reservations">Reservations</a></li>
+		</ul>
+		<div ng-view></div>
+	</div>
+</body>
+</html>
+
+

@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Position Property</title>
+	<style type="text/css">
+		div {
+			border: 2px solid blue;
+		}
+		div.static {
+			position: static;
+			border: 2px solid red;
+		}
+		div.relative {
+			position: relative;
+			border: 2px solid green;
+			left: 30px;
+			height: 500px;
+		}
+
+		div.fixed {
+			position: fixed;
+			border: 2px solid yellow;
+			width: 300px;
+			bottom: 0;
+			right: 0;
+		}
+
+		div.absolute {
+			position: absolute;
+			top: 70px;
+			right: 0;
+			width: 200px;
+			height: 100px;
+			border: 2px solid black;
+		}
+	</style>
+</head>
+<body>
+<div>
+	This is the default position
+</div>
+<br><br><br>
+<div class="static">
+	This DIV is positioned as static
+</div>
+<br><br><br>
+<div class="relative">
+	This DIV is relatively positioned
+</div>
+<br><br><br>
+<div class="fixed">
+	This is fixed DIV
+</div>
+<div class="relative">
+	<div class="absolute">
+		This DIV is absolutely positioned
+	</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

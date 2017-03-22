@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title>3D Gallery with CSS and jQuery</title>
+	<link rel="stylesheet" type="text/css" href="../style/style.css">
+	<script type="text/javascript" src="../js/modernizr.custom.53451.js"></script>
+</head>
+<body>
+<div class="container">
+	<section id="dg-container" class="dg-container">
+		<div class="dg-wrapper">
+			<a href="#">
+				<img src="../images/1.jpg" alt="image1">
+				<div>http://www.google.com</div>
+			</a>
+			<a href="#">
+				<img src="../images/2.jpg" alt="image2">
+				<div>http://www.google.com</div>
+			</a>
+			<a href="#">
+				<img src="../images/3.jpg" alt="image3">
+				<div>http://www.google.com</div>
+			</a>
+			<!-- <a href="#">
+				<img src="../images/4.jpg" alt="image4">
+				<div>http://www.google.com</div>
+			</a>
+			<a href="#">
+				<img src="../images/5.jpg" alt="image5">
+				<div>http://www.google.com</div>
+			</a>
+			<a href="#">
+				<img src="../images/6.jpg" alt="image6">
+				<div>http://www.google.com</div>
+			</a> -->
+		</div>
+		<nav>
+			<span class="dg-prev">&lt;</span>
+			<span class="dg-next">&gt;</span>
+		</nav>
+	</section>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.gallery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#dg-container').gallery({
+			autoplay : true
+		});
+	});
+</script>
+
+</body>
+</html>

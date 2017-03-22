@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gelocation</title>
+	<script type="text/javascript">
+		function getLocation() {
+			if(navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(showPosition, showError);
+			}
+		}
+		function showPosition(position){
+			document.getElementById('para1').innerHTML = 
+			position.coords.latitude + "<br>" + position.coords.longitude;
+		}
+		function showError(error){
+			console.log(error);
+			switch(error.code){
+				case error.PERMISSION_DENIED :
+				break;
+				case error.POSITION_UNAVAILABLE:
+				break;
+				case error.TIMEOUT:
+				break;
+				case error.UNKNOWN_ERROR:
+				break;
+			}
+		}
+</script>
+</head>
+<body>
+<p id="para1"></p>
+<button onclick="getLocation()">Try It</button>
+
+</body>
+</html>

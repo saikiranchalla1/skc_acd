@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX Application</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script type="text/javascript" src="angular-resource.min.js"></script>
+            <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        	var mod = angular.module('myApp', ["ngResource"]);
+        	mod.constant("baseUrl", "http://localhost:5500/products/");
+        	mod.controller('myCtrl', function($scope,$http, $resource,baseUrl){
+        		$scope.displayMode = "list";
+        		$scope.currentProduct = null;
+
+        		$scope.productsResource = $resource(baseUrl + ":id", {id : "@id"})
+        		$scope.listProducts = function(){
+        			/*$scope.products = [
+						{id : 0,"name":"Apples", "category":"Fruit","price": 1.20,"expiry":10},
+						{id : 1,"name":"Bananas", "category":"Fruit","price": 1.20,"expiry":10},
+						{id : 2,"name":"Grapes", "category":"Fruit","price": 1.20,"expiry":10},
+						{id : 3,"name":"Tuna", "category":"Fish","price": 2.20,"expiry":30},
+						{id : 4,"name":"Salmon", "category":"Fish","price": 5.40,"expiry":20}
+					];*/
+					/*$http.get(baseUrl).success(function(data){
+						$scope.products = data;
+					});*/
+					$scope.products = $scope.productsResource.query();
+        		}
+
+        	$scope.deleteProduct = function(product){
+        		/*$http({
+        			method : "DELETE",
+        			url: baseUrl + product.id
+        		}).success(function(){
+        			$scope.products.splice($scope.products.indexOf(product), 1);
+        		});*/
+        		product.$delete().then(function(){
+        			$scope.products.splice($scope.products.indexOf(product), 1);
+        		});
+        		$scope.displayMode = "list";
+        	}
+
+        	$scope.createProduct = function(product){
+        		/*$scope.products.push(product);
+        		$scope.displayMode = "list";*/
+        		/*$http.post(baseUrl, product).success(function(newProduct){
+        			$scope.products.push(newProduct);
+        			$scope.displayMode = "list";
+        		});*/
+        		console.log(product);
+        		new $scope.productsResource(product).$save().then(function(newProduct){
+        			console.log(newProduct);
+        			$scope.products.push(newProduct);
+        			$scope.displayMode = "list";
+        		});
+        	}
+
+        	$scope.updateProduct = function(product){
+        		/*$http({
+        			url : baseUrl + product.id,
+        			method : "PUT",
+        			data : product
+        		}).success(function(modifiedProduct){
+        			for(var i = 0; i < $scope.products.length; i++){
+        			if($scope.products[i].id == modifiedProduct.id){
+        				$scope.products[i] = modifiedProduct;
+        				break;
+        			}
+        		}
+        		$scope.displayMode = "list";
+        		});*/
+        		product.$save();
+        		$scope.displayMode = "list";
+        	}
+
+        	$scope.editOrCreateProduct = function(product){
+        		$scope.currentProduct = product ? angular.copy(product) : {};
+        		$scope.displayMode = "edit";
+        	}
+
+        	$scope.saveEdit = function(product){
+        		console.log(product);
+        		if(angular.isDefined(product.id)){
+        			$scope.updateProduct(product);
+        		}else{
+        			$scope.createProduct(product);
+        		}
+        	}
+
+        	$scope.cancelEdit = function(){
+        		/*$scope.currentProduct = {};
+        		$scope.displayMode = "list";*/
+        		if($scope.currentProduct && $scope.currentProduct.$get){
+        			$scope.currentProduct.$get();
+        		}
+        		$scope.currentProduct = {};
+        		$scope.displayMode = "list";
+        	}
+
+        	$scope.listProducts();
+        	});
+        </script>
+</head>
+<body ng-app="myApp">
+	<div class="panel panel-primary" ng-controller='myCtrl'>
+		<h3 class="panel-heading">Products</h3>
+		<ng-include src="'tableView.html'" ng-show="displayMode == 'list'"></ng-include>
+		<ng-include src="'editorView.html'" ng-show="displayMode == 'edit'"></ng-include>
+	</div>
+</body>
+</html>

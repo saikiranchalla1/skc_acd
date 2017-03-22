@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PlaceHolder</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
+<body>
+<input type="text" placeholder="testing">
+
+<label>*First Name</label><input type="text">
+<button><a href="#">Cancel</a></button>
+<!--<script>-->
+    <!--$(document).ready(function(){-->
+
+        <!--$('label.contains(*)').html()-->
+
+
+        <!--$('a:contains(Cancel)').click(function(){-->
+            <!--window.location = "http://www.google.com";-->
+        <!--});-->
+    <!--})-->
+<!--</script>-->
+<script>
+    jQuery(document).ready(function() {
+        console.log(jQuery('a:contains(Cancel)').attr('href'));
+        jQuery('a:contains(Cancel)').attr('href', '');
+        jQuery('a:contains(Cancel)').attr('href', 'http://www.google.com');
+        jQuery('a:contains(Cancel)').click(function() {
+            /* window.location = "http://www.google.com"; */
+
+        });
+    });
+
+    window.onload = function(){
+        alert('Load Complete');
+
+    };
+</script>
+</body>
+</html>

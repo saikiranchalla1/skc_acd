@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular JS Installation</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script type="text/javascript">
+		var mod = angular.module("myApp", []);
+		mod.controller("myCtrl", function($scope){
+			$scope.firstname = "Acadgild";
+			$scope.lastname = "Lname";
+			$scope.showName = function(){
+				console.log($scope.firstname + " " + $scope.lastname);
+			};
+		});
+	</script>
+</head>
+<body> 
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<!--Calculation: {{1 + 2}}-->
+		<!-- <div ng-init="items = [1,2,3,4]" ng-controller="myCtrl">
+			{{name}}
+		</div> -->
+		Firstname: <input type="text" ng-model="firstname"></input>
+		Age:  <input type="text" ng-model="lastname"></input>
+		<p>
+			{{firstname | uppercase}} {{lastname}}
+		</p><br>
+		Firstname: <p type="text" ng-bind="firstname"></p>
+		Age:  <p type="text" ng-bind="lastname"></p>
+
+		Firstname: <input type="text" ng-bind="firstname"></input>
+		Age:  <input type="text" ng-bind="lastname"></input>
+	</div>
+</body> 
+</html>

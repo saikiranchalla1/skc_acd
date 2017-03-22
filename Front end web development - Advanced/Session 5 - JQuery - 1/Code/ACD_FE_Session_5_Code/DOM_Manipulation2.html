@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+	<title> First jquery example</title>
+	<script src = "jquery.js"></script>
+	<script>
+	var ref;
+	$(document).ready(function(){
+		ref = $("#container");
+	})
+	function changeToRed(){
+		ref.addClass("red");
+	}
+	function changeToBlue(){
+		ref.removeClass("red");
+	}
+	</script>
+	<style>
+	body{
+		color:blue;
+	}
+	#container{
+		border:3px solid green;
+		padding:20px;
+	}
+	.red{
+		color:red;
+
+	}
+	
+	</style>
+</head>
+<body>
+	<button onclick = "changeToRed()">Add Class Red</button>
+	<button onclick = "changeToBlue()">Remove Class Red</button>
+	
+	<div id = "container">
+		THis is a text contained within this Div
+	</div>
+
+</body>
+</html>

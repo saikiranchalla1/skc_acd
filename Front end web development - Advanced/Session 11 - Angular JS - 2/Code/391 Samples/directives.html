@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directives Basics</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var mod = angular.module("myApp", []);
+	mod.controller("myCtrl", function($scope){
+		$scope.todos = [
+			{action:"Action1", complete:true},
+			{action:"Action2", complete:false},
+			{action:"Action3", complete:true},
+			{action:"Action4", complete:false},
+			{action:"Action5", complete:true},
+			{action:"Action6", complete:false},
+			{action:"Action7", complete:false}
+		];
+		$scope.clickFunc = function(){
+			alert("Click Event Triggered");
+		}
+		$scope.dblClickFunc = function(){
+			alert("Double Click Event Triggered");	
+		}
+		$scope.blurEvent = function(){
+			alert("Blur Event Triggered");
+		}
+		$scope.focusEvent = function(){
+			alert("Focus Event Triggered");
+		}
+		$scope.changeEvent = function(){
+			console.log($scope.tempVar);
+		}
+	});
+
+</script>
+</head>
+<body ng-app="myApp">
+<div class="container" ng-controller="myCtrl">
+	<input type="text" name="name" placeholder="Enter your name..." ng-model="name">
+	<p ng-show="name">You have entered: <h3 ng-bind="name"></h3></p>
+	<button type="button" ng-click="clickFunc()">Click</button>
+	<button type="button" ng-dblclick="dblClickFunc()">Double Click</button>
+	<input type="text" name="inp1"  placeholder="some text..." ng-blur="blurEvent()">
+	<input type="text" name="inp2" placeholder="some text"  ng-focus="focusEvent()">
+	<input type="text" name="inp3" placeholder="some text" ng-change="changeEvent()" ng-model="tempVar">
+	<br><br>
+	<input type="checkbox" name="cb1" ng-model="myCbVal">Show/Hide
+	<br>
+	<p>{{myCbVal}}</p>
+	<div ng-show="myCbVal">
+		<p>Ng-Show Directive</p>
+	</div>
+	<div ng-hide="myCbVal">
+		<p>Ng-Hide Directive</p>
+	</div>
+	<br>
+	Enter your URL:<input type="text" name="myUrl" ng-model="myUrl">
+	<a ng-href="{{myUrl}}">{{myUrl}}</a>
+	<br>
+	<h4 ng-non-bindable>Third element is: {{ [1,2,3,4][2] }}</h4>
+	<input type="checkbox" name="cb1" ng-model="myCbVal2">
+	<select ng-model="testing">
+		<option value="Op1">Op1</option>
+		<option value="Op2">Op2</option>
+		<option value="Op3" ng-selected="myCbVal2">Op3</option>
+	</select>
+	<p>{{testing}}</p>
+	<br>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Action</th>
+				<th>Completed?</th>
+				<th>Odd?</th>
+				<th>Even?</th>
+				<th>Middle?</th>
+				<td>First?</td>
+				<td>Last?</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat='item in todos'>
+				<td>{{$index + 1}}</td>
+				<td>{{item.action}}</td>
+				<td>{{item.complete ? 'Complete' : 'Not Yet Complete'}}</td>
+				<td>{{$odd}}</td>
+				<td>{{$even}}</td>
+				<td>{{$middle}}</td>
+				<td>{{$first}}</td>
+				<td>{{$last}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Action</th>
+				<th>Completed?</th>
+				<th>Odd?</th>
+				<th>Even?</th>
+				<th>Middle?</th>
+				<td>First?</td>
+				<td>Last?</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat-start='item in todos'>
+				<td>{{$index + 1}}</td>
+			</tr>
+				<tr><td>{{item.action}}</td></tr>
+				<tr><td>{{item.complete ? 'Complete' : 'Not Yet Complete'}}</td></tr>
+				<tr><td>{{$odd}}</td></tr>
+				<tr><td>{{$even}}</td></tr>
+				<tr><td>{{$middle}}</td></tr>
+				<tr><td>{{$first}}</td></tr>
+				<tr ng-repeat-end><td>{{$last}}</td></tr>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	Count: <input type="number" name="" ng-model="personCount"><br>
+	Person1 : <input type="text" name="person1Name" ng-model="person1"><br>
+	Person2 : <input type="text" name="person2Name" ng-model="person2"><br>
+	<ng-pluralize count="personCount"
+	when="{
+		'0' : 'Nobody is viewing',
+		'1' : '{{person1}} is viewing',
+		'2' : '{{person1}}, {{person2}} are viewing',
+		'3' : '{{person1}}, {{person2}} and one more are viewing',
+		'other' : '{} people are viewing'
+	}">
+	</ng-pluralize>
+	<br><br><br><br>
+</div>
+</body>
+</html>

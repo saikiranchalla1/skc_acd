@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Closures Demo</title>
+</head>
+<body>
+<button type="button" onclick="myFunction()">Count!</button>
+<p id='myPara'></p>
+
+<script type="text/javascript">
+/*
+1) Counter variable should be private (local).
+2) Counter variable should be initialized only once.
+*/
+	/*function add(){
+		var counter = 0;
+		return counter += 1;
+	}*/
+
+	/*function add(){
+		var counter = 0;
+		function plus() {counter += 1;}
+		plus();
+
+		return counter;
+	}*/
+
+	var add = (function() {
+		var counter = 0; //Private or local and it is happending only once
+
+		return function() {
+			return counter += 1;
+		}
+	})();
+
+	function myFunction(){
+		document.getElementById('myPara').innerHTML = add();
+	}
+</script>
+</body>
+</html>

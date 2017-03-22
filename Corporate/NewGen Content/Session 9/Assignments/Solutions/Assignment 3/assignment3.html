@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Title</title>
+	</head>
+
+
+	<script src="js/jquery.js"></script>
+
+
+	<script> 
+	  $(document).ready(function (){
+	    $( 'li' ).each(function( index, elem ) {
+	        $( elem ).prepend( '<b>' + index + ': </b>' );
+	    });
+	});
+	  
+	</script>
+
+	<body>
+
+	<ul>
+	    <li>Html Tutorial</li>
+	    <li>Mongodb Tutorial</li>
+	    <li>Python Tutorial</li>
+	</ul>
+
+	</body>
+</html>

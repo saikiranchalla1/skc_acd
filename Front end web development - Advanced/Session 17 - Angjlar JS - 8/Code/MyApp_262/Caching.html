@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Caching Example</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+        <script type="text/javascript">
+        	var module = angular.module("myApp", []);
+        	module.controller("myCtrl", function($scope, $cacheFactory){
+        		$scope.keys = [];
+        		$scope.cache = $cacheFactory('cacheID', {capacity : 3});
+        		$scope.put = function(key, value){
+        			if(angular.isUndefined($scope.cache.get(key))){
+        				$scope.keys.push(key);
+        			}
+        			$scope.cache.put(key, angular.isUndefined(value) ? null : value);
+        		}
+        	})
+        </script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl" class="container">
+	<input ng-model="newCacheKey" placeholder="key"></input>
+	<input ng-model="newValue" placeholder="value"></input>
+	<button ng-click="put(newCacheKey, newValue)">Cache</button>
+	<div ng-repeat="key in keys">
+		<span ng-bind="key"></span>
+		<p ng-bind="cache.get(key)"></p>
+	</div>
+	<p>{{cache.info()}}</p>
+	<div>
+		<p>Cache Infor</p>
+		<div ng-repeat="(key,value) in cache.info()">
+			<span ng-bind="key"></span>
+		<p ng-bind="value"></p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

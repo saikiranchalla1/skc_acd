@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#cccccc");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff");
+    });
+    $("form").submit(function(){
+        alert("you submmited form");
+    });
+    $("input").change(function(){
+        alert("you changed some input: " + $(this).val());
+    });
+});
+</script>
+</head>
+<body>
+<form>
+Name: <input type="text" name="fullname"><br>
+Email: <input type="text" name="email"> <br>
+Submit: <input type="submit" value="submit">
+<form>
+</body>
+</html>

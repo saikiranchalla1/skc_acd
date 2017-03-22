@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('homeCtrl', function ($scope, $cacheFactory) {
+		
+		var appCache = $cacheFactory('appCacheId');
+        
+        console.log(appCache.info());
+
+        appCache.put('name', 'Acadgild');
+        appCache.put('location', 'Bangalore');
+
+        console.log(appCache.get('name'));
+        console.log(appCache.get('location'));
+        console.log(appCache.info());
+
+        $scope.name = appCache.get('name');
+        $scope.location = appCache.get('location');
+        $scope.info = appCache.info();
+
+		});
+
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="homeCtrl">
+
+			value of name using cache get() function is : {{name}} <br/>
+			value of location using cache get() function is : {{location }} <br/>
+			info about cache factory info() function is : {{info}} <br/>
+
+		</div>
+				
+</center>
+
+
+</body>
+</html>

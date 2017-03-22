@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events Html</title>
+</head>
+<body>
+<h3 onclick="changeMe(this)">Click on this Element!!!</h3>
+<p id="para1">This text is going to be changed by using Java Script</p>
+<div onmouseover="showCoords(event)">Mouse Over this element</div>
+<p id="para2">This text is going to be changed by using Java Script</p>
+<button>Click Me</button>
+<script type="text/javascript">
+	function showCoords(event) {
+		console.log(event);
+		console.log(new Date() + "-------" + "X: " + event.clientX + ",Y: " + event.clientY);
+	}
+	function changeMe(ele){
+		ele.innerHTML = "You have clicked here!!!!";
+	}
+
+	document.getElementById("para1").onclick = function(){
+		alert("You Clicked Me!!!!");
+
+	};
+
+	document.getElementById("para2").addEventListener("click", showDate);
+	document.getElementById("para2").addEventListener("click", secondMethod);
+
+	document.getElementById("para2").addEventListener("mouseover", thirdMethod);	
+
+	document.getElementById("para2").addEventListener("click", function(){
+		fourthMethod("Fourth Method Is Invoked");
+	});	
+	
+	document.getElementsByTagName("button")[0].onclick = function(){
+			document.getElementById("para2").removeEventListener("mouseover", thirdMethod);
+	};
+	function showDate(){
+		document.getElementById("para2").innerHTML = new Date();
+	}
+	function secondMethod(){
+		console.log("This is also called");
+	}
+
+	function thirdMethod(){
+		console.log("Even this is called");
+	}
+
+	function fourthMethod(msg){
+		console.log(msg);
+	}
+</script>
+</body>
+</html>

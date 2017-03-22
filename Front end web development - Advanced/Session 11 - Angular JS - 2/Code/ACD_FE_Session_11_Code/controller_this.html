@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8" />
+	<script src="angular.js" type="text/javascript">
+	</script>
+	<script type="text/javascript">
+	var myModule = angular.module('myModule', []);
+
+	myModule.controller('MyCtrl', function () {
+
+		var model = { "firstname": "Jack",
+		"lastname": "Smith" };
+
+		this.model = model;
+		this.click = function() { 
+			alert(this.model.firstname); 
+		};
+	});
+	</script>
+</head>
+<body>
+	<div ng-app="myModule"> 
+		<div ng-controller="MyCtrl as ctrlRef">
+			<p>Firstname: <input type="text" ng-model="ctrlRef.model.firstname"></p>
+			<p>Lastname: <input type="text" ng-model="ctrlRef.model.lastname"></p>
+			<p>{{parent.model.firstname + " " + parent.model.lastname}}</p>
+			<button ng-click = "ctrlRef.click()">Click</button>
+	</div>
+	</div>
+</body>
+</html>

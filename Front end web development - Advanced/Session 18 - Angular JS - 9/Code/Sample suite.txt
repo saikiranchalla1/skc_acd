@@ -1,0 +1,17 @@
+describe("mySutie", function(){
+	it('test1', function(){
+		a = 5;
+		b = 5;
+		expect(a).tobe(b);
+	});
+	it('test2', function(){
+		a = 5;
+		b = 5;
+		expect(a).tobe(b);
+	});
+	it('test3', function(){
+		a = 5;
+		b = 5;
+		expect(a).tobe(b);
+	});
+})

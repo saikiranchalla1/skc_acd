@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8" />
+	<script src="angular.js" type="text/javascript"></script>
+	<script>
+	var appModule = angular.module('app', []);
+	appModule.directive('externalTemplate', function() {
+		return {
+			restrict: 'E',
+			templateUrl: 'templates/external_template.html'
+		};
+	})
+	</script>
+	</head>
+	<body ng-app="app">
+		<external-template></external-template>
+
+	</body>
+	</html>

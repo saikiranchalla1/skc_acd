@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Routing Example</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="angular-route.min.js"></script>
+	<script type="text/javascript">
+		var module = angular.module('myApp', ['ngRoute']);
+		module.config(['$routeProvider', function($routeProvider){
+			$routeProvider.
+				when('/route1/:param',{
+					templateUrl: 'templates/template1.html',
+					controller: 'RouteController'
+				}).
+				when('/route2/:param',{
+					templateUrl: 'templates/template2.html',
+					controller: 'RouteController'
+				}).
+				otherwise({
+					redirectTo: '/',
+					templateUrl: 'templates/index.html',
+					controller: 'IndexController'
+				});
+		}]);
+
+		module.controller('RouteController', function($scope, $routeParams){
+			$scope.param = $routeParams.param;
+		});
+		module.controller('IndexController', function($scope){
+			$scope.message = "Welcome To the Home Page";
+		});
+	</script>
+</head>
+<body ng-app='myApp'>
+	<a href="#/route1/abcdefg">Route 1</a>
+	<a href="#/route2/1234566">Route 2</a>
+	<div ng-view></div>
+</body>
+</html>

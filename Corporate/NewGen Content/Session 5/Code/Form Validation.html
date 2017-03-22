@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Validation</title>
+	<script type="text/javascript">
+		function validateMe() {
+			var x = document.forms["myForm"]["name"].value;
+			if(x == null || x== ""){
+				alert("Enter some name");
+				return false;
+			}
+		}
+	</script>
+</head>
+<body>
+<form name="myForm" onsubmit="return validateMe()" method="post">
+	Name: <input type="text" name="name">
+	<input type="submit" name="" value="Submit">
+</form>
+</body>
+</html>

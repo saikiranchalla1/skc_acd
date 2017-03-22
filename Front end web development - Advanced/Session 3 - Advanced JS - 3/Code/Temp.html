@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object Creation</title>
+</head>
+<body>
+	<h4>Object Literal</h4>
+	<script type="text/javascript">
+		var person = {firstName: " John", lastName:"Cena", age:40, eyeColor: "black"};
+		var myFather = {firstName: " John", lastName:"Cena", age:40, eyeColor: "black"};
+		console.log("Person\'s name:" + person.firstName + " " + person.lastName);
+	</script>
+
+	<hr>
+	<h4>Object Creation Using Constructor </h4>
+	<script type="text/javascript">
+		function Human(first, last, age, eyeColor){
+			this.firstName = first;
+			this.lastName = last;
+			this.age = age;
+			this.eyeColor = eyeColor;
+		}
+
+		function add(){
+			return 10 + 20;
+		}
+		var myMother = new Human("name1", "last1", 50, "blue");
+		var human1 = new Human("name2", "last2", 50, "blue");
+		var human3 = new Human("name3", "last3", 50, "blue");
+	</script>
+
+	<hr>
+	<h4>Object Creation Using Object.create()</h4>
+	<h2>Syntax: Object.create(prototype, [properties]);
+	<script type="text/javascript">
+		function HumanBeing(first, last, age, eyeColor){
+			this.firstName = first;
+			this.lastName = last;
+			this.age = age;
+			this.eyeColor = eyeColor;
+		}
+		var hb1 = new HumanBeing("name1", "last1", 50, "blue");
+		var hb2 = new HumanBeing("name2", "last2", 50, "blue");
+		var newObject = Object.create(hb1);
+		hb1.firstName = "Real Name";
+		newObject.firstName = "Fake Name";
+		/*var newObj = hb1;
+		hb1.firstName = "Modified Name";
+		newObj.lastName = "Faked Last Name";*/
+	</script>
+</body>
+</html>

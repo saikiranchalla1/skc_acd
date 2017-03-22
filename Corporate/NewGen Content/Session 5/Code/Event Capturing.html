@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Capturing and Bubbling</title>
+	<style type="text/css">
+		div {
+			background-color: orange;
+			border: 1px solid blue;
+			padding: 50px;
+		}
+	</style>
+</head>
+<body>
+<div id="div1">
+	<p id="para1">Bubbling</p>
+</div>
+<br>
+<div id="div2">
+	<p id="para2">Capturing</p>
+</div>
+<script type="text/javascript">
+	document.getElementById('div1').addEventListener("click", function(){
+		alert("You clicked DIV1");
+	}, false);
+	document.getElementById('para1').addEventListener("click", function(){
+		alert("You clicked PARA1");
+	}, false);
+	document.getElementById('div2').addEventListener("click", function(){
+		alert("You clicked DIV2");
+	},true);
+	document.getElementById('para2').addEventListener("click", function(){
+		alert("You clicked PARA2");
+	}, true);
+</script>
+</body>
+</html>

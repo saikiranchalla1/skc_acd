@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;address&apos; in &apos;MyMainClass.main(...)&apos; to &apos;address1&apos;&#x0D;&#x0A;- Original project: &apos;HibernateProject&apos;&#x0D;&#x0A;- Original element: &apos;MyMainClass.main(String[]).address&apos;&#x0D;&#x0A;- Renamed element: &apos;address&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;address&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{MyMainClass.java[MyMainClass~main~\[QString;@address!252!283!260!266!QAddress;!0!false" name="address1" references="true" stamp="1467349998315" version="1.0"/>
+</session>

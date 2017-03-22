@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events Sample</title>
+</head>
+<body onload="alertMe()">
+<h2 onclick="changeText(this)">Click me</h2>
+<button type="button" id="myButton">Click Here</button>
+<button type="button" id="removeBtn">Click Me</button>
+<p id="myPara"></p>
+<script type="text/javascript">
+	function changeText(caller){
+		caller.innerHTML = 'Clicked!!!!!'
+	}
+	/*document.getElementById("myButton").onclick = displayDate();
+	function displayDate(){
+		document.getElementById("myPara").innerHTML = new Date();
+	}*/
+
+	document.getElementById("myButton").addEventListener("click", displayDate);
+
+	document.getElementById("myButton").addEventListener("click", function(){
+		alert(new Date());
+	});
+
+	document.getElementById("myButton").addEventListener("mouseover", function(){
+		document.getElementById("myPara").innerHTML = "Click to show time!!!";
+	});
+
+	document.getElementById("myButton").addEventListener("mouseout", function(){
+		document.getElementById("myPara").innerHTML = "Thank You!!!";
+	});
+
+	function displayDate(){
+		document.getElementById("myPara").innerHTML = new Date();
+	}
+
+	document.getElementById("removeBtn").addEventListener("click", function(){
+		document.getElementById("myButton").removeEventListener("click", displayDate);
+	});
+
+	/*window.addEventListener("resize", function(){
+		alert(Math.random());
+	});*/
+	window.addEventListener("load", function(){
+		alert("Page is completely loaded now");
+	});
+	/*document."addEventListener(""load", function(){
+		alert("Document is loaded");
+	})*/
+	
+	function alertMe(){
+		alert("Hello");
+	}
+</script>
+</body>
+</html>

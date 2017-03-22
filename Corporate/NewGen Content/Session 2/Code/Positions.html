@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Positions</title>
+	<style type="text/css">
+		div	{
+			border: 1px solid blue;
+		}
+		.static {
+			position: static;
+			border: 1px solid red;
+		}
+		.relative {
+			position: relative;
+			left: 40px;
+			border: 1px solid blue;
+		}
+		.relativeM {
+			position: relative;
+			width: 400px;
+			height: 200px;
+			border: 1px solid red;
+		}
+		.absolute {
+			position: absolute;
+			top: 100px;
+			right: 0px;
+			width: 200px;
+			height: 200px;
+			border: 1px solid blue;
+		}
+		.fixed{
+			position: fixed;
+			bottom: 0px;
+			right: 0;
+			width: 300px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+<div>
+	This is not POSITIONED.
+</div>
+<h4>Static</h4>
+<div class="static">
+	This is positioned as Static
+</div>
+<h4>Relative</h4>
+<div class="relative">
+	This is positioned as Relative
+</div>
+<h4>Absolute</h4>
+<div class="relativeM">
+	This is position as Relative
+	<div class="absolute">
+		This is positioned absolute
+	</div>
+</div>
+<div class="absolute">
+		This is positioned absolute
+</div>
+<div class="fixed">
+	This is fixed
+</div>
+<br><br><br><br><br><br>
+</body>
+</html>

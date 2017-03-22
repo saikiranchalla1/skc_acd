@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pseudo Selectors</title>
+	<style type="text/css">
+		/*input[type=text]:enabled {
+			background-color: red;
+
+		}*/
+		input[type=text]:disabled {
+			background-color: grey;
+		}
+		input:checked {
+			height: 50px;
+			width: 50px;
+		}
+		input:invalid {
+			border: 1px solid red;
+		}
+		input:valid {
+			border: 1px solid blue;
+		}
+		input:in-range {
+			border: 1px solid blue;
+		}
+		input:out-of-range {
+			border: 2px solid red;
+		}
+		input:required {
+			border: 10px solid yellow;
+		}
+		input:optional {
+			border: 1px solid grey;
+		}
+		input:-moz-read-only {
+			background-color: blue;
+		}
+		input:read-only {
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+<form>
+	First Name: <input type="text" name="fName" value="First Name"><br>
+	Last name:<input type="text" name="lName" disabled value="Last Name"><br>
+	CheckBox <input type="checkbox" name="cbOne"><br>
+	Email: <input type="email" name="emailOne"><br>
+	<input type="number" name="numberOne" min="5" max="10" value="11"><br><br>
+	<input type="text" name="someInp" required><br>
+	<hr>
+	<input type="text" name="inp2" value="Some Input"><br>
+	<input type="text" name="inp3" readonly value="Read Only Input">
+</form>
+</body>
+</html>

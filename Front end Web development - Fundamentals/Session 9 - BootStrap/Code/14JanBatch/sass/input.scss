@@ -1,0 +1,52 @@
+$font-input : Helvetica, sans-serif;
+
+$mycolor : red;
+
+body {
+	font : $font-input;
+	color: $mycolor;
+}
+
+ul {
+	padding : 0;
+	list-style: 'square';
+
+	li {
+		display : inline-block;
+	}
+}
+
+@mixin animation-name($anim-name) {
+	-webkit-animation-name : $anim-name;
+	-o-animation-name:$anim-name;
+	-moz-animation-name:$anim-name;
+	animation-name:$anim-name;
+}
+
+div {
+	@include animation-name('example');
+}
+
+
+.myclass {
+	border : 1px solid red;
+	color: yellow;
+	float: left;	
+}
+
+.myclass-2{
+	@extend .myclass;
+	overflow: auto;
+}
+
+.myclass-3{
+	@extend .myclass-2;
+	z-index : -1;
+
+}
+
+.myclass-4{
+	@extend .myclass-3;
+	margin : auto;
+}
+

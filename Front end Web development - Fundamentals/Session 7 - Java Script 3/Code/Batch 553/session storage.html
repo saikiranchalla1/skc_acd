@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Local Storage</title>
+
+</head>
+<body>
+<div id="result"></div>
+<button onclick="clickCounter()">Click Here</button>
+<script type="text/javascript">
+		function clickCounter(){
+			if(typeof(Storage) !== "undefined"){
+			//storage is working
+			// localStorage.setItem("lastname", "Smith");
+			// localStorage.setItem("lastname", "Changed");
+			// document.getElementById('result').innerHTML = "Last Name is : " + localStorage.getItem("lastname");
+			// localStorage.removeItem("lastname");
+			// document.getElementById('result').innerHTML = "Last Name is : " + localStorage.getItem("lastname");
+
+			if(sessionStorage.clickcount){
+				sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+			}else{
+				sessionStorage.clickcount = 1;
+			}
+		}else{
+			document.getElementById('result').innerHTML = "Your browser doesn't support Storage API";
+		}
+		document.getElementById('result').innerHTML = "Click Count : " + sessionStorage.clickcount;
+		}
+</script>
+</body>
+</html>

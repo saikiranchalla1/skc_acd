@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Module Configuration</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script type="text/javascript">
+		var mod = angular.module('myApp', ['myApp2']);
+		//angular.module('myApp', []);
+		mod.config(function() {
+			console.log('Config function of Module');
+		});
+		mod.run(function(){
+			console.log('Run function of Module');
+		});
+
+		var mod2 = angular.module('myApp2', []);
+		mod2.config(function(){
+			console.log('Config function of Module 2');
+		});
+
+		mod2.run(function(){
+			console.log('Run functioj of Module 2');
+		});
+	</script>
+</head>
+<body ng-app='myApp'>
+
+</body>
+</html>

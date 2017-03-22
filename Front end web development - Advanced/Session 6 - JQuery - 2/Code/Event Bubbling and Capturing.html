@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Bubbling</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("a").click(function(event){
+			event.preventDefault();
+			event.stopPropagation();
+			console.log("button click Event triggered");
+		});
+		$("div").click(function(){
+			console.log("Div click Event triggered");
+		});
+	});
+	</script>
+</head>
+<body>
+	<div>
+		<div>
+			<div>
+				<div>
+					<button type="button">Click Here</button>
+					<a href="http://www.google.com">Click Here</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

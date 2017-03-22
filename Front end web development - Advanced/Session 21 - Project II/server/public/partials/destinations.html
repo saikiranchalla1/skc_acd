@@ -1,0 +1,11 @@
+<div class="pull-left span6">
+	<h3>All Destinations</h3>
+	<!-- Setting proper airport code -->
+	<ul>
+		<li ng-repeat="airport in airports">
+			<a href="" ng-click="setAirport(airport.code)">{{airport.code}} -> {{airport.city}}</a>
+		</li>
+	</ul>
+</div>
+<!-- Sidebar for the current airport will be visible when any airport is clicked -->
+<div class="span5" src="sidebarURL" ng-include>{{destination}}</div>

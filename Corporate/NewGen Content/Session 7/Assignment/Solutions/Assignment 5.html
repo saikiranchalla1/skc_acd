@@ -1,0 +1,21 @@
+<html>
+<head>
+<script type="text/javascript">
+function outerFunc(){
+	var x = 5;
+  var innerFunc = function (input){
+    
+    var y = 6;
+	var product = x * y;
+     alert('multiplication of x and y is '+product);
+
+  }
+  return innerFunc;
+}
+var closureFunc = outerFunc();
+closureFunc();
+</script>
+</head>
+<body>
+</body>
+</html>

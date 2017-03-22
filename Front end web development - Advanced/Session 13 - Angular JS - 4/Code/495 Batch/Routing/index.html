@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>Routing Demo</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="angular-route.js"></script>
+<script type="text/javascript">
+	var mod = angular.module("myApp", ['ngRoute']);
+	mod.config(function($routeProvider){
+		$routeProvider.
+			when('/route1/:param', {
+				templateUrl : 'templates/template1.html',
+				controller : 'RouteController'
+			})
+			.when('/route2/:param', {
+				templateUrl : 'templates/template2.html',
+				controller : 'RouteController'
+			})
+			.otherwise({
+				redirect : '/',
+				templateUrl : 'templates/index.html',
+				controller : 'IndexController'
+			})
+	});
+	mod.controller("myCtrl", function($scope){
+
+	});
+	mod.controller("RouteController", function($scope, $routeParams, $route){
+		console.log("Foo:" + $route.current.params.foo);
+		console.log($route.current.pathParams);
+		$scope.param = $routeParams.param;
+	});
+
+	mod.controller("IndexController", function($scope, $route){
+		console.log("Foo:" + $route.current.params.param);
+		console.log($route.current.pathParams);
+		$scope.message = "Welcome to Routing Demo!!!";
+	});
+</script>
+</head>
+<body ng-app="myApp">
+	<div>
+		<input type="text" ng-model="inp1">
+		<input type="text" ng-model="inp2">
+		<a ng-href="#/route1/{{inp1}}">Route1</a>
+		<a ng-href="#/route2/{{inp2}}">Route2</a>
+	</div>
+	<div ng-view>
+	</div>
+</body>
+</html>

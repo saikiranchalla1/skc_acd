@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>Hi</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script>
+  var app = angular.module("app",[]);
+  app.directive("testDirective", function(){
+    return {
+      restrict: "EA",
+      template: "<div><h4>I am heading inside the directive</h4><button ng-click = 'greet()'>CLick me</button><button ng-click = 'showParametersInConsole()'>show Params</button></div>",
+      replace:true,
+      controller:function($scope, $element, $attrs, $transclude){
+        $scope.msg = "Hello..Good Morning";
+        $scope.greet = function(){
+          alert($scope.msg);
+        }
+        $scope.showParametersInConsole = function(){
+          console.log($element);
+          console.log($attrs['attr1']);
+          console.log($attrs['attr2']);
+        }
+      }
+    };
+  });
+  </script>
+</head>
+<body ng-app = "app">
+  
+  <div test-directive attr1 = "attr" attr2 = "attr2"></div>
+</body>
+</html>

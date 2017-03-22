@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Angular JS application</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script type="text/javascript">
+		var module = angular.module("myApp", []);
+		module.controller("myCtrl", function($scope){
+			
+		});
+	</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl" ng-init="employee={name:'AcadGild', city :'Hyderabad'}">
+		<p>Employee Name: {{employee.name}}</p>
+		<p>Employee City: <p ng-bind="employee.city"></p></p>
+
+
+		
+	</div>
+	<div>
+		{{ 1 + 5}}
+	</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('homeCtrl', function ($scope, $cacheFactory) {
+		
+			var appCache = $cacheFactory('appCacheId');
+	        
+	        appCache.put('name', 'Acadgild');
+	        appCache.put('location', 'Bangalore');
+
+	        $scope.name = appCache.get('name');
+	        $scope.location = appCache.get('location');
+	        $scope.info = appCache.info();
+
+	        appCache.remove('name');
+	        $scope.infoAfterRemove = appCache.info();
+
+	        appCache.removeAll();
+	        $scope.infoAfterRemoveAll = appCache.info();
+
+	        appCache.destroy();
+	        $scope.infoAfterDestory = appCache.info();
+
+		});
+
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="homeCtrl">
+
+			info about cache factory info() function initially : {{info}} <br/>
+			info about cache factory info() function after removing Name is : {{infoAfterRemove}} <br/>
+			info about cache factory info() function after removing all is : {{infoAfterRemoveAll}} <br/>
+			info about cache factory info() function after destroy : {{infoAfterDestory}} <br/>
+
+		</div>
+				
+</center>
+
+
+</body>
+</html>

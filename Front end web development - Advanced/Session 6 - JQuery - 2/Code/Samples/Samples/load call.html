@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Learning jQuery AJAX</title>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		 <script>
+		 $(document).ready(function(){
+			$("button").click(function(){
+				$("#mydiv").load("testing2.txt", function(responseText, status,xmlHttpReq){
+					console.log(responseText);
+					console.log(status);
+					console.log(xmlHttpReq);
+					if(status == "success"){
+						alert("Success!!!");
+					}else if(status == "error"){
+						alert("Error!!!");
+					}
+				});
+			}
+			);
+		 });
+		 </script>
+	</head>
+	<body>
+		<div id="mydiv"></div>
+		<button>Click Here</button>
+	</body>
+	
+</html>

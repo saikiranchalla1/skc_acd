@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expanding Image File Menu</title>
+
+</head>
+<body>
+<div id="ei_menu" class="ei_menu">
+    <ul>
+        <li>
+            <a href="#" class="pos1">
+                <span class="ei_preview"></span>
+                <span class="ei_image"></span>
+            </a>
+            <div class="ei_descr">
+                <h2>Gary</h2>
+                <h3>Vocals</h3>
+                <p>
+                    A WONDERFUL SERENITY HAS TAKEN POSSESSION OF MY ENTIRE SOUL, LIKE THESE SWEET MORNINGS OF SPRING WHICH I ENJOY WITH MY WHOLE HEART.
+                </p>
+                <p>
+                I AM ALONE, AND FEEL THE CHARM OF EXISTENCE IN THIS SPOT, WHICH WAS CREATED FOR THE BLISS OF SOULS LIKE MINE.
+                </p>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="pos2">
+                <span class="ei_preview"></span>
+                <span class="ei_image"></span>
+            </a>
+            <div class="ei_descr">
+                <h2>Gary</h2>
+                <h3>Vocals</h3>
+                <p>
+                    A WONDERFUL SERENITY HAS TAKEN POSSESSION OF MY ENTIRE SOUL, LIKE THESE SWEET MORNINGS OF SPRING WHICH I ENJOY WITH MY WHOLE HEART.
+                </p>
+                <p>
+                    I AM ALONE, AND FEEL THE CHARM OF EXISTENCE IN THIS SPOT, WHICH WAS CREATED FOR THE BLISS OF SOULS LIKE MINE.
+                </p>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="pos3">
+                <span class="ei_preview"></span>
+                <span class="ei_image"></span>
+            </a>
+            <div class="ei_descr">
+                <h2>Gary</h2>
+                <h3>Vocals</h3>
+                <p>
+                    A WONDERFUL SERENITY HAS TAKEN POSSESSION OF MY ENTIRE SOUL, LIKE THESE SWEET MORNINGS OF SPRING WHICH I ENJOY WITH MY WHOLE HEART.
+                </p>
+                <p>
+                    I AM ALONE, AND FEEL THE CHARM OF EXISTENCE IN THIS SPOT, WHICH WAS CREATED FOR THE BLISS OF SOULS LIKE MINE.
+                </p>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="pos4">
+                <span class="ei_preview"></span>
+                <span class="ei_image"></span>
+            </a>
+            <div class="ei_descr">
+                <h2>Gary</h2>
+                <h3>Vocals</h3>
+                <p>
+                    A WONDERFUL SERENITY HAS TAKEN POSSESSION OF MY ENTIRE SOUL, LIKE THESE SWEET MORNINGS OF SPRING WHICH I ENJOY WITH MY WHOLE HEART.
+                </p>
+                <p>
+                    I AM ALONE, AND FEEL THE CHARM OF EXISTENCE IN THIS SPOT, WHICH WAS CREATED FOR THE BLISS OF SOULS LIKE MINE.
+                </p>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="pos5">
+                <span class="ei_preview"></span>
+                <span class="ei_image"></span>
+            </a>
+            <div class="ei_descr">
+                <h2>Gary</h2>
+                <h3>Vocals</h3>
+                <p>
+                    A WONDERFUL SERENITY HAS TAKEN POSSESSION OF MY ENTIRE SOUL, LIKE THESE SWEET MORNINGS OF SPRING WHICH I ENJOY WITH MY WHOLE HEART.
+                </p>
+                <p>
+                    I AM ALONE, AND FEEL THE CHARM OF EXISTENCE IN THIS SPOT, WHICH WAS CREATED FOR THE BLISS OF SOULS LIKE MINE.
+                </p>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="pos6">
+                <span class="ei_preview"></span>
+                <span class="ei_image"></span>
+            </a>
+            <div class="ei_descr">
+                <h2>Gary</h2>
+                <h3>Vocals</h3>
+                <p>
+                    A WONDERFUL SERENITY HAS TAKEN POSSESSION OF MY ENTIRE SOUL, LIKE THESE SWEET MORNINGS OF SPRING WHICH I ENJOY WITH MY WHOLE HEART.
+                </p>
+                <p>
+                    I AM ALONE, AND FEEL THE CHARM OF EXISTENCE IN THIS SPOT, WHICH WAS CREATED FOR THE BLISS OF SOULS LIKE MINE.
+                </p>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="jquery.easing.1.3.js"></script>
+<script>
+    $(function () {
+        var $menu = $('#ei_menu > ul'),
+                $menuItems = $menu.children('li'),
+                $menuItemsImgWrapper = $menuItems.children('a'),
+                $menuItemsPreview $menuItemsImgWrapper.children('.ei_preview'),
+                totalMenuItems = $menuItems.length,
+
+
+        ExpandingMenu = (function () {
+            var current = -1;
+
+            anim = true;
+            
+            validCurrent = function ()) {
+                    return (current >= 0 && current < totalMenuItems);
+            },
+            
+            init = function ()) {
+                if(validCurrent()){
+                    configureMenu();
+                }
+                initEventsHandler();
+            },
+
+            configureMenu = function(){
+                var $item = $menuItem.eq(current);
+                if(anim){
+                    slideOutItem($item, true, 900, 'easeInQuint');
+                }else{
+                    $item.css({width : '400px'})
+                            .find('.ei_image')
+                            .css({left : '0px', opacity :1});
+
+                    $menuItems.not($item)
+                            .children('.ei_preview')
+                            .css({opacity : 0.2}});
+                }
+            },
+
+    initEventsHandler = function(){
+                $menuItemsImgWrapper.bind('click.ExpandingMenu', function (e) {
+                    var $this = $(this).parent();
+                    idx = $item.index();
+
+                    if(current === idx){
+                        slideOutItem($menuItems.eq(current), false, 1500, 'easeOutQuint', true);
+                        current = -1;
+                    }else {
+                        if(validCurrent() && current !== idx){
+                            slideOutItem($menuItems.eq(current), false, 250, 'easeOutQuint', true);
+
+                            current = idx;
+                        }
+                    }
+                })
+
+
+        })
+    })
+</script>
+</body>
+</html>

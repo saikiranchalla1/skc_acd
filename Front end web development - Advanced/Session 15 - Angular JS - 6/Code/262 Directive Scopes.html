@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directive Scopes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+        <!--<script type="text/ng-template" id="scopeTemplate">
+        	<div class="panel-body">
+        		<p>Name: <input ng-model="data.name"/> </p>
+        		<p>City: <input ng-model="city"/></p>
+        		<p>Country: <input ng-model="country"/> </p>
+        	</div>
+        </script> -->
+        <script type="text/ng-template" id="scopeTemplate">
+        	<div class="panel-body">
+        		<p>Data value : {{local}}</p>
+        		<!--<p>Data value: <input ng-model="local"/></p>-->
+        		<!-- <p>Name: {{local}}, City: {{cityFn()}}</p> -->
+        	</div>
+        </script>
+        <script type="text/ng-template" id="template">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+        			<h4>This is the panel</h4>
+        		</div>
+        		<div class="panel-body" ng-transclude>
+        			
+        		</div>
+        	</div>
+        </script>
+        <script type="text/javascript">
+        	var module = angular.module('directiveScope', []);
+        	module.controller('myCtrl', function($scope){
+        		$scope.dataSource = "Controller"
+        		$scope.data = {
+        			name : "AcadGild",
+        			defaultCity : "Blore"
+        		};
+        		//$scope.city = "Blore";
+        		$scope.getCity = function(name){
+        			return name == "AcadGild" ? $scope.data.defaultCity : "Unknown";
+        		}
+        	});
+        	module.directive('scopeDemo', function(){
+        		return {
+        			template : function(){
+        				return angular.element(document.querySelector('#scopeTemplate')).html();
+        			},
+        			scope : {
+        				local : "@nameprop"
+        			}
+        		}
+        	});
+        	module.directive('panel', function(){
+        		return{
+        			link : function(scope, element, attrs){
+        				scope.dataSource = "Directive";
+        			},
+        			restrict : "E",
+        			scope: false,
+        			template : function(){
+        				return angular.element(document.querySelector('#template')).html();
+        			},
+        			transclude : true
+        		}
+        	});
+        </script>
+</head>
+<body ng-app='directiveScope'>
+<div ng-controller='myCtrl'>
+	<div class="panel-body">
+		Direct Binding: <input ng-model="data.name"/>
+	</div>
+	<div class="panel-body" scope-demo nameprop="{{data.name}}" city="getCity(data.name)"></div>
+	<!-- <panel>
+		The data value comes from the: {{dataSource}}
+	</panel> -->
+</div>
+</body>
+</html>

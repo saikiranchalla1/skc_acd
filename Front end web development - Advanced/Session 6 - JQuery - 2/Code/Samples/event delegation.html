@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Learning JQuery Events</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            
+            /*window.onload = function(){
+                document.getElementById('para1').addEventListener('click',callMe);
+                function callMe(){
+                    alert("paragraph clicked");
+                }
+            }*/
+            $(document).ready(function(){
+				$("div").delegate("p","click",{text: "this is a dynamic data"}, function(e){
+					//console.log(e);
+					console.log(e.data.text);
+					$(this).hide();
+				});
+				
+			$("button").click(function(){
+					$("<p>Newly added paragraph element</p>").insertAfter("button");
+				});
+				
+			$('p').on("click", function(){
+				
+			})
+			})
+        </script>
+    </head>
+    <body>
+	<div>
+       <p>This is already existing</p>
+	   <p>This is already existing</p>
+	   <p>This is already existing</p>
+	   <p>This is already existing</p>
+	   <button>Click Me to insert a new P Element</p>
+	 </div>
+    </body>
+</html>

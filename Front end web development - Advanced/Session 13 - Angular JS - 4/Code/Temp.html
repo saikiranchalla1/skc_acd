@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title>Module Learning</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script type="text/javascript">
+		var mod1 = angular.module('main',['myMod2']).config(function(){
+			console.log('Main config function');
+		})
+		.run(function() {
+			console.log('Main run function');
+		});
+
+		var mod2 = angular.module('myMod2',['myMod3']).
+		config(function(){
+			console.log('myMod2 config function');
+		})
+		.run(function() {
+			console.log('myMod2 run function');
+		});
+
+
+		var mod3 = angular.module('myMod3',[])
+		.config(function(){
+			console.log('myMod3 config function');
+		})
+		.run(function() {
+			console.log('myMod3 run function');
+		});
+
+	</script>
+</head>
+<body ng-app='main'>
+	{{ "Testing Module Config and Run function" | uppercase}}
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directives Examples</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity=
+	"sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		var mod = angular.module("myApp", []);
+		mod.controller("myCtrl", function($scope){
+			$scope.clickFunc = function(){
+				console.log("Click Event is triggered");
+			}
+			$scope.dblClickFunc = function(){
+				console.log("Double Click Event is triggered");
+			}
+			$scope.blurFunction = function(){
+				console.log("Blur function triggered");
+			}
+			$scope.changeFunction = function(){
+				console.log("Change function triggered: " + $scope.tempVar);
+			}
+			$scope.todos = [
+				{action:"Action1", complete:false, temp:[1,2,3]},
+				{action:"Action2", complete:true, temp:[1,2,3]},
+				{action:"Action3", complete:false, temp:[1,2,3]},
+				{action:"Action4", complete:true, temp:[1,2,3]},
+				{action:"Action5", complete:true, temp:[1,2,3]}
+			]
+			$scope.disabledClass = "'myClass'";
+			$scope.evenClass = "'myClass2'";
+			$scope.formSubmit = function(newForm){
+				alert(newForm.$valid);
+				console.log(newForm);
+				if(newForm.$valid){
+					alert("Valid");
+				}
+			}
+		});
+	</script>
+	<style type="text/css">
+		.myClass  {
+			color:red;
+		}
+		.myClass2  {
+			color:blue;
+		}
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  			display: none !important;
+		}
+	</style>
+</head>
+<body ng-app='myApp' ng-cloak>
+	<div ng-controller="myCtrl" class="container">
+		<input type="text" placeholder="enter some text..." ng-model="temp"></input>
+		<p ng-show="temp">You have entered: <h3 ng-bind="temp"></h3></p>
+		<button ng-click="clickFunc()">Click Here</button>
+		<button ng-dblclick="dblClickFunc()">Click Here</button>
+		<input type="text" placeholder="some text..." ng-blur="blurFunction()"></input>
+		<input type="text" placeholder="some text..." ng-change="changeFunction()" ng-model="tempVar"></input>
+		<hr><br>
+		<input type="checkbox" ng-model="myVariable">Show/Hide</input>
+		<p>{{myVariable}}</p>
+		<div ng-show="myVariable">
+			<p>Ng-Show directive</p>
+		</div>
+		<div ng-hide="myVariable"> 
+			<p>Ng-Hide directive</p>
+		</div>
+		Enter your URL: <input type="text" ng-model="myUrl"></input>
+		<a ng-href="{{myUrl}}">{{myUrl}}</a>
+		<br>
+		Which? <input type="checkbox" ng-model="mytempVar"></input>
+		<select ng-model="testing">
+			<option value="opt1">Option 1</option>
+			<option value="opt2">Option 2</option>
+			<option value="opt3">Option 3</option>
+		</select>
+		<p>{{testing}}</p>
+		<br/>
+		<h4>{{[1,2,3][2]}}</h4>
+		<h4 ng-non-bindable>{{[1,2,3][2]}}</h4>
+		<br/>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Action</th>
+					<th>Complete?</th>
+					<th>Odd?</th>
+					<th>Even?</th>
+					<th>Middle?</th>
+					<th>First?</th>
+					<th>Last?</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat = 'item in todos' ng-class="{{$odd ? disabledClass : evenClass}}">
+					<td>{{$index +1}}</td>
+					<td>{{item.action}}</td>
+					<td>{{item.complete  ? 'Complete' : 'Not yet Complete'}}</td>
+					<td>{{$odd}}</td>
+					<td>{{$even}}</td>
+					<td>{{$middle}}</td>
+					<td>{{$first}}</td>
+					<td>{{$last}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Action</th>
+					<th>Complete?</th>
+					<th>Odd?</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat-start = 'item in todos'>
+					<td>{{$index +1}}</td>
+				</tr>
+				<tr>				
+					<td>{{item.action}}</td>
+				</tr>
+				<tr>
+					<td>{{item.complete  ? 'Complete' : 'Not yet Complete'}}</td>
+				</tr>
+				<tr ng-repeat="tempItemp in item.temp">
+					<td>{{tempItemp}}</td>
+				</tr>
+				<tr ng-repeat-end>
+					<td>{{$odd}}</td>
+				</tr>
+			</tbody>
+		</table>
+		Count:<input type="number" ng-model="personCount"></input>
+		Person1: <input type="text" ng-model="person1"></input>
+		Person2: <input type="text" ng-model="person2"></input><br/>
+		<ng-pluralize count="personCount" 
+			when="{
+				'0': 'Nobody is viewing.',
+				'1': '{{person1}} is viewing.',
+				'2': '{{person1}}, {{person2}} are viewing.',
+				'3': '{{person1}}, {{person2}} and one other person are viewing.',
+				'other': '{} people are viewing.'	
+			}"
+		></ng-pluralize><br/>
+		<form name="eventForm">
+			<fieldset>
+				<label for="name">Name:</label>
+				<input id="name" type="text" ng-model="event.name" required></input>
+				<button type="submit" ng-disabled="eventForm.$invalid" ng-click="formSubmit(eventForm)">Submit</button>
+			</fieldset>
+		</form>
+		<!-- <div ng-include src="'template1.html'"></div> -->
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	</div>
+</body>
+</html>

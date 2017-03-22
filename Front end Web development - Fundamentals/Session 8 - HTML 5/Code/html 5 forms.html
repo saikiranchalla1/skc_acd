@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forms in HTML 5</title>
+</head>
+<body>
+<form autocomplete="on" action="" id="form1" method="get" onsubmit="return validate()">
+	<input type="text" name="firstName" autofocus placeholder="Enter your name"><br>
+	<input type="email" name="email" autocomplete="off" id="email">
+	<input type="password" name="password">
+	<input type="text" name="browsers" list="browsers">
+	<datalist  id="browsers">
+		<option value="IE"></option>
+		<option value="Firefox"></option>
+		<option value="Chrome"></option>
+	</datalist>
+	<input type="file" name="someInp" multiple>
+	<input type="submit" name="submit1" value="Submit">
+	<input type="submit" name="submit2" value="Submit As Admin" formaction="" formmethod="post" formnovalidate>
+</form>
+<input type="text" name="lastName" form="form1">
+<script type="text/javascript">
+	function validate(){
+		alert(document.getElementById("email").innerHtml.indexOf("gmail.com"));
+		if(document.getElementById("email").innerHtml.indexOf("gmail.com") == 0 {
+		return false;
+		}else{
+			return true;
+		}
+	}
+</script>
+<input type="text" name=""  id="radius" placeholder="enter radius">
+<button type="button" onclick="calcArea()">Calc Area</button>
+<p id="area">The Area is:</p>
+<script type="text/javascript">
+	function calcArea(){
+		console.log(document.getElementById("radius").value);
+		
+		document.getElementById("area").innerHTML = "R:" + document.getElementById("radius").value + "; area: " + retArea(document.getElementById("radius").value) ;
+	}
+	function retArea(r){
+		var area = 3.14 * r * r;
+		return area;
+	}
+</script>
+</body>
+</html>

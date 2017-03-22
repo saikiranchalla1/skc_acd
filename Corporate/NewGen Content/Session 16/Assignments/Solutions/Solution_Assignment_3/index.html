@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('myController', function ($scope, employeeFactory) {
+			$scope.employees = employeeFactory.getEmployees();
+		});
+
+		myApp.factory('employeeFactory', function(){
+			var employees = [{name: 'John', salary : 100000, employeeID: 121},
+							{name: 'mike', salary : 200000, employeeID: 123},
+							{name: 'Mak', salary : 350000, employeeID: 130}
+				]
+			return {
+					
+				getEmployees : function(){
+					return employees;
+				}
+
+			}
+
+		});
+		
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="myController">
+
+			This employee details is from factory
+
+			<table border="2px">
+				<tr>
+					<th>
+						name
+					</th>
+					<th>
+						salary
+					</th>
+					<th>
+						employee ID
+					</th>
+				</tr>
+				<tr ng-repeat="employee in employees">
+					<td>
+						{{employee.name}}
+					</td>
+					<td>
+						{{employee.salary}}
+					</td>
+					<td>
+						{{employee.employeeID}}
+					</td>
+				</tr>
+			</table>
+						
+		</div>
+				
+</center>
+
+
+</body>
+</html>

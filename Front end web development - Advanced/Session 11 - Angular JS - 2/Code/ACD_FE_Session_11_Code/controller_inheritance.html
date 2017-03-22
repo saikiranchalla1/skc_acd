@@ -1,0 +1,57 @@
+<html>
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8" />
+	<style>
+	#boundry{
+		padding:10px;
+		border:2px solid grey;
+	}
+	#parent{
+		padding:10px;
+	border:2px solid blue;	
+	}
+	#child{
+		padding:10px;
+		border:2px solid green;
+	}
+	#indepndent{
+		padding:10px;
+		border:2px solid red;
+	}
+	</style>
+	<script src="angular.js" type="text/javascript">
+	</script>
+	<script type="text/javascript">
+	var myModule = angular.module('myModule', []);
+	myModule.controller('MyCtrl', function ($scope) {
+	var model = { "firstname": "Jack",
+		"lastname": "Smith" };
+		$scope.model = model;
+		$scope.name = 'Acadgild';
+	});
+		myModule.controller('ChildCtrl', function ($scope) {
+		var modelchild = { "hobby": "Tourism",
+		"interests": "coding" };
+		$scope.company = "Google";
+		$scope.modelchild	 = modelchild;
+	});
+	</script></head>
+<body>
+	<div id = "boundry" ng-app="myModule"> 
+	<div id = "parent" ng-controller="MyCtrl">
+		<p>Firstname: <input type="text" ng-model="model.firstname"></p>
+		<p>Lastname: <input type="text" ng-model="model.lastname"></p>
+		<p>{{model.firstname + " " + model.lastname}}</p>
+			your hobby is {{modelchild.hobby}}
+			<div id = "child" ng-controller = "ChildCtrl">
+		  Your hobby is {{modelchild.hobby}} 	your first name is {{model.firstname}}
+		  $parent Example {{$parent.name}}
+		</div>
+	</div>
+	<div id = "indepndent" ng-controller = "ChildCtrl">
+			Your hobby is {{modelchild.hobby}} your first name is {{model.firstname}}
+		</div>
+</div>
+</body>
+</html>

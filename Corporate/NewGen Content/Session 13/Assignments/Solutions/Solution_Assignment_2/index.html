@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('myController', function ($scope) {
+			$scope.longNumber= 4.557693;
+		});
+
+		
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="myController">
+			Original Number : {{longNumber }} <br/>
+
+			Number till 2 decimal places : {{longNumber | number:2}} <br/>
+		</div>
+				
+</center>
+
+
+</body>
+</html>

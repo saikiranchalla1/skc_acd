@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Module Configuration</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		var mod = angular.module("myApp", ['myApp1']);
+		mod.config(function(){
+			console.log("Configuration method");
+		});
+		mod.run(function(){
+			console.log("Run Method")
+		});
+
+
+		var mod1 = angular.module("myApp1", ['myApp2']);
+		mod1.config(function(){
+			console.log("Configuration method 1 ");
+		});
+		mod1.run(function(){
+			console.log("Run Method 1")
+		});
+
+		var mod2 = angular.module("myApp2", []);
+		mod2.config(function(){
+			console.log("Configuration method 2 ");
+		});
+		mod2.run(function(){
+			console.log("Run Method 2")
+		});
+	</script>
+</head>
+<body ng-app="myApp">
+
+</body>
+</html>

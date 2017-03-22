@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular JS Filters</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+            <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        	var myMod = angular.module('myMod', []);
+        	myMod.filter('checkFilter', function(){
+        		return function(input){
+        			console.log(input);
+        			return input?'Checked':'Unchecked';
+        		}
+        	});
+        	myMod.controller('myCtrl', function($scope, $filter){
+        		$scope.amount = 1234.456789;
+        		$scope.currentDate = new Date();
+        		$scope.numbers = [1,2,3,4,5,6,7];
+        		$scope.letters = "abcdefghijkl";
+        		$scope.longNum = 1234567892;
+        		$scope.numLimit = 3;
+        		$scope.letterLimit = 3;
+        		$scope.longNumLimit = 3;
+        		$scope.friends = [
+        			{name: 'John Cena', phone: '123-4556'},
+        			{name: 'Triple H', phone: '555-8976'},
+        			{name: 'Acad Gild', phone: '678-1234'},
+        			{name: 'Nike', phone: '678-1234'},
+        			{name: 'Puma', phone: '909-8989'},
+        			{name: 'Pineapple', phone: '909-8989'},
+        			{name: 'Jam', phone: '909-8989'},
+        			{name: 'Altitude', phone: '909-8989'},
+        		];
+        		function Person(name, address){
+        			this.name = name;
+        			this.address = address;
+        		}
+        		$scope.person = new Person('Name', 'Address');
+        		$scope.myCompany = $filter('uppercase')("acad gild");
+        		$scope.myAmount = $filter('currency')('1234.6544', 'USD $ ', 0);
+        	});
+        </script>
+</head>
+<body ng-app='myMod'>
+	<div class="container" ng-controller='myCtrl'>
+		<h3>Currency Filter</h3>
+		<p>Basic Currency Filter {{ amount | currency}}</p>
+		<p>Rupee Currency Filter {{ amount | currency : "&#8377;"}}</p>
+		<p>Euro Currency Filter {{ amount | currency : "&euro;"}}</p>
+		<p>USD Currency Filter {{ amount | currency : "USD$": 4}}</p>
+		<hr>
+		<h3>Number Filter</h3>
+		<input type="text" ng-model='myNum' placeholder="Enter Some number">
+		<p ng-show='myNum'>Default Number Filter {{myNum | number}}</p>
+		<p ng-show='myNum'>Fraction size 5 {{myNum | number : 5}}</p>
+		<p ng-show='myNum'>Negative Fraction size 5 {{-myNum | number : 5}}</p>
+		<p>Infinite in Number {{1/0 | number : 5}}</p>
+		<hr>
+		<h3>Date Filter</h3>
+		<p>Default Date: {{currentDate | date}}</p>
+		<p>Formatted Date: {{currentDate | date : 'yyyy MMMM d EEE H mm ss sss a Z w'}}</p>
+		<p>Medium Date: {{currentDate | date : 'medium'}}</p>
+		<p>Long Date: {{currentDate | date : 'longDate'}}</p>
+		<hr>
+		<h3>JSON Filter</h3>
+		<pre>{{person | json}}</pre>
+		<pre>{{person | json : 6}}</pre>
+		<hr>
+		<h3>Limit Filter</h3>
+		<p>Limit with Numbers: {{numbers | limitTo}}</p>
+		<p>Limit with Numbers: {{numbers | limitTo : numLimit}}</p>
+		<p>Limit with Letters: {{letters | limitTo : -letterLimit}}</p>
+		<p>Limit with Letters: {{letters | limitTo : -5}}</p>
+		<hr>
+		<h3>Order By Filter</h3>
+		<table class="table table-bordered">
+			<tr>
+				<th>Name</th>
+				<th>Phone</th>
+			</tr>
+			<tr ng-repeat="friend in friends | orderBy : 'name': true">
+				<td>{{friend.name}}</td>
+				<td>{{friend.phone}}</td>
+			</tr>
+		</table>
+		<p>{{"Acad Gild" | orderBy : '-' : true}}</p>
+		<hr>
+		<h3>Filter Filter</h3>
+
+		<input type="text" ng-model="searchText" placeholder="Search Text">
+		<table class="table table-bordered">
+			<tr>
+				<th>Name</th>
+				<th>Phone</th>
+			</tr>
+			<tr ng-repeat="temp in friends | filter : searchText">
+				<td>{{temp.name}}</td>
+				<td>{{temp.phone}}</td>
+			</tr>
+		</table>
+		<input type="text" ng-model="search.$" placeholder="Any">
+		<input type="text" ng-model="search.name" placeholder="Name">
+		<input type="text" ng-model="search.phone" placeholder="phone">
+		Equality?<input type="checkbox" ng-model="strict">
+		<table class="table table-bordered">
+			<tr>
+				<th>Name</th>
+				<th>Phone</th>
+			</tr>
+			<tr ng-repeat="tmp in friends | filter : search : strict">
+				<td>{{tmp.name}}</td>
+				<td>{{tmp.phone}}</td>
+			</tr>
+		</table>
+		<hr>
+		<h3>Custom Filter</h3>
+		<p>{{true | checkFilter}}</p>
+		<p>{{false | checkFilter}}</p>
+		<hr>
+		<h3>Filter from JS</h3>
+		<p>{{myCompany}}</p>
+		<p>{{myAmount}}</p>
+	</div>
+	<br><br><br><br><br><br><br><br>
+</body>
+</html>

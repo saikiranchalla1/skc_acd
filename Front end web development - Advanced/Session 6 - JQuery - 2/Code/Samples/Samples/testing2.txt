@@ -1,0 +1,7 @@
+<p>
+<h2>This is also in the Response</h2>
+<h3>
+<p id = 'p1'>This is a paragraph from ID p1</p>
+This is a paragraph loaded from an external file</h3>
+To test jQuery AJAX calls
+</p>

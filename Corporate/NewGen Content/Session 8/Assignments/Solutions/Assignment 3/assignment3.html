@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  </head>
+
+  <body>
+      
+
+      <center>
+        <h3>Enter details </h3>
+        <form onsubmit="return showResult();">
+            
+            <input type="text" id="name" placeholder="name"> <br /><br />
+            <input type="text" id="description" placeholder="description"><br /><br />
+            <input type="text" id="costPerKilometer" placeholder="cost per KM"><br /><br />
+            <select id="vehicleType">
+              <option>
+                Two Wheeler
+              </option>
+              <option>
+                Four Wheeler
+              </option>
+            </select><br /><br />
+
+            <input type="submit" value="submit">
+
+            <h3> Details </h3>
+
+        </form>
+
+
+        Name : <span id="nameDetails"></span> <br />
+        Description : <span id="descriptionDetails"></span> <br />
+        Cost per KM : <span id="costPerKilometerDetails"></span><br />
+        Vehicle type : <span id="vehicleTypeDetails"></span><br />
+
+        <span id="fuelTypeDetails"></span>
+
+
+      </center>
+
+      <script type="text/javascript">
+
+      function vehicle(name, description, vehicleType, costPerKilometer){
+        this.name = name;
+        this.description = description;
+        this.vehicleType  = vehicleType;
+        this.costPerKilometer = costPerKilometer;
+      };
+
+      function twoWheeler(name, description, vehicleType, costPerKilometer){
+        var t =  new vehicle(name, description, vehicleType, costPerKilometer);
+        return t;
+      };
+
+      function fourWheeler(name, description, vehicleType, costPerKilometer){
+        var f  = new vehicle(name, description, vehicleType, costPerKilometer);
+        f.fuelType = "CNG";
+        return f;
+      };
+      
+      function showResult(){
+        var e = document.getElementById("vehicleType");
+        var v = e.options[e.selectedIndex];
+
+        if(v.value === 'Two Wheeler'){
+          var t  = new twoWheeler( document.getElementById("name").value ,  document.getElementById("description").value ,  document.getElementById("costPerKilometer").value , v.value );
+          document.getElementById("nameDetails").innerHTML = t.name;
+          document.getElementById("descriptionDetails").innerHTML = t.description;
+          document.getElementById("vehicleTypeDetails").innerHTML = t.vehicleType;
+          document.getElementById("costPerKilometerDetails").innerHTML = t.costPerKilometer;
+          document.getElementById("fuelTypeDetails").innerHTML = '';
+
+          return false;
+        }
+
+        if(v.value === 'Four Wheeler'){
+          var f = new fourWheeler( document.getElementById("name").value ,  document.getElementById("description").value ,  document.getElementById("costPerKilometer").value , v.value);
+           document.getElementById("nameDetails").innerHTML = f.name;
+          document.getElementById("descriptionDetails").innerHTML = f.description;
+          document.getElementById("vehicleTypeDetails").innerHTML = f.vehicleType;
+          document.getElementById("costPerKilometerDetails").innerHTML = f.costPerKilometer;
+          document.getElementById("fuelTypeDetails").innerHTML = "Fuel type : "+ f.fuelType;
+          return false;
+        }
+
+        return false; 
+
+      }
+
+      </script>
+
+  </body>
+</html>

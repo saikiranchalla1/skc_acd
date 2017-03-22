@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="skip, navigation, demo,cvent, example">
+    <meta name="author" content="cvent">
+
+
+    <title>Skip Navigation</title>
+    <style>
+        .skip {
+            position: absolute;
+            top: -1000px;
+            left: -1000px;
+            height: 1px;
+            width: 1px;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        a:focus, div:focus {
+            background-color: yellow;
+        }
+
+        a.skip:active,
+        a.skip:focus,
+        a.skip:hover {
+            left:0;
+            top:0;
+            width: auto;
+            height: auto;
+            overflow: visible;
+        }
+    </style>
+</head>
+<body>
+<meta http-equiv="refresh" content="0; url=http://www.google.com">
+<a href="#content" class="skip">Skip to Content</a>
+
+<header>
+    <nav role="navigation">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div id="content">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+
+    </div>
+    <button>Click Me</button>
+    <script>
+        document.getElementsByTagName("button")[0].addEventListener("click", function(){
+            window.location.href = "transition.html"
+        })
+    </script>
+</header>
+</body>
+</html>

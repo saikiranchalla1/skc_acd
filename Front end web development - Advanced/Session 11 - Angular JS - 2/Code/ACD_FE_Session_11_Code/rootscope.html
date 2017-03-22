@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8" />
+	<script src="angular.js" type="text/javascript">
+	</script>
+	<script type="text/javascript">
+	var myModule = angular.module('myModule', []);
+	myModule.run(function($rootScope){
+		$rootScope.appName = "Testing Root Scope";
+	})
+	myModule.controller('DataCtrlOne', function ($scope) {
+		$scope.firstname = "John";
+		$scope.lastname = "Smith";
+		$scope.appName = "Testing Root Scope in child scope"
+	});		
+	myModule.controller('DataCtrlTwo', function ($scope) {
+		$scope.firstname = "Luke";
+		$scope.lastname = "Johnson";
+	});
+	</script>
+</head>
+<body>
+	<div ng-app="myModule">
+		<p>{{"The application name is"+appName}}</p> 
+		<div ng-controller="DataCtrlOne">
+			<p>Name is {{firstname + " " + lastname}}</p>
+			<p>{{appName}}</p>
+			<p>The Modified application name is {{appName}}</p>
+		</div>
+		<div ng-controller="DataCtrlTwo">
+			<p>Name is {{firstname + " " + lastname}}</p>
+			<p>The application name is {{+appName}}</p>
+		</div>
+	</div>
+</body>
+</html>

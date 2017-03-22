@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('myController', function ($scope, ValService) {
+			$scope.name = ValService.name;
+		});
+
+		myApp.value('ValService', {
+			name : 'Acadgild'
+		})
+		
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="myController">
+
+			This example uses Value service to get Name <br>
+			Name is  : {{name}}
+						
+		</div>
+				
+</center>
+
+
+</body>
+</html>

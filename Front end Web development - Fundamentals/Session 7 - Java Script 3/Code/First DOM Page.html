@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First DOM Page</title>
+</head>
+<body>
+<h3>First DOM Page</h3>
+<p id="para" class="myClass">This is going to be STYLED</p>
+<p>Note that this method of identifying elements by tag name returns an array of elements rather than one element</p>
+<p class="myClass">Acadgild!!!</p>
+
+
+<div id = "myDiv">
+	<p class="myClass">This is the first Para in the DIV</p>
+	<p>This is the second Para in the DIV</p>
+	<p class="myClass">This is the third Para in the DIV</p>
+
+	<a href="www.google.com" name="myAnchor1">Google</a>
+	<a href="www.yahoo.com" name="myAnchor2">Yahoo</a>
+	<a href="www.acadgild.com" name="myAnchor3">Acadgild</a>
+
+	<img src="image1.jpg" id="myImg" width="100" height="100">
+</div>
+<script type="text/javascript">
+	
+	/*document.getElementById("para").innerHTML = "Hello World!!! Acadgild";*/
+
+	/*var tempVar = document.getElementsByTagName("p");
+	tempVar[0].innerHTML = "This is the modified content";
+	console.log(tempVar);*/
+
+	/*var divEle = document.getElementById("myDiv");
+	var pEles = divEle.getElementsByTagName("p");
+
+	for (var i = 0; i <= pEles.length; i++) {
+		console.log(pEles[i].innerHTML);
+	}
+*/
+/*
+	var myVar = document.getElementsByClassName("myClass");
+	for (var i = 0; i < myVar.length; i++) {
+		console.log(myVar[i].innerHTML);
+	}*/
+
+	/*var myVar = document.querySelectorAll("p.myClass");
+	for (var i = 0; i < myVar.length; i++) {
+		console.log(myVar[i].innerHTML);
+	}*/
+
+	/*var myVar = document.anchors.length;*/
+	/*document.forms*/
+	/*document.title*/
+	/*document.images*/
+
+	/*document.write(new Date());
+
+	console.log(new Date());
+	console.log(myVar);*/
+
+	/*var tempVar = document.getElementById("myDiv");
+	tempVar.id = "myTempDiv";*/
+	document.getElementById("myImg").width = 200;
+	document.getElementById("myImg").height = 200;
+	document.getElementById("para").style.color = "red";
+	document.getElementById("para").style.fontSize = "larger";
+
+</script>
+</body>
+</html>

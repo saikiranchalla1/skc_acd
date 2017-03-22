@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular Directives</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+            <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        	var mod = angular.module('myApp', []);
+        	mod.controller('myCtrl', function($scope){
+        		$scope.name = {
+        			fname: 'Acad',
+        			lname: 'Gild'
+        		};
+        		$scope.person1 = {
+        			name: 'Person 1',
+        			address: 'MyAddress 1'
+        		};
+        		$scope.person2 = {
+        			name: 'Person 2',
+        			address: 'MyAddress 2'
+        		};
+        	})
+        	mod.directive('ngHello', function(){
+        		return {
+        			restrict : 'EAC',
+        			template : 'First name: {{name.fname}}' + ' Last name {{name.lname}}'	
+        		};        		
+        	});
+
+        	mod.directive('ngPerson1', function(){
+        		return {
+        			restrict :'EAC',
+        			priority: 1,
+        			scope:{
+        				personInfo:'=info'
+        			},
+        			templateUrl: 'my-person-details.html'
+        		};
+        	});
+        	mod.directive('ngPerson2', function(){
+        		return {
+        			restrict :'EAC',
+        			priority: 10,
+        			scope:{
+        				personInfo:'=info'
+        			},
+        			template: 'high priority directive'
+        		};
+        	});
+        </script>
+</head>
+<body ng-app='myApp'>
+	<div ng-controller = 'myCtrl'>
+		<!--<ng-hello></ng-hello>
+		<div ng-hello></div>
+		<div class="ng-hello"></div> -->
+		<!-- directive: ng-hello -->
+		<p ng-person1 ng-person2 info='person2'></p>
+	</div>
+</body>
+</html>

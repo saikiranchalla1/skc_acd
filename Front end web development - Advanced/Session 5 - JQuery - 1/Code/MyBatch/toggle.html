@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Toggle</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+		div {
+			background-color: blue;
+		}
+	</style>
+	<script type="text/javascript">
+		var ref;
+		$('document').ready(function(){
+			ref = $('#container');
+			$('#btn').on('click', toggleElement);
+		});
+
+		function toggleElement(){
+			ref.toggle(3000, runOnComplete);
+		}
+
+		function runOnComplete(){
+			console.log("Toggle Completed on the DIV Element");
+		}
+	</script>
+</head>
+<body>
+<button id="btn">Toggle</button>
+
+<div id="container">
+	This is a container DIV which is used for Toggling.
+</div>
+</body>
+</html>

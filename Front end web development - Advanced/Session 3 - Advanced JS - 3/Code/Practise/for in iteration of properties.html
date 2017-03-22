@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h4>The JavaScript for...in statement loops through the properties of an object.</h4>
+<p id="demo"></p>
+<p id="demo1"></p>
+
+<script>
+var txt = "";
+var person = {fname:"John", lname:"Doe", age:25}; 
+var x;
+for (x in person) {
+	console.log(x);
+    txt += person[x] + " ";
+}
+document.getElementById("demo").innerHTML = txt;
+
+var person1 = {fname:"John", age:25, lname:"Doe"}; 
+txt = "";
+for (x in person1) {
+    txt += person1[x] + " ";
+}
+document.getElementById("demo1").innerHTML = txt;
+</script>
+
+</body>
+</html>

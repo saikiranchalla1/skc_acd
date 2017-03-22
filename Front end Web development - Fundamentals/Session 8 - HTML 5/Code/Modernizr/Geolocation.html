@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geolocation</title>
+	<script type="text/javascript" src="modernizr-geolocation.js"></script>
+</head>
+<body>
+<div id="mydiv"></div>
+<button onclick="getLocation()" type="button">Click Me!!!</button>
+<script type="text/javascript">
+	function getLocation(){
+		if(Modernizr.geolocation){
+			navigator.geolocation.getCurrentPosition(showPosition, showError);
+		}else{
+			alert("Not Supported!!!");
+		}
+	}
+
+	function showPosition(position){
+		document.getElementById("mydiv").innerHTML = "Latitude:" + position.coords.latitude + "<br> Longitude: " + position.coords.longitude;
+		var imgUrl = "http://maps.googleapis.com/maps/api/staticmap?center="+position.coords.latitude + "," + position.coords.longitude +"&zoom=15&size=400x400";
+		document.getElementById("mydiv").innerHTML = "<img src='" + imgUrl +"''>";
+	}
+
+	function showError(error){
+		alert(error.code);
+		switch(error.code){
+			case error.PERMISSION_DENIED:
+			case error.POSITION_UNAVAILABLE:
+			case error.TIMEOUT:
+			case error.UNKNOWN_ERROR:
+					alert(error.message);
+					console.log(error);
+		}
+	}
+</script>
+</body>
+</html>

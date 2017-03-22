@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Storage API</title>
+</head>
+<body>
+<div id="myDiv"></div>
+Local:<p id="myPara"></p><br>
+Session: <p id="myPara1"></p>
+<button onclick="clickCounter()">Click Local</button>
+<button onclick="clickCounterSession()">Click Session</button>
+<script type="text/javascript">
+	
+	if(typeof(Storage) !== "undefined"){
+		localStorage.setItem("Key", "Value");
+		localStorage.removeItem("Key");
+		document.getElementById('myDiv').innerHTML = localStorage.getItem("Key");
+	}else{
+		document.getElementById('myDiv').innerHTML = "Doesn't Support";
+	}
+
+	function clickCounter(){
+		if(typeof(Storage) !== "undefined"){
+			if(localStorage.clickcount){
+				localStorage.clickcount = Number(localStorage.clickcount) + 1;
+			}else{
+				localStorage.clickcount = 1;
+			}
+			document.getElementById('myPara').innerHTML = "You have Clicked: " + localStorage.clickcount +" times";
+		}
+	}
+	function clickCounterSession(){
+		if(typeof(Storage) !== "undefined"){
+			if(sessionStorage.clickcount){
+				sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+			}else{
+				sessionStorage.clickcount = 1;
+			}
+			document.getElementById('myPara1').innerHTML = "You have Clicked: " + sessionStorage.clickcount +" times";
+		}
+	}
+</script>
+</body>
+</html>

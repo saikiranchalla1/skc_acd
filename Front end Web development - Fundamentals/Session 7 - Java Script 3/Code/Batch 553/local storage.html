@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Local Storage</title>
+	<script type="text/javascript" src="modernizr-custom.js"></script>
+</head>
+<body>
+<div id="result"></div>
+<button onclick="clickCounter()">Click Here</button>
+<script type="text/javascript">
+		function clickCounter(){
+			if (Modernizr.localstorage){
+			//storage is working
+			// localStorage.setItem("lastname", "Smith");
+			// localStorage.setItem("lastname", "Changed");
+			// document.getElementById('result').innerHTML = "Last Name is : " + localStorage.getItem("lastname");
+			// localStorage.removeItem("lastname");
+			// document.getElementById('result').innerHTML = "Last Name is : " + localStorage.getItem("lastname");
+
+			if(localStorage.clickcount){
+				localStorage.clickcount = Number(localStorage.clickcount) + 1;
+			}else{
+				localStorage.clickcount = 1;
+			}
+		}else{
+			document.getElementById('result').innerHTML = "Your browser doesn't support Storage API";
+		}
+		document.getElementById('result').innerHTML = "Click Count : " + localStorage.clickcount;
+		}
+</script>
+</body>
+</html>

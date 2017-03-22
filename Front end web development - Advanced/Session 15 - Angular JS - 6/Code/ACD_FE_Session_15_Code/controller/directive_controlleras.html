@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>Hi</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script>
+  var app = angular.module("app",[]);
+  app.directive("testDirective", function(){
+    return {
+      restrict: "EA",
+      template: "<div>Application Name is {{controllerRef.appName}} <h4>I am heading inside the directive</h4><button ng-click = 'controllerRef.greet()'>CLick me</button></div>",
+      replace:true,
+      controllerAs:"controllerRef",
+      controller:function(){
+        this.appName = "Ecommerce App";
+        this.msg = "Hello..Good Morning";
+        this.greet = function(){
+          alert(this.msg);
+        }
+      }
+    };
+  });
+  </script>
+</head>
+<body ng-app = "app">
+    <div test-directive attr1 = "attr" attr2 = "attr2">I am to be cloned</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html ng-app="myModule">
+	<head>
+		<title></title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+		<script>
+			var myModule = angular.module("myModule",[]);
+			myModule.controller('myController',['$scope', function($scope){
+				$scope.person= {
+					name: 'AcadGild',
+					address: 'My Address 1'
+				};
+			}])
+			myModule.directive('ngPerson',function(){
+				return {
+					restrict:'EACM',
+					templateUrl: function(elem, attr){
+						return 'person-'+attr.type+'.html';
+					}
+				};
+			});
+		</script>
+	</head>
+	<body>
+		<div  ng-controller='myController'>
+			<div ng-person type = 'name'></div>
+			<div ng-person type = 'address'></div>
+		</div>
+	</body>
+</html>

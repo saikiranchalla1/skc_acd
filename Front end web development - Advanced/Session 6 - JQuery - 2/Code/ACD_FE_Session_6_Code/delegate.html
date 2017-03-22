@@ -1,0 +1,37 @@
+<html>
+
+	<head>
+		<title>
+			hello world
+		</title>
+		 <script src="jquery.js"></script>
+
+
+		 <script type="text/javascript">
+
+			$(document).ready(function(){
+				$( "#list" ).delegate("a", "click", function( event ) {
+				    event.preventDefault();
+				    console.log( $( this ).text() );
+				});
+				$( "#list" ).append( "<li><a href='http://newdomain.com'>Item #5</a></li>" );
+			});
+				
+		 </script>
+
+	</head>
+
+	<body>
+
+		<ul id="list">
+	        <li><a href="http://domain1.com">Item #1</a></li>
+	        <li><a href="/local/path/1">Item #2</a></li>
+	        <li><a href="/local/path/2">Item #3</a></li>
+	        <li><a href="http://domain4.com">Item #4</a></li>
+    	</ul>
+
+		
+		
+	</body>
+
+</html>

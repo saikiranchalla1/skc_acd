@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events Basics</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+				/*$("p").click(function(){
+					console.log("Click Event");
+				});*/
+				/*$("p").dblclick(function(){
+					console.log("Double Click Event");
+				});*/
+			/*$("p").hover(function(){
+				eventHandler("hover");
+			});*/
+		//eventHandler("hover")
+			/*$("p").hover(function(){
+					eventHandler("hover");
+				});
+			$("input").keypress(function(event){
+				console.log("Key Press event triggered " + event.which);
+			});
+			$("input").keydown(function(event){
+				console.log("Key down event triggered " + event.which);
+			});*/
+
+			/*$("input").focus(function(){
+				console.log("Focus event triggered");
+			});
+			$("input").blur(function(){
+				console.log("Blur event triggered");
+			});*/
+			$("div").delegate("p", "click", function(){
+				$(this).hide();
+			});
+
+			$("form").submit(function(){
+				alert("Form Submitted");
+			});
+			$("a").click(function(event){
+				event.preventDefault();
+				alert("Link Clicked");
+			});
+			$("button#myId").click(function(){
+				$("<p>This is dynamically added paragraph element</p>").insertAfter("div p:first");
+			});
+		});
+
+		function eventHandler(eventName){
+			console.log(eventName + " event triggered");
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<p>This is a sample second paragraph</p>
+	</div>
+	<button id="myId">Click to add para</button>
+	<p id="myPara">This is a sample paragraph</p>
+	<a href="http://www.google.com">Click Here</a>
+	<input type="text"></input>
+	<form name="someForm">
+		Name: <input type="text"/>
+		E-Mail: <input type="text"/>
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+/**
+ * Created by SaiKiran on 18/02/17.
+ */
+//let productId = 12;
+// {
+//     let productId = 2000;
+// }
+// console.log(productId);
+//
+// function updateProductId(){
+//     productId = 12;
+//
+// }
+// let productId = null;
+// updateProductId();
+// console.log(productId);
+
+
+// let productId = 42;
+//
+// for(let productId = 0; productId < 10; productId++){
+//     console.log(productId)
+// }
+//
+// console.log(productId);
+
+let updateFunctions = [];
+for(var i=0; i<2; i++){
+    updateFunctions.push(function() {
+        return i;
+    } );
+}
+
+console.log(updateFunctions[0]());
+
+
+
+
+// testVals = [];
+// for(var j = 10; j >0; j--){
+//     testVals.push(j);
+// }
+// console.log(testVals);

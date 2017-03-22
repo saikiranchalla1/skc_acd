@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>DOM Implementation</title>
+
+</head>
+<body>
+<p id="demo"></p>
+<p></p>
+<p class="myclass"></p>
+<script type="text/javascript">
+	document.getElementById('demo').innerHTML = "Hello World!!!";
+	document.getElementsByTagName('p')[1].innerHTML = "Modified by JS";
+	document.getElementsByClassName("myclass")[0].innerHTML = "testing content";
+	document.getElementsByClassName("myclass")[0].setAttribute('custom-attrb', 'testing');
+</script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Splash Screen Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="modernizr-2.6.2.min.js"></script>
+    <style>
+        #load-wrapper {
+            position: fixed;
+            top: 0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+        }
+
+        #loader {
+            display: block;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            width: 150px;
+            height:150px;
+            margin: -75px 0 0 -75px;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            border-top-color: blue;
+            z-index: 1001;
+            -webkit-animation: spin 2s linear infinite;
+            -o-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+
+        }
+
+        #loader:before {
+             content: '';
+             position: absolute;
+             top: 5px;
+             left:5px;
+             right: 5px;
+             bottom: 5px;
+             border-radius: 50%;
+             border: 3px solid transparent;
+             border-top-color: #3a2127;
+             animation: spin 3s linear infinite;
+         }
+
+        #loader:after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left:15px;
+            right: 15px;
+            bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #B80000;
+            animation: spin 1.5s linear infinite;
+        }
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {transform: rotate(360deg)}
+        }
+
+
+        #load-wrapper .loader-section {
+            position: fixed;
+            top:0;
+            width: 50%;
+            height: 100%;
+            background: #222222;
+            z-index: 1000;
+            transform: translateX(0);
+        }
+
+        #load-wrapper .loader-section.section-left{
+            left: 0;
+        }
+
+        #load-wrapper .loader-section.section-right{
+            right: 0;
+        }
+
+
+        .loaded #load-wrapper .loader-section.section-left {
+            transform: translateX(-100%);
+            transition: all 0.6s 0.4s linear;
+        }
+
+        .loaded #load-wrapper .loader-section.section-right {
+            transform: translateX(100%);
+            transition: all 0.6s 0.4s linear;
+        }
+
+        .loaded #loader {
+            opacity: 0;
+            transition: all 0.3s ease-out;
+        }
+
+        .loaded #load-wrapper {
+            visibility: hidden;
+            transform: translateY(-100%);
+            transition: all 0.3s 1s ease-out;
+        }
+
+        body{
+            margin: 0;
+            background: #000;
+        }
+
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+
+            background-size: cover;
+            transition: 1s opacity;
+        }
+
+        .stopfade {
+            opacity: 0.5;
+        }
+
+        #polina {
+            font-family: "Arial Narrow", sans-serif;
+            font-weight: 100;
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            padding: 2px;
+            width: 35%;
+            margin: 2px;
+            float: right;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+<div id="demo-content">
+    <header class="entry-header">
+
+    </header>
+
+    <div id="load-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+
+
+    <video poster="polina.jpg" id="bgvid" playsinline autoplay muted loop>
+        <source src="polina.webm" type="video/webm">
+        <source src="polina.mp4" type="video/mp4">
+    </video>
+
+    <div id="polina">
+
+        <h1>Polina</h1>
+        <p>For CVENT, by CVENT</p>
+        <p>TLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta dictum turpis, eu mollis justo gravida ac. Proin non eros blandit, rutrum est a, cursus quam. Nam ultricies, velit ac suscipit vehicula, turpis eros sollicitudin lacus, at convallis mauris magna non justo. Etiam et suscipit elit. Morbi eu ornare nulla, sit amet ornare est. Sed vehicula ipsum a mattis dapibus. Etiam volutpat vel enim at auctor.
+
+            Aenean pharetra convallis pellentesque. Vestibulum et metus lectus. Nunc consectetur, ipsum in viverra eleifend, erat erat ultricies felis, at ultricies mi massa eu ligula. Suspendisse in justo dapibus metus sollicitudin ultrices id sed nisl.</p>
+
+        <button>Pause</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        setTimeout(function(){
+            $('body').addClass('loaded');
+        }, 3000);
+
+
+        var vid = document.getElementById("bgvid");
+        var pauseButton = document.querySelector("#polina button");
+
+        function vidFade() {
+            vid.classList.add("stopfade");
+        }
+
+        vid.addEventListener('ended', function(){
+            vid.pause();
+
+            //IE10;
+            vidFade();
+        });
+
+        pauseButton.addEventListener("click", function () {
+            vid.classList.toggle("stopfade");
+
+            if(vid.paused){
+                vid.play();
+                pauseButton.innerHTML = "Pause";
+            }else {
+                vid.pause();
+                pauseButton.innerHTML = "Play";
+            }
+        })
+
+    });
+</script>
+</body>
+</html>

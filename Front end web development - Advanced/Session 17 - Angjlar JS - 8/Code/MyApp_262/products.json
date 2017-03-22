@@ -1,0 +1,5 @@
+[{"name" : "Apples" , "category" : "Friut", "price" : 1.20, "expiry": 10},
+{"name" : "Bananas" , "category" : "Friut", "price" : 2.44, "expiry": 7},
+{"name" : "Pears" , "category" : "Friut", "price" : 2.02, "expiry": 6},
+{"name" : "Tuna" , "category" : "Fish", "price" : 17.05, "expiry": 3},
+{"name" : "Salmon" , "category" : "Fish", "price" : 12.45, "expiry": 4}]

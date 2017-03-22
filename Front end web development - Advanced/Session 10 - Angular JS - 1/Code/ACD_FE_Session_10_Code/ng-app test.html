@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular JS Demo</title>
+	<script type="text/javascript" src="js\lib\angular.min.js"></script>
+	<script type="text/javascript" src="js\lib\angular-resource.min.js"></script>
+	<script>
+		var app = angular.module('mainApp',[]);
+		app.controller('myController1', function($scope){
+			$scope.myArray = [1, 2, 3, 4];
+			$scope.name = "";
+			$scope.person = 
+			{
+				pname: 'myName',
+				age: 45
+			};
+		});
+		app.controller('myController2', function($scope){
+			$scope.myArray = [1, 2, 3, 4];
+			$scope.name = "";
+			$scope.person = 
+			{
+				pname: 'myName',
+				age: 45
+			};
+		});
+	</script>
+</head>
+<body ng-app= 'mainApp'>
+	<div ng-controller = 'myController1'>
+		<ul>
+			<li <h4 ng-repeat='temp in myArray'>{{ temp }}</h4></li>
+		</ul><br>
+		Name:<input type = 'text' ng-init='name = "Acadgild"' ng-model = 'name'></input>
+		<p ng-show='name'>Name is : {{name}}</p>
+		<h1> Learning Angular JS</h1>
+		<h1>{{ name }}</h1>
+		<p>{{ 68 | currency}}</p>
+		<div>
+			<p>{{person.pname}}
+		</div>
+	</div>
+	<div ng-controller = 'myController2'>
+		<ul>
+			<li <h4 ng-repeat='temp in myArray'>{{ temp }}</h4></li>
+		</ul><br>
+		Name:<input type = 'text' ng-init='name = "Acadgild"' ng-model = 'name'></input>
+		<p ng-show='name'>Name is : {{name}}</p>
+		<h1> Learning Angular JS</h1>
+		<h1>{{ name }}</h1>
+		<p>{{ 68 | currency}}</p>
+		<div>
+			<p>{{person.pname}}
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE  html>
+<html>
+	<head>
+		<title>Simple Form</title>
+		<link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico"/>
+		<link type="text/css" rel="stylesheet" href="style01.css" />
+	</head>
+	<body>
+		<div id="background">
+			<p id="enter">Enter the system</p>
+			<p id="text-under-enter">It is necessary to login in Your account in order to sign up for a course.</p>
+			<div id="left-column">
+				<p id="are-you-new">Are you new? <span>Register</span></p>
+				
+				<!--In case you want to see the changes appearing in the URL
+					you may change the form method to "get" instead of "post"-->
+				
+				<form method="post">
+					
+					<input type="text"
+					class="text-field"
+					name="user-name"
+					placeholder="User name"
+					required="required"/>	
+					
+					<br><br>
+					
+					<input type="email"
+					class="text-field"
+					name="user-email"
+					placeholder="Email"
+					required="required"/>
+					
+					<br><br>
+					
+					<input type="password"
+					class="text-field"
+					name="user-password"
+					placeholder="Password"
+					required="required"/>
+					
+					<br><br>
+					
+					<input type="password"
+					class="text-field"
+					name="user-password"
+					placeholder="Confirm Password"
+					required="required"/>
+					
+					<br><br>
+					
+					<input type="submit"
+					class="button"
+					id="reg-button"
+					value="Register"/>
+				
+				</form>			
+				
+			</div>
+			
+			<div id="right-column">
+				
+				<p id="student">already a student? login</p>
+				
+				<!--In case you want to see the changes appearing in the URL
+					you may change the form method to "get" instead of "post"-->
+				
+				<form method="post">
+					
+					<input type="text"
+					class="text-field"
+					name="user-name"
+					placeholder="User name"
+					required="required"
+					style="width: 340px"/>
+					
+					<br><br>
+					
+					<input type="password"
+					class="text-field"
+					name="user-password"
+					placeholder="Password"
+					required="required"
+					style="width: 340px"/>
+					
+					<br><br>
+					
+					<input type="checkbox"
+					name="remember-me"
+					id="remember-checkbox"/>
+					
+					<label for="remember-checkbox"
+					id="remember-me-label">Remember me?</label>
+					
+					<input type="submit"
+					class="button"
+					id="login-button"
+					value="Login"/>
+					
+				</form>
+				
+				<p id="forgot-pwd">Forgot Password?</p>
+				
+			</div>
+			
+			
+		</div>
+	</body>
+</html>

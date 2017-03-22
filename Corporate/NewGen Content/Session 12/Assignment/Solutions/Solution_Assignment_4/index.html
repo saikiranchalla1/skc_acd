@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('myController1', function ($scope) {
+			$scope.message1 = 'Hello World';
+		});
+
+		myApp.controller('myController2', function ($scope) {
+			$scope.message2 = 'Hello John Doe';
+		});
+
+		
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="myController1">
+			Message from controller 1 : {{message1}} <br/>
+		</div>
+
+		<div ng-controller="myController2">
+			Message from controller 2 : {{message2}} <br/>
+		</div>	
+</center>
+
+
+</body>
+</html>

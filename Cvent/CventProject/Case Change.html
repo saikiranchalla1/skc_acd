@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Change</title>
+    <style>
+        input {
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+<form action="" onsubmit="changeCase()">
+    Name: <input type="text" >
+    Password: <input type="password">
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    function changeCase() {
+        console.log(document.getElementsByTagName("input")[0].value);
+        var test = document.getElementsByTagName("input")[0].value;
+
+        var inputArr = test.split(' ');
+
+        for(var i=0; i < inputArr.length; i++){
+            inputArr[i]= inputArr[i].charAt(0).toUpperCase() + inputArr[i].slice(1);
+        }
+
+        document.getElementsByTagName("input")[0].value = inputArr.join(' ');
+
+        console.log("*******************");
+    }
+
+
+</script>
+</body>
+</html>

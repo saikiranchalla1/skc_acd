@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('homeCtrl', function ($scope) {
+
+		});
+
+		myApp.directive("myDirective", function(){
+	        return {
+	            restrict : 'EA',
+	            template : '<div> Enter Name  <input type="text" ng-model="name"> </div> <br> <div> Entered name is  {{name}} </div>',
+	            transclude : true,
+	            scope : false
+	        }
+    	})
+  
+
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="homeCtrl">
+			
+			<div my-directive>
+
+				
+
+        	</div>
+
+		</div>
+				
+</center>
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('myController', function ($scope) {
+			$scope.name = 'Acadgild';
+		});
+
+		myApp.directive('isolateDir', function(){
+			return {
+				restrict :'A',
+				transclude : true,
+				scope : {
+					name : '='
+				},
+				template : 'Hello This name is in directive : {{name}} <br>Change name in input box <br><input type="text" ng-model="name"> </div>'
+			}
+		})
+		
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="myController">
+
+			This name is in Parent controller : {{name}}
+			<div isolate-dir name="name">
+				
+			</div>
+						
+		</div>
+				
+</center>
+
+
+</body>
+</html>

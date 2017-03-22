@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object Literal</title>
+</head>
+<body>
+<p id="para1"></p>
+<script type="text/javascript">
+	function Kid(name){
+		//Private
+		var idol = "Paris Hilton";
+
+		//Privileged
+		this.getIdol = function(){
+			return idol;
+		}
+
+		//Public
+		this.name = name;
+
+		/*this.getName = function(){
+			return this.name;
+		}*/
+	}
+
+	var kid1 = new Kid("name1");
+	var kid2 = new Kid("name2");
+
+	Kid.prototype.getName = function(){
+		return this.name;
+	}
+	kid1.getName();
+	//Static Properties
+	Kid.town = "Delhi";
+</script>
+</body>
+</html>

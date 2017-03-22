@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+	<style type = "text/css">
+	#outer{
+		padding: 10px;
+		border:2px solid green;
+	}
+	.click-div{
+		padding: 10px;
+		border:2px solid grey;
+
+	}
+	</style>
+	<script type = "text/javascript" src = "jquery.js"></script>
+	<script  type = "text/javascript">
+	$(document).ready(function(){
+		$("#outer").on('click','.click-div',clickCallback);
+		$("#add-element").on('click',addElement);
+	})
+	function clickCallback() {
+		alert("you clicked me");
+	}
+	function addElement(){
+		$("#outer").append("<div class = 'click-div'>CLick will work</div>");
+	}
+
+	</script>
+</head>
+<body>
+	<button id = "add-element">Add Element</button>
+	<div id = "outer">
+		<div class = "click-div">Click me</div>
+		Hello..Welcome to Acad Gild!
+	</div>
+</body>
+</html>

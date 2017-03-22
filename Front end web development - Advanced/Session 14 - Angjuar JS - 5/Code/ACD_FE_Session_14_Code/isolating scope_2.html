@@ -1,0 +1,35 @@
+<html ng-app="myModule">
+	<head>
+		<title></title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+		<script>
+			var myModule = angular.module("myModule",[]);
+			myModule.controller('myController1',['$scope', function($scope){
+				$scope.person1= {
+					name: 'AcadGild',
+					address: 'My Address 1'
+				};
+				$scope.person2= {
+					name: 'Person 2',
+					address: 'My Address 2'
+				};
+			}])
+			myModule.directive('ngPerson',function(){
+				return {
+					restrict:'EACM',
+					scope:{
+						personInfo : '=info'
+					},
+					templateUrl: 'my-person-details.html'
+				};
+			});
+		</script>
+	</head>
+	<body>
+		<div  ng-controller='myController1'>
+			<ng-person info='person1'></ng-person>
+			<hr>
+			<ng-person info='person2'></ng-person>
+		</div>
+	</body>
+</html>

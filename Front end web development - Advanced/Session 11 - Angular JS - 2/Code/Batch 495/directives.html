@@ -1,0 +1,110 @@
+<html>
+<head>
+	<title>Directives HTML</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var module = angular.module('myApp', []);
+	module.controller('myCtrl', function($scope){
+		$scope.todos = [
+			{action: 'Action1', complete:false},
+			{action: 'Action2', complete:true},
+			{action: 'Action3', complete:false},
+			{action: 'Action4', complete:true},
+			{action: 'Action5', complete:true}
+		];
+
+		$scope.clickFunc = function(){
+			console.log('Click event triggered');
+		}
+		$scope.dblClickFunc = function(){
+			console.log('Double Click event triggered');
+		}
+		$scope.blurEvent = function(){
+			console.log('Blur Event triggered');
+		}
+		$scope.focusEvent = function(){
+			console.log('Focus Event triggered');
+		}
+		$scope.changeEvent = function(){
+			console.log('Change event triggered: ' + $scope.tempVar);
+		}
+	});
+</script>
+</head>
+<body ng-app="myApp">
+<div class="container">
+	<div ng-controller="myCtrl">
+		<input type="text" name="name" placeholder="Enter ur name..." ng-model="name">
+		<p ng-show="name">You have entered <h3 ng-bind="name"></h3></p>
+		<button type="button" ng-click="clickFunc()">Click Me</button>
+		<button type="button" ng-dblclick="dblClickFunc()">Click Me</button>
+		<br>
+		<input type="text" name="inp1" placeholder="some text..." ng-blur="blurEvent()">
+		<input type="text" name="inp2" placeholder="some text..." ng-focus="focusEvent()">
+
+		<input type="text" name="inp2" placeholder="some text..." ng-change="changeEvent()" ng-model="tempVar">
+
+		<br><br>
+		<input type="checkbox" name="cb1" ng-model="myCbVal">Show/Hide
+		<br>
+		<p>{{myCbVal}}</p>
+		<div ng-show="myCbVal">
+			Ng-SHow is used
+		</div>
+		<div ng-hide="myCbVal">
+			Ng-hide is used
+		</div>
+		<br><br>
+		<input type="text" ng-model="myUrl">
+		<a href="{{myUrl}}">{{myUrl}}</a>
+		<h4 ng-non-bindable>{{[1,2,3,4][2]}}</h4>
+		<br>
+		<input type="checkbox" name="cb2" ng-model="myCbVal2">
+		<select ng-model="testing">
+			<option>Op1</option>
+			<option>Op2</option>
+			<option ng-selected="myCbVal2">Op3</option>
+		</select>
+		<p>{{testing}}</p>
+		<br><br><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Action</th>
+					<th>Complete?</th>
+					<th>Odd?</th>
+					<th>Even</th>
+					<th>Middle</th>
+					<th>First</th>
+					<th>Last</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat-start="item in todos">
+					<td>{{$index + 1}}</td>
+<!-- 					<td>{{item.action}}</td>
+					<td><input type="checkbox" ng-checked="{{item.complete}}">{{item.complete ? 'Complete' : 'Not Complete'}}</td>
+					<td>{{$odd}}</td>
+					<td>{{$even}}</td>
+					<td>{{$middle}}</td>
+					<td>{{$first}}</td>
+					<td>{{$last}}</td> -->
+				</tr>
+				<tr><td>{{item.action}}</td></tr>
+				<tr ><td>{{item.complete}}</td></tr>
+				<tr ng-repeat-end><td>{{item}}</td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>

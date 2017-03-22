@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selectors</title>
+	<style type="text/css">
+		/*input:disabled {
+			border: 1px solid red;
+		}
+		input:checked {
+			width: 50px;
+			height: 50px;
+		}
+		input:valid {
+			border: 5px solid red;
+		}*/
+		/*input:out-of-range{
+			border: 5px solid red;
+		}
+		input:required {
+			border: 5px solid pink;
+		}
+		input:optional {
+			border: 5px solid orange;
+		}*/
+		input:read-only {
+			border: 5px solid orange;
+		}
+	</style>
+</head>
+<body>
+Disabled:<input type="text" name="name" disabled>
+Enabled: <input type="text" name="enabled">
+<br>
+Checkbox 1 :<input type="checkbox" name="cb1">
+Checkbox 2 : <input type="checkbox" name="cb2">
+<br>
+E-Mail: <input type="email" name="em1">
+<br><br><br>
+Number: <input type="number" name="rn1" min="5" max="10">
+<br><br>
+Name : <input type="text" name="nameReq" required>
+<br>
+<input type="text" name="nameRo" readonly>
+</body>
+</html>

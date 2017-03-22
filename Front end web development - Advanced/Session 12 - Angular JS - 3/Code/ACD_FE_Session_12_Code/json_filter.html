@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" >
+  <head>
+    <script src="../angular.js" type="text/javascript">
+    </script>
+ <script>
+  angular.module('myModule', [])
+    .controller('JsonController', ['$scope', function($scope) {
+      $scope.val = {
+      	name:"smith",
+      	age:24
+      };
+      $scope.names = ["sumit","manish","Neeraj","Srinivas"];
+    }]);
+</script>
+  </head>
+  <body ng-app = 'myModule'>
+ <div ng-controller="JsonController">
+{{val|json}}
+arrays in json format {{names|json}}
+</div>
+
+
+</body>
+</html>
+

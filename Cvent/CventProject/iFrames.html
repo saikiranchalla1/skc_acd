@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iFrames Demo</title>
+    <style>
+        embed:focus {
+            outline:  none;
+        }
+    </style>
+</head>
+<body>
+<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/YykjpeuMNEk" frameborder="0" allowfullscreen></iframe>
+
+<br><br><br>
+<embed src="Video.mp4" type="video/mp4">
+
+    <br><br>-->
+<!--<button onclick="playPause()">Play/Pause</button>-->
+<!--<button onclick="fullScreen()">Full Screen</button>-->
+<!--<button onclick="smallScreen()">Smaller</button>-->
+<!--<button onclick="normalScreen()">Normal Size</button>-->
+    <!--<video width="350" height="250">-->
+        <!--<source src="Video.mp4" type="video/mp4">-->
+        <!--<source src="Video.ogg" type="video/ogg">-->
+        <!--Your browser doesn't VIDEO tags.-->
+    <!--</video>-->
+
+
+<br><br><br>
+
+<button onclick="muteAudio()">Mute</button>
+
+<audio controls autoplay>
+    <source src="Audio.mp3" type="audio/mpeg">
+    <source src="Audio.ogg" type="audio/ogg">
+    Your browser doesn't AUDIO tags.
+</audio>
+<!--<script>-->
+    <!--var myvid = document.getElementsByTagName("video")[0];-->
+
+    <!--function playPause() {-->
+        <!--if(myvid.paused){-->
+            <!--myvid.play();-->
+        <!--}else {-->
+            <!--myvid.pause();-->
+        <!--}-->
+    <!--}-->
+
+    <!--function fullScreen() {-->
+        <!--myvid.width = 600;-->
+    <!--}-->
+    <!--function smallScreen() {-->
+        <!--myvid.width = 100;-->
+    <!--}-->
+
+    <!--function normalScreen() {-->
+        <!--myvid.width = 400;-->
+    <!--}-->
+<!--</script>-->
+
+<script>
+    function muteAudio(){
+        console.log(document.getElementsByTagName("audio")[0].currentTime);
+        var temp = document.getElementsByTagName("audio")[0].currentTime;
+        document.getElementsByTagName("audio")[0].muted = true;
+        document.getElementsByTagName("audio")[0].load();
+        document.getElementsByTagName("audio")[0].currentTime = temp;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<style>
+	#boundry{
+		padding:10px;
+		border:2px solid grey;
+	}
+	#parent{
+		padding:10px;
+	border:2px solid blue;	
+	}
+	#child{
+		padding:10px;
+		border:2px solid green;
+	}
+	#indepndent{
+		padding:10px;
+		border:2px solid red;
+	}
+	</style>
+	<script src = "angular.js"></script>
+	<script type="text/javascript">
+	var myModule = angular.module('myModule', []);
+	myModule.controller('MyCtrl', function () {
+		var model = { "firstname": "Jack",
+		"lastname": "Smith" };
+		this.model = model;
+		this.city = "Bangalore";
+		this.click = function() { 
+			alert($scope.model.firstname); 
+		};
+	});
+	myModule.controller('ChildCtrl', function () {
+		var modelchild = { "hobby": "Tourism",
+		"interests": "coding" };
+		this.company = "Google";
+		this.city = "Hyderabad";
+		this.modelchild	 = modelchild;
+		this.click = function() { 
+			alert(this.modelchild.hobby); 
+		};
+	});
+	</script>
+</head>
+<body>
+	<div id = "boundry" ng-app="myModule"> 
+		<div id = "indepndent" ng-controller = "ChildCtrl as indp">
+			Your hobby is {{indp.modelchild.hobby}}
+			your first name is {{indp.model.firstname}}
+		</div>
+		<div id = "parent" ng-controller="MyCtrl as parent">
+			<p>Firstname: <input type="text" ng-model="parent.model.firstname"></p>
+			<p>Lastname: <input type="text" ng-model="parent.model.lastname"></p>
+			<p>{{parent.model.firstname + " " + parent.model.lastname}}</p>
+			your hobby is {{child.modelchild.hobby}}
+
+			<div id = "child" ng-controller = "ChildCtrl as child">
+				Your hobby is {{child.modelchild.hobby}}
+				city for child is {{child.city}}
+				city for parent is {{parent.city}}
+				your first name is {{parent.model.firstname}}
+			</div>
+
+			<button ng-click="child.click()">Show Name</button>
+		</div>
+	</div>

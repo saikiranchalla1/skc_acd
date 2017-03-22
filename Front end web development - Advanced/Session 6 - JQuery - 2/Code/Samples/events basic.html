@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    /*$("p").click(function(){
+        $(this).hide();
+    });*/
+	/*$("p").dblclick(function(){
+        $(this).hide();
+    });*/
+	$("p").mouseenter(function(){
+        console.log("Mouse enter event triggered");
+    });
+	$("p").mouseleave(function(){
+        console.log("Mouse leave event triggered");
+    });
+	$("p").mousedown(function(){
+        console.log("Mouse leave event triggered");
+    });
+	$("p").hover(function(){
+        console.log("Mouse leave event triggered");
+    });
+	 $("input").focus(function(){
+        $(this).css("background-color", "#ff0000");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff");
+    });
+});
+</script>
+</head>
+<body>
+
+<p>This is a paragraph</p>
+<p>This is second paragraph</p>
+<p>This is third paragraph</p><br>
+Name: <input type="text" name="fullname"><br>
+Email: <input type="text" name="email">
+</body>
+</html>

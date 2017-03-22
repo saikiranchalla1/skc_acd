@@ -1,0 +1,97 @@
+<html>
+<head>
+	<title>Events Demo</title>
+	<style type="text/css">
+		.myclass {
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		jQuery(document).ready(function(){
+			// $('p').click(function(){
+			// 	$(this).hide();
+			// });
+			// $('p').dblclick(function(){
+			// 	$(this).hide();
+			// });
+			// $('#p1').mouseenter(function(){
+			// 	console.log("Mouse enter into the Paragraph p1");
+			// });
+
+			// $('#p1').mouseleave(function(){
+			// 	console.log("Mouse leaves the Paragraph p1");
+			// });
+
+			// $('#p1').mouseup(function(){
+			// 	console.log("Mouse up on the Paragraph p1");
+			// });
+
+			// $('#p1').mousedown(function(){
+			// 	console.log("Mouse down on the Paragraph p1");
+			// });
+
+			// $('#p1').hover(null,
+			// function(){
+			// 	console.log("Mouse leave on the Paragraph p1");
+			// });
+
+			jQuery('input').focus(function(){
+				jQuery(this).css('background-color', 'blue');
+			});
+			
+			jQuery('input').blur(function(){
+				jQuery(this).css('background-color', 'red');
+			});
+			jQuery('input').change(function(){
+				console.log("Current value" + jQuery(this).val());
+			});
+			// $('#p1').on({
+			// 	//eventname : function(){}
+			// 	click: function(e){
+			// 		console.log(e);
+			// 		console.log("Click event");
+			// 	},
+			// 	dblclick : function(){
+			// 		console.log("Double Click Event");
+			// 	},
+
+			// 	mouseleave: function(){
+			// 		console.log("Mouse Leave Event");
+			// 	},
+			// 	mouseenter: function(){
+			// 		console.log("Mouse Enter Event");
+			// 	}
+			// });
+
+			jQuery('#p1').bind('mousedown', function(e){
+				console.log("Button Clicked: " + e.which);
+				jQuery(this).toggleClass('myclass');
+			});
+
+			jQuery('form').submit(function(){
+				alert("Form Submitted");
+			});
+		});
+	</script>
+</head>
+<body>
+<p id="p1">Click me to hide</p>
+<br>
+<p>Click here to hide me as well</p>
+
+<br><br>
+Name: <input type="text" value="Testing">
+E-Mail: <input type="email">
+
+<br><br>
+<form id="form1">
+	Phone Number : <input type="text"><br>
+	Address : <input type="text">
+	Gender: Male <input type="radio"> Female <input type="radio">
+	Female <input type="checkbox">
+	<input type="submit" value="Submit">
+</form>
+</body>
+</html>

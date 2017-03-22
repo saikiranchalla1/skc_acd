@@ -1,0 +1,31 @@
+<html ng-app="myModule">
+	<head>
+		<title></title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+		<script>
+			var myModule = angular.module("myModule",[]);
+			myModule.controller('myController',['$scope', function($scope){
+				$scope.name= {
+					fname: 'Acad',
+					lname: 'Gild'
+				};
+			}])
+			myModule.directive('ngHello',function(){
+				return {
+					restrict:'EAC',
+					template:'First Name {{name.fname}}' + ' Last Name {{name.lname}}'
+				};
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Template expanding directive --> 
+		<div  ng-controller='myController'>
+			<div ng-hello></div>		
+			<ng-hello></ng-hello>
+			<p class='ng-hello'></p>
+			<!-- directive: ng-hello -->
+		</div>
+	</body>
+</html>
+

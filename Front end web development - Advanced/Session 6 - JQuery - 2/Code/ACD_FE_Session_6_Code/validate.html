@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head> 
+<title> Registration Form</title> 
+  <script src = "jquery.js"></script>
+  <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>  
+  <script>
+   
+  $(function() {
+      $("#register").validate({
+    
+        // Specify the validation rules here
+        rules: {
+            firstname: {
+                required: true,
+                minlength: 4
+            },
+            lastname: {
+                required: true,
+                minlength: 4
+            },
+             password: {
+                required: true,
+                minlength: 7
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            terms: "required"
+        },
+        
+        // Specifying error messages here
+        messages: {
+            firstname: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 4 characters long"
+            },
+            lastname: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 4 characters long"
+            },
+            password: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long"
+            },
+            email: "Please enter a valid email address",
+            terms: "Please accept registration policy to continue"
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+  });
+  
+  </script>
+</head>
+<body>
+  <h3> Fill in the details and register
+  <form action="" method="post" id="register">
+  
+    <div class="label">First Name</div><input type="text" id="firstname" name="firstname" /><br />
+    <div class="label">Last Name</div><input type="text" id="lastname" name="lastname" /><br />
+    <div class="label">Email</div><input type="text" id="email" name="email" /><br />
+    <div class="label">Password</div><input type="password" id="password" name="password" /><br />
+    <input type = "checkbox" value = "yes" id = "terms" name = "terms"/>
+    <div style="margin-left:140px;"><input type="submit" name="submit" value="Submit" /></div>
+    
+  </form>
+  
+</body>
+</html>

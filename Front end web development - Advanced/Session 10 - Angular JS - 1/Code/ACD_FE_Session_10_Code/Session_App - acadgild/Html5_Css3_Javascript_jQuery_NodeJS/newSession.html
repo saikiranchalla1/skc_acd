@@ -1,0 +1,147 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Create New Event</title>
+<link rel="stylesheet" href="Styles/app.css">
+<script type="text/javascript" src="Lib/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+	$('#btnCancel').click(function(){
+		window.location ="eventdetails.html";
+	});
+
+	$('#btnSave').click(function () {
+	    var eventName;
+	    var eventDate;
+	    var eventTime;
+	    var eventAddress;
+	    var eventCity;
+	    var eventPin;
+
+	    eventName = $('#eventName').val();
+	    eventDate = $('#eventDate').val();
+	    eventTime = $('#eventTime').val();
+	    eventAddress = $('#eventLocation').val();
+	    eventCity = $('#eventCity').val();
+	    eventPin = $('#eventPin').val();
+
+	    var eventDet = {};
+	    eventDet.name = eventName;
+	    eventDet.date = eventDate;
+	    eventDet.time = eventTime;
+	    eventDet.address = eventAddress;
+	    eventDet.city = eventCity;
+	    eventDet.pin = eventPin;
+	    eventDet.id = 10;
+
+	    console.log(eventDet);
+
+	    var eventDetJson = JSON.stringify(eventDet);
+
+	    console.log(eventDetJson);
+
+	    // /* save
+        $.ajax({
+	        url: "Data/",
+	        type:'POST',
+	        data:eventDetJson,
+	        //dataType: "application/json",
+	        success: function(data){
+	           console.log('succesful save');
+	        },
+	        error:function(xhr,status,error){
+	            console.log('unable to save' + error);
+	        }
+	    });
+
+        //*/
+
+
+
+
+	});
+	
+	// for the required fields attach an event and change the back ground ocne the value is filled
+	$('[data-required]').focus(function(){
+		$(this).removeClass('required');
+	});
+	
+	$('[data-required]').blur(function(){
+		if($(this).val()==="")
+			{
+				$(this).addClass('required');
+			}
+			// if  pattern field check whether entered value is according the pattern
+		if($(this).attr('pattern'))
+			{
+				// see whether entered value matches pattern.
+				var pin = $(this).val();
+				var zipregex =/(^\d{6}$)/;
+				if(!zipregex.test(pin))
+				{
+					$(this).addClass('required');
+				}
+					
+			}
+	});
+	
+	/*
+	$('[data-required]').on("blur",function(){
+		if($(this).val()==="")
+		{
+			$(this).addClass('required');
+		}
+		// if  pattern field check whether entered value is according the pattern
+	if($(this).hasAttr('pattern'))
+		{
+			// see whether entered value matches pattern.
+			var pin = $(this).val();
+			var zipregex =/(^\d{6}$)/;
+			if(!zipregex.test(pin))
+			{
+				
+			}
+				
+		}
+});
+	*/
+	
+	
+	
+});
+
+
+</script>
+</head>
+<body>
+<form id="newEventForm">
+<fieldset>
+<legend>New Event Details</legend>
+
+<p data-attr1="fieldLayout"><label for="eventName" class="field">Name</label><input class="control required" data-required  type="text" id="eventName" required ></p>
+
+
+
+<p data-attr1="fieldLayout"><label for="eventDate" class="field">Date</label><input  class="control" type="date" id="eventDate" ></p>
+
+<p data-attr1="fieldLayout">
+
+<label for="eventTime" class="field">Time</label><input class="control" type="time" id="eventTime"></p>
+
+<p data-attr1="fieldLayout">
+<label for="eventLocation" class="field">Address</label><textarea class="control" id="eventLocation"></textarea></p>
+
+<p data-attr1="fieldLayout"><label for="eventCity" class="field">City</label><input class="control" type="text" id="eventCity"></p>
+
+<p data-attr1="fieldLayout">
+
+<label for="eventPin" class="field">PIN</label><input class="control required" data-required type="text" id="eventPin" pattern="(^\d{6}$)" required class="required"></p>
+<div data-footer>
+<input type="submit"  id="btnSave" value="save">
+<input type="button" name="Cancel" id="btnCancel" value="cancel">
+</div>
+</fieldset>
+</form>
+</body>
+</html>

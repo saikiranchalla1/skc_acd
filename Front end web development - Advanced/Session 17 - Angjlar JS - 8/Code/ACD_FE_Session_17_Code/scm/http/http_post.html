@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8" />
+	<script src="angular.js" type="text/javascript">
+	</script>
+	<script type="text/javascript">
+	var myModule = angular.module('myModule', 
+		[]);
+
+	myModule.controller('MyCtrl', function ($scope,$http,$sce) {
+		$scope.todos = [];
+		$scope.errorMsg = null;
+		$scope.click = function() { 
+			$http.get('slim/todos', {params: {id: '5'}
+		}).success(function(data, status, headers, config) {
+			$scope.todos = data;
+		}).error(function(data, status, headers, config) {
+			$scope.errorMsg = $sce.trustAsHtml(data);
+		});
+	};
+});
+	</script>
+</head>
+<body>
+	<div ng-app="myModule" 
+	<div ng-controller="MyCtrl">
+		<div ng-repeat = "todo in todos">
+			status is: {{todo.status}} and description is: {{todo.description}}
+		</div>
+		<div ng-bind-html = "errorMsg"></div>
+		<button ng-click="click()">Show Number</button> 
+	</div>
+</div>
+</body>
+</html>

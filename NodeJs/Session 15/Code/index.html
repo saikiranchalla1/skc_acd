@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Socket IO Demo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="//localhost:3000/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		var socket = io.connect('//localhost:3000');
+
+		socket.on('welcome', function(data){
+			$('#messages').append('<li>' + data.message + '</li>');
+
+			socket.emit('i am a client', {
+				data : 'foo bar'
+			});
+
+			socket.on('time', function(data){
+				console.log(data);
+				$('#messages').append('<li>' + data.time + '</li>');
+			});
+
+			socket.on('error', function(){
+				console.error('AN error ocured');
+			});
+		})
+	</script>
+
+</head>
+<body>
+<ul id="messages"></ul>
+</body>
+</html>

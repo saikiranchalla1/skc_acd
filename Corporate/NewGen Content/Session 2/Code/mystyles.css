@@ -1,0 +1,35 @@
+/*selector {
+			property : value;
+		}*/
+		/*p {
+			background-color: red;
+		}
+		div {
+			border: 1px solid red;
+		}
+		
+		span {
+			border: 1px solid blue;
+		}
+		#para1 {
+			border: 1px solid blue;
+		}*/
+		/*#div1 {
+			border: 10px solid yellow;
+		}
+		div.myClass {
+			background-color: red;
+		}
+		a[target='_blank'] {
+			background-color: yellow;
+		}
+		a[class~= 'myclass'] {
+			background-color: red;
+		}
+		a[class |= 'myclass1']{
+			background-color: blue;
+		}
+
+		a[class $= 'tempCls']{
+			background-color: blue;
+		}*/

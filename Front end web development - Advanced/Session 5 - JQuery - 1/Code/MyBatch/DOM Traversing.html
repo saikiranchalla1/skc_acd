@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>DOM Traversing</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+		
+		div {
+			width: 300px;
+			padding: 20px;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// $("span").parent().css({
+
+			// 	'color' : 'blue',
+			// 	'border' : '2px solid blue'
+			// });
+		// $("span").parents().css({
+
+		// 		'color' : 'blue',
+		// 		'border' : '2px solid blue'
+		// 	});
+			// var arr = $("span").parents('ul');
+			// console.log(arr);
+			// $("span").parents('div:first').css({
+
+			// 	'color' : 'blue',
+			// 	'border' : '2px solid blue'
+			// });
+
+			var temp = $('div').eq(0);
+			// $('span').parentsUntil(temp).css('border', '1px solid blue');
+			// $('span').siblings('p').css({
+			// 	'border': '1px solid blue',
+			// 	'padding' : '5px'
+			// });
+		$('span:first').nextUntil('p:last').css({
+				'border': '1px solid blue',
+				'padding' : '5px'
+			});
+			
+		});
+	</script>
+</head>
+<body>
+<!--<div>
+	<div>(great-grandparent)
+		<ul>ul (grandparent)
+			<li>
+				Li (direct Parent)
+				<span>SPAN</span>
+			</li>
+		</ul>
+	</div>
+</div>-->
+<div>Ancestor
+	<div>Great Grand-Parent
+		<ol>Grand-Parent
+			<li>Parent<br>
+				<span>Testing Parents Method</span>
+				<p>This is a paragraph</p>
+				<p>This is another paragraph</p>
+				<span>This is a span</span>
+			</li>
+		</ol>
+		<ol>
+			<li>Item 1</li>
+			<li>Item 2</li>
+		</ol>
+	</div>
+</div>
+</body>
+</html>

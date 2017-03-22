@@ -1,0 +1,125 @@
+<html>
+<head>
+	<title>Dependency Injection</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var mod = angular.module("myApp", ['customServices']);
+	mod.config(function(logServiceProvider){
+		logServiceProvider.debugEnabled(true)
+		logServiceProvider.messageCounterEnabled(true);
+	});
+	mod.controller("myCtrl", function($scope, logService,debugService,errorService){
+		$scope.data = {
+			cities: ['New York', 'Paris', 'London'],
+			totalClicks : 0
+		};
+
+		$scope.$watch('data.totalClicks', function(newVal){
+			// console.log('Total Click Count : ' + newVal);
+			logService.log('Total Click Count : ' + newVal);
+			// debugService.log('Total Click Count : ' + newVal);
+			// errorService.log('Total Click Count : ' + newVal);
+		});
+	})
+	mod.directive('triButton', function(logService){
+		return {
+			scope : {counter: "=counter"},
+			link : function(scope, element, attrs){
+				element.on("click", function(event){
+					//console.log("Button clicked: " + event.target.innerText);
+					logService.log("Button clicked: " + event.target.innerText);
+					scope.$apply(function(){
+						scope.counter++;
+					});
+				})
+			}
+		}
+	});
+
+	var servicesMod = angular.module("customServices", []);
+
+	// servicesMod.factory("logService", function(){
+	// 	var messageCounter = 0;
+	// 	return {
+	// 		log : function(msg){
+	// 			console.log("(LOG " + messageCounter++ +")" + msg);
+	// 		}
+	// 	}
+	// });
+
+	var baseLogger = function(){
+		this.messageCounter = 0;
+		this.log = function(msg){
+			console.log(this.msgType + ": " + (this.messageCounter++) + " " + msg);
+		}
+	};
+	 var debugLogger = function() {};
+	 debugLogger.prototype = new baseLogger();
+	 debugLogger.prototype.msgType = "debug";
+
+	 var errorLogger = function(){};
+	 errorLogger.prototype = new baseLogger();
+	 errorLogger.prototype.msgType = "error";
+
+
+	 servicesMod.service("debugService", debugLogger);
+	 servicesMod.service("errorService", errorLogger);
+
+	 servicesMod.provider("logService", function(){
+	 	var counter = true;
+	 	var debug = true;
+	 	return {
+	 		messageCounterEnabled : function(setting){
+	 			if(angular.isDefined(setting)){
+	 				counter = setting;
+	 				return this;
+	 			}else{
+	 				return counter;
+	 			}
+	 		},
+	 		debugEnabled : function(setting){
+	 			if(angular.isDefined(setting)){
+	 				debug = setting;
+	 				return this;
+
+	 			}else{
+	 				return debug;
+	 			}
+	 		},
+	 		$get : function() {
+	 			return {
+	 				messageCounter : 0,
+	 				log : function(msg){
+	 					if(debug){
+	 						console.log("(LOG" 
+	 							+ (counter ? " + " + this.messageCounter++ + ") " : ") ") + msg);
+	 					}
+	 				}
+	 			}
+	 		}
+	 	}
+	 });
+
+</script>
+</head>
+<body ng-app="myApp">
+	<br><br>
+	<div class="well" ng-controller="myCtrl">
+		<div class="btn-group"  tri-button counter="data.totalClicks" source="data.cities">
+			<button type="button" ng-repeat="city in data.cities" class="btn btn-default">
+				{{city}}
+			</button>
+		</div>
+		<h4>Total Clicks: {{data.totalClicks}}</h4>
+	</div>
+</body>
+</html>

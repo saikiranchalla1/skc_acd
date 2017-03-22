@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Module Configurations</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+            <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        	var mod1 = angular.module('mod1', ['mod2']);
+        	mod1.config(function(){
+        		console.log('Module 1 Configuration function');
+        	});
+        	mod1.run(function(){
+        		console.log('Module 1 Run function');
+        	});
+
+        	var mod2 = angular.module('mod2', ['mod3']);
+        	mod2.config(function(){
+        		console.log('Module 2 configuration function');
+        	});
+        	mod2.run(function(){
+        		console.log('Module 2 run function');
+        	});
+
+        	var mod3 = angular.module('mod3', []);
+        	mod3.config(function(){
+        		console.log('Module 3 configuration function');
+        	});
+        	mod3.run(function(){
+        		console.log('Module 3 run function');
+        	});
+        </script>
+
+</head>
+<body ng-app='mod1'>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+body {
+  font: Helvetica, sans-serif;
+  color: red; }
+
+ul {
+  padding: 0;
+  list-style: 'square'; }
+  ul li {
+    display: inline-block; }
+
+div {
+  -webkit-animation-name: "example";
+  -o-animation-name: "example";
+  -moz-animation-name: "example";
+  animation-name: "example"; }
+
+.myclass, .myclass-2, .myclass-3, .myclass-4 {
+  border: 1px solid red;
+  color: yellow;
+  float: left; }
+
+.myclass-2, .myclass-3, .myclass-4 {
+  overflow: auto; }
+
+.myclass-3, .myclass-4 {
+  z-index: -1; }
+
+.myclass-4 {
+  margin: auto; }
+
+/*# sourceMappingURL=output.css.map */

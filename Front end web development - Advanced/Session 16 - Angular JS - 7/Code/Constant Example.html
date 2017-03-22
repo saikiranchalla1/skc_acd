@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Constant Example</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+            <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        	var mod = angular.module('myApp', []);
+        	mod.controller('myCtrl', function($scope, fooConfig,foo){
+        		$scope.fooConfig = fooConfig;
+        		$scope.someValue = foo;
+        	});
+
+        	mod.value('foo', 'Some simple value');
+
+        	mod.constant('fooConfig', {
+        		config1 : true,
+        		config2 : "Default Configuration"
+        	});
+        </script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller='myCtrl'>
+		Config1: {{fooConfig.config1}}
+		<br>
+		Config2: {{fooConfig.config2}}
+		<br>
+		Value example : {{someValue}}
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <title>Hi</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script>
+  var app = angular.module("app",[]);
+  app.directive("productCollection", function(){
+    return {
+      restrict: "E",
+      template: "<div><h4>This is the basket</h4><button ng-click = 'pCRef.totalAmount()'>Show Total</button><button ng-click = 'pCRef.showItemsNo()'>Items Count</button></div>",
+      replace:true,
+      controllerAs:"pCRef",
+      controller:function($scope, $element, $attrs, $transclude){
+        this.itemsCount = 0;
+        this.items = [];
+        this.msg = "test";
+       this.showItemsNo = function(){
+        console.log('in')
+        alert(this.items.length);
+       }
+       this.totalAmount = function(){
+        var totalAmount = 0;
+        for(var i = 0;i<this.items.length;i++){
+          totalAmount+=this.items[i].price;
+        }
+        alert(totalAmount);
+       }
+       this.addItem = function(item){
+        this.items.push(item);
+       }
+      }
+    };
+  });
+  app.directive("brush",function(){
+    return {
+      require:"productCollection",
+      link:function(scope, element, attrs,pCCtrl ){
+        console.log(pCCtrl);
+        pCCtrl.addItem({name:'brush',price:12});
+      }
+    }
+  })
+
+  app.directive("cream",function(){
+    return {
+      require:"productCollection",
+      link:function(scope, element, attrs,pCCtrl ){
+        pCCtrl.addItem({name:'cream',price:30});
+      }
+    }
+  })
+  </script>
+</head>
+<body ng-app = "app">
+  
+  <product-collection  brush ></product-collection>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Tooltips</title>
+</head>
+<body>
+<p id="help">Tooltip will be displayed here</p>
+<form action="">
+    <p>E:Mail: <input type="email" name="email" id="email"></p>
+    <p>Name: <input type="text" name="name" id="name"></p>
+    <p>Age: <input type="text" name="age" id="age"></p>
+</form>
+
+<script>
+
+    function showHelp(help) {
+        document.getElementById('help').innerHTML = help;
+    }
+    function makeHelpCallBack(help) {
+        return function () {
+            showHelp(help)
+        }
+    }
+
+    function setupHelp() {
+        var helpText = [
+            {id : 'email', help: 'Enter the e-mail address'},
+            {id : 'name', help: 'Enter the name of the person'},
+            {id : 'age', help: 'Enter the age'},
+        ]
+
+        for(var i=0; i < helpText.length; i++){
+                var item = helpText[i];
+            document.getElementById(item.id).onmouseover = makeHelpCallBack(item.help);
+        }
+    }
+
+    setupHelp();
+</script>
+</body>
+</html>

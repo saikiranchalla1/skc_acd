@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', ['ngRoute']);
+
+		myApp.controller('homeCtrl', function ($scope) {
+
+		});
+		myApp.controller('contactCtrl', function ($scope) {
+
+		});
+		myApp.controller('aboutCtrl', function ($scope) {
+
+		});
+		myApp.controller('productsCtrl', function ($scope) {
+
+		});
+		myApp.controller('servicesCtrl', function ($scope) {
+
+		});
+
+		myApp.config(['$routeProvider', 
+	        function($routeProvider){
+	            $routeProvider.
+		            when('/about', {
+	                        templateUrl : 'templates/about.html',
+	                        controller : 'aboutCtrl'
+	                    }).
+	                    when('/contact', {
+	                        templateUrl : 'templates/contact.html',
+	                        controller : 'contactCtrl'
+	                    }).
+	                    when('/products', {
+	                        templateUrl : 'templates/products.html',
+	                        controller : 'productsCtrl'
+	                    }).
+	                    when('/services', {
+	                        templateUrl : 'templates/services.html',
+	                        controller : 'servicesCtrl'
+	                    }).
+	                    otherwise({
+	                        redirectTo : '/',
+	                        templateUrl : 'templates/home.html',
+	                        controller : 'homeCtrl'
+	                 	});
+	        }]);
+
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="homeCtrl">
+			
+			<div >
+				<ul >
+					<li>
+						<a href="#/"> home</a>
+					</li>
+
+					<li>
+						<a href="#/about"> about</a>
+					</li>
+
+
+					<li>
+						<a href="#/products"> products</a>
+					</li>
+
+					<li>
+						<a href="#/services"> services</a>
+					</li>
+
+
+					<li>
+						<a href="#/contact"> contact</a>
+					</li>
+				</ul>
+			</div>
+
+	        <div ng-view></div>
+		</div>
+				
+</center>
+
+
+</body>
+</html>

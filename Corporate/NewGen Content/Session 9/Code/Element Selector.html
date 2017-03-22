@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Element Selector</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			/*$("button").click(function(){
+				$("p").hide();
+			});
+			$("#btn2").click(function(){
+				$("p").hide();
+			});
+			$("#btn1").click(function(){
+				$("#testing").hide();
+			});
+			$("#btn3").click(function(){
+				$(".myClass").hide();
+			});
+			$("#btn4").click(function(){
+				$("*").hide();
+			});*/
+			$("#btn5").click(function(){
+				$("p:first").hide();
+			});
+			$("#btn6").click(function(){
+				$("ul li:first").hide();
+			});
+			$("#btn7").click(function(){
+				$("ul li:first-child").hide();
+			});
+			$("#btn8").click(function(){
+				$("[href]").hide();
+			});
+			$("#btn9").click(function(){
+				$("a[target!='_blank']").hide();
+			});
+			$("#btn10").click(function(){
+				$(":button").hide();
+			});
+			$("tr:odd").css("background-color", "yellow");
+
+			$("#btn11").click(function(){
+				$("table").toggle("fast", function(){
+					alert("Toggle Complete");
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+<h3>This is a heading</h3>
+<p>This is a paragraph</p>
+<p>this is another paragraph</p>
+<p id="testing">This is yet another paragraph</p>
+<p class="myClass">This is identified by class name</p>
+<ul>
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+</ul>
+<br><br>
+<ul>
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+</ul>
+<a href="https://www.acadgild.com">Acadgild</a>
+<a href="https://www.acadgild.com" target="_blank">Acadgild</a>
+<br><br><br>
+<table border="1">
+	<tr>
+		<th>Name</th>
+		<th>Place</th>
+	</tr>
+	<tr>
+		<td>Name 1</td>
+		<td>Place 1</td>
+	</tr>
+	<tr>
+		<td>Name 2</td>
+		<td>Place 2</td>
+	</tr>
+	<tr>
+		<td>Name 3</td>
+		<td>Place 3</td>
+	</tr>
+	<tr>
+		<td>Name 4</td>
+		<td>Place 4</td>
+	</tr>
+</table>
+<!-- <button id="btn2">Click Me to Hide the Paragraphs</button>
+<button id="btn1">Click to Hide Testing Paragraph</button>
+<button id="btn3">Click to Hide myClass Paragraph</button>
+<button id="btn4">Click to All the Elements</button> -->
+<button id="btn5">Click to hide first paragraph</button>
+<button id="btn6">Click to hide first LI</button>
+<button id="btn7">Click to hide first LI in all the ULs</button>
+<button id="btn8">Click to hide Link with HREF</button>
+<button id="btn9">Click to hide Link with TARGET</button>
+<button id="btn10">Click to hide all buttons</button>
+<button id="btn11">Click to Toggle</button>
+</body>
+</html>

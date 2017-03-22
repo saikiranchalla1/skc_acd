@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psudo Classes</title>
+	<style type="text/css">
+	input:checked {
+		height: 50px;
+		width: 50px
+	}
+	input:enabled {
+		background:yellow;
+	}
+	input:disabled{
+		background:red;
+	}
+	input:in-range{
+		border: 5px solid blue;
+	}
+	input:out-of-range{
+		border: 1px solid red;
+	}
+	input:focus{
+		background-color: violet;
+	}
+	input:valid {
+		background-color: yellow;
+	}
+	input:invalid {
+		background-color: red;
+	}
+	input:required {
+		background-color: blue;
+	}
+	input:optional{
+		background-color: green;
+	}
+	input:-moz-read-only {
+		background-color: black;
+	}
+	</style>
+</head>
+<body>
+<input type="radio" name="gender">Male</input>
+<input type="radio" name="gender">Female</input>
+<input type="checkbox" name="gender">Male</input>
+<input type="checkbox" name="gender">Male</input><br>
+<input type="text"></input><br>
+<input type="text" readonly value="Some Value"></input><br>
+<input type="text" disabled=""></input><br>
+<input type="number" min="5" max="10"></input><br>
+<input type="email" value="saikiranchalla@gmail.com" required=""></input>
+</body>
+</html>

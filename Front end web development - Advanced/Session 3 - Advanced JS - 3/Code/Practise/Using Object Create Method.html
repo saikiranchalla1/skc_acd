@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+<br><p id="demo1"></p>
+<script>
+function person(first, last, age, eye) {
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eyeColor = eye;
+}
+
+var myFather = new person("John", "Doe", 50, "blue");
+var myMother = new person("Sally", "Rally", 48, "green");
+
+var newObject = Object.create(myFather); // creating an object using existing Object
+
+console.log(newObject.firstName); //log the properties of newly create Object
+
+console.log(newObject.lastName); //log the properties of newly create Object
+
+console.log(newObject.age); //log the properties of newly create Object
+
+console.log(newObject.eyeColor); //log the properties of newly create Object
+
+document.getElementById("demo").innerHTML =
+"My father is " + myFather.age + ". My mother is " + myMother.age; 
+
+document.getElementById("demo1").innerHTML =
+"My father is " + newObject.age;
+
+var o = {};
+
+o = Object.create(Object.prototype, {
+  foo: { writable: true, value: 'hello' },
+  bar: {
+    get: function() { return 10; },
+    set: function(value) { console.log('Setting `o.bar` to', value); }
+  }
+});
+</script>
+
+</body>
+</html>

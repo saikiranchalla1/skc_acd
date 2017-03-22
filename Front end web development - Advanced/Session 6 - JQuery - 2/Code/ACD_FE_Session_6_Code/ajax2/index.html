@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  #menu li{
+    display: inline;
+    text-decoration: none;
+    padding: 5px;
+    border:2px solid black;
+  }
+  #main{
+    margin: 20px;
+    border: 2px dashed grey;
+    height: 700px;
+    padding:20px;
+  }
+  #main-article{
+    border: 2px solid grey;
+  }
+  </style>
+  <script src = "../jquery.js"></script>
+  <script>
+  $(function(){
+    $("#loader").hide();
+   $("#employees").click(processRequest); 
+   $("#contact").click(showContact);
+  })
+  function showContact(){
+    var html = "<div> our address is bangalore in Tawarkeri road</div>";
+    $("#main-article").html(html);
+  }
+  function processRequest(){
+    var settingsObj = {
+      success:function(data){
+        console.log(data); 
+        var ob = JSON.parse(data);
+        var len = ob.length;
+        var i = 0;
+        var html = "";
+        for( i = 0;i<len;i++){
+         html += "<div>Name:" +ob[i].name+"</div> <div> Location:"+ob[i].location+"</div>";  
+        }
+        $("#main-article").html(html);
+      },
+      error:function(requestOb, errorType,errorMsg){
+        alert(errorMsg);
+      },
+      beforeSend:function(){
+        $("#loader").show();
+      },
+      complete:function(){
+        $("#loader").hide();
+      }
+    }
+    
+    $.ajax('employee.php',settingsObj);  
+  }
+   
+
+  </script>
+</head>
+<body>
+  <div id = "main-header">
+    <div>
+      <ul id = "menu">
+        <li><a href = "index.html">Home</a></li>
+        <li><a id = "employees" href = "#">Employess</a></li>
+        <li><a id = "contact" href = "#">ContactUs</a></li>
+
+      </ul>
+    </div>
+  </div>
+  <div id = "main">
+    <div id = "loader"> we are processing your request.<img src = "ajax-loader.gif"></div>
+    <div id = "main-article">
+      Welcome to the page..
+      lets implement a SPA with jquery and ajax.
+
+    </div>
+  </div>
+
+
+</body>
+</html>

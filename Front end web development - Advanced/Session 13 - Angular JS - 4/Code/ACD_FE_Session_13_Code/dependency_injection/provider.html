@@ -1,0 +1,38 @@
+<!doctype html>
+<head>
+	<script src = "angular.js"></script>
+	<script>
+	var providerExample = angular.module('providerExample', []);
+	providerExample.provider('word', function() {
+    this.name = 'Default';
+    this.$get = function() {
+        var name = this.name;
+        return {
+            sayHello: function() {
+                return "Hey..How r u.. " + name + "!"
+            }
+        }
+    };
+    this.setName = function(name) {
+        this.name = name;
+    };
+});
+
+//configuring the provider
+providerExample.config(function(wordProvider){
+    wordProvider.setName('Smith');
+});
+
+providerExample.controller('MyCtrl' ,function ($scope, word) {
+		$scope.displayMessage = function(){
+			alert(word.sayHello());
+		}
+		
+	});
+	</script>
+</head>
+<body ng-app = "providerExample">
+	<div ng-controller = "MyCtrl">
+		<button ng-click = "displayMessage()">Display Message</button>
+	</div>
+</body>

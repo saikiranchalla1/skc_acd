@@ -1,0 +1,19 @@
+#likeUnlikeButton {
+	width: 100px;
+	height: 30px;
+	background: skyblue;
+	color: white;
+	border: 2px solid orange;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+
+#likeUnlikeButton:hover {
+	cursor: pointer;
+}
+
+#likeUnlikeButton:focus {
+	outline: 0;
+}

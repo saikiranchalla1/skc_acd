@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#p1").click(function(){
+                    alert("single click")
+                });
+                 $("#p2").dblclick(function(){
+                    alert("doubleclick")
+                });
+                 $("#p3").mouseenter(function(){
+                    alert("mouse enter ")
+                });
+                 $("#p4").mouseleave(function(){
+                    alert("mouse leave")
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        <p id="p1">Click me single time!</p>
+
+        <p id="p2">Click me twice!</p>
+
+        <p id="p3">Hover twice!</p>
+
+        <p id="p4">Hover me and leave !</p>
+    </body>
+</html>

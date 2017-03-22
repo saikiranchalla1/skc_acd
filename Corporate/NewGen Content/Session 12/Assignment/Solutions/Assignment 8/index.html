@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('myController', function ($scope) {
+			$scope.message1 = 'This text is Binded using expression';
+			$scope.message2 = 'This text is Binded using ng bind directive';
+		});
+
+	</script>
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="myController">
+
+			<span> {{message1}}</span> <br/>
+
+			<span ng-bind="message2"> </span>
+
+		</div>
+
+</center>
+
+
+</body>
+</html>

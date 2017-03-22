@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<base href="/">
+	<title>Module Learning</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script type="text/javascript" src="angular-route.js"></script>
+	<script type="text/javascript">
+		var module = angular.module('sampleApp', ['ngRoute']);
+		module.config(function($routeProvider, $locationProvider){
+			$routeProvider.
+				when('/route1/:param', {
+					templateUrl: 'templates/template1.html',
+					controller: 'RouteController'
+				}).
+				when('/route2/:param', {
+					templateUrl: 'templates/template2.html',
+					controller: 'RouteController'
+				}).
+				otherwise({
+					redirectTo: '/',
+					templateUrl: 'templates/index.html',
+					controller: 'IndexController'
+				});
+			//$locationProvider.html5Mode(true);
+		});
+		module.controller('RouteController', function($scope, $routeParams, $route){
+			console.log($route.current.params.foo);
+			console.log($route.current.pathParams);
+			$scope.param = $routeParams.param;
+			
+		});
+		module.controller('IndexController', function($scope){
+			$scope.message = "Welcome to my Page";
+		});
+	</script>
+</head>
+<body ng-app="sampleApp">
+<input type="text" ng-model="inp1"/>
+<input type="text" ng-model="inp2"/>{{inp2}}
+	<a ng-href="route1/{{inp1}}">Route 1</a>
+	<a ng-href="route2/{{inp2}}">Route 2</a>
+	
+	<div ng-view></div>
+</body>
+</html>

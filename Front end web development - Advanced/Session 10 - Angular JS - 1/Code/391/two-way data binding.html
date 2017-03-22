@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Angular JS application</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script type="text/javascript">
+		var module = angular.module("myApp", []);
+		module.controller("myCtrl", function($scope){
+			
+		});
+		/*module.directive();
+		module.service();
+		module.provider();
+		module.filter();
+
+		module.run();
+		module.config();*/
+
+		module.controller("myCtrl2", function($scope){
+			$scope.sayHello = function(){
+				alert("Hello!!! " + $scope.name);
+			}
+			$scope.name = "Your name is empty";
+		});
+	</script>
+</head>
+<body ng-app="myApp">
+	<div  ng-controller="myCtrl" ng-init="employee={name:'AcadGild', city :'Hyderabad'}">
+		<p>Employee Name: {{employee.name}}</p>
+		<p>Employee City: <p ng-bind="employee.city"></p></p>
+
+		<br>
+		<input type="text" name="name" placeholder="Enter the name of the employee..." ng-model="employee.name">
+		<br>
+		<input type="text" name="city" placeholder="Enter the city of the employee..." ng-model="employee.city">
+	</div>
+	<div ng-controller="myCtrl2">
+		<input type="text" name="inpname" ng-model="name">
+		<p>{{ 25000 | currency}}</p>
+		<button type="button" ng-click="sayHello()">Click Me</button>
+	</div>
+</body>
+</html>

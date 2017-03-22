@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jquery Events</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// $('#para').mousedown(function(){
+			// 	console.log("Mouse Down event triggered");
+			// });
+			// $('#para').hover(function(){
+			// 	console.log('Entering paragraph');
+			// }, function(){
+			// 	console.log('Leaving paragraph');
+			// });
+
+			// $("#para").on({
+			// 	mouseenter : function(){
+			// 		console.log("Mouse enter event triggered");
+			// 	},
+			// 	mouseleave : function(){
+			// 		console.log("Mouse leave enter triggered");
+			// 	},
+			// 	click : function(){
+			// 		console.log("Click event triggered");
+			// 	},
+			// 	dblclick : function(){
+			// 		console.log("Double click event triggered");
+			// 	}
+			// });
+			// $("input").focus(function(event){
+			// 	console.log(event);
+			// 	console.log("Focus event triggered on input");
+			// });
+			// $("input").blur(function(){
+			// 	console.log("Blur event triggered on input");
+			// });
+			$('form').submit(function(){
+				$(':submit').attr("disabled", "true");
+				alert("Form Submitted");
+			});
+			$("input").change(function(event){
+				console.log("Change exent triggered :" + event.target.value);
+			});
+			$("input").keypress(function(){
+				console.log("Key press event is triggered");
+			});
+		});
+	</script>
+</head>
+<body>
+<p id="para">This is a paragraph</p>
+
+<form action="">
+	<input type="text" name="name">
+<input type="email" name="password">
+<input type="submit" name="submit" value="Submit">
+</form>
+</body>
+</html>

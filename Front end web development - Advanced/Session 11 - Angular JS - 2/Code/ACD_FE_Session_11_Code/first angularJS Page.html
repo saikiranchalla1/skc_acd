@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+	<title>Directives</title>
+	<script type="text/javascript" src='angular.js'></script>
+	<script type="text/javascript">
+		var mod = angular.module('myApp', []);
+		mod.controller('myCtrl1',function($scope){
+			$scope.firstName = 'John';
+			$scope.lastName = 'Cena';
+			$scope.count = 0;
+
+			$scope.testFunction = function(){
+				$scope.count++;
+				console.log($scope.count);
+				console.log($scope.myUrl);
+			};
+			$scope.tempurl = $scope.myUrl;
+		});
+
+
+		mod.controller('myCtrl2',function($scope){
+			$scope.firstName = 'Robert';
+			$scope.lastName = 'Downey';
+			$scope.testFunction = function(){
+				$scope.count++;
+				console.log($scope.count);
+			};
+			$scope.browsers = [
+				"Chrome",
+				"Firefox",
+				"Safari"
+			]
+
+		});
+	</script>
+</head>
+<body>
+	<div ng-controller = 'myCtrl1'>
+		<button ng-click='testFunction()'>Click Me</button>
+		<button ng-dblclick='testFunction()'>Click Me</button>
+		<br>Enter Some text:<input type="text" ng-change='testFunction()' ng-model = 'testing'>
+		<p>{{testing}}</p>
+		<br>Enter Some text:<input type="text" ng-blur='testFunction()' ng-focus='testFunction()' autofocus>
+		<br>Ng-Show testing: <input type="checkbox" ng-model='myVariable'>
+		<p>Current value of myVariable : {{myVariable}}</p>
+		<div ng-show='myVariable'>
+			<h3>This is to test Ng-Show Directive</h3>
+		</div>
+		<div ng-hide='myVariable'>
+			<h3>This is to test Ng-Hide Directive</h3>
+		</div>
+		<hr>
+		Enter your URL here: <input type="text" placeholder="URL Goes here" ng-model='myUrl'>
+		<p ng-bind='myUrl'></p>
+		<br><a ng-show ='myUrl' ng-href="{{myUrl}}">{{myUrl}}</a>
+		<hr>
+		Who? <input type="checkbox" ng-model='mySel'>
+		<select>
+			<option>Student 1</option>
+			<option ng-selected="mySel">Student 2</option>
+			<option>Student 3</option>
+		</select>
+	</div>
+</body>
+</html>

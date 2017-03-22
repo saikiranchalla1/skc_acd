@@ -1,0 +1,104 @@
+<html>
+<head>
+	<title>CSS Demo</title>
+	<!--<link rel="stylesheet" type="text/css" href="external.css">-->
+	<!-- Embedded CSS -->
+	<style type="text/css">
+		/* Selector {property : value;} */
+		* {
+			background-color: aqua;
+		}
+
+		/*h1 {*/
+			/*color: orange;*/
+		/*}*/
+
+		/*p {*/
+			/*color: red;*/
+		/*}*/
+
+		/*p {*/
+			/*background-color: blue;*/
+		/*}*/
+
+		#para1 {
+			background-color: blue;
+		}
+
+		.myclass {
+			background-color: red;
+			font-size: 30px;
+			border : 10px solid black;
+		}
+
+		h1, p, div {
+			font-size: 35px;
+		}
+
+		p.myclass {
+			color : brown;
+		}
+
+		/*
+
+			p --> All paragraphs
+			.myclass --> with the class as myclass
+
+			p.myclass
+		*/
+
+		div p {
+			background-color: black;
+			color: red;
+		}
+
+		a[target=_blank] {
+			background-color: yellow;
+		}
+
+		/*img[title~=johnny] {*/
+			 /*border:5px solid red;*/
+		 /*}*/
+
+		/*img[title^=johnny] {*/
+			/*border:5px solid red;*/
+		/*}*/
+
+		img[title$=depp] {
+			border:5px solid red;
+		}
+	</style>
+</head>
+<body>
+<!-- <h1 style="color:blue;">This is a H1 Heading</h1>
+<p style="color:red">This is a paragraph.</p> -->
+<h1 style="color:black">This is a H1 Heading</h1>
+<p id="para1">This is a paragraph.</p>
+
+<p id="para2">This is second paragraph</p>
+<p id="para3">This is third paragraph</p>
+
+
+<h2 class="myclass">This is H2</h2>
+<div>This is a div element in the HTML page</div>
+<div class="myclass">This is the second div</div>
+<p class="myclass">This is a paragraph</p>
+
+<div>
+	<p>This is a para in div</p>
+	<span>This is a SPAN in DIV</span>
+	<p>This is another para in div</p>
+	<div>
+		This is another DIV within DIV
+	</div>
+</div>
+
+
+<a href="http://www.google.com" target="_blank">Google</a> <a href="http://www.youtube.com" target="_self">Youtube</a> <a href="http://www.facebook.com">Facebook</a>
+<br><br>
+<img src="index.jpg" alt="Image not found" title="johnny depp">
+<img src="index.jpg" alt="Image not found" title="flowers">
+<img src="index.jpg" alt="Image not found" title="landscape">
+<img src="index.jpg" alt="Image not found" title="testing">
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Attribute Selectors</title>
+	<link rel="stylesheet" type="text/css" href="external.css">
+	<style type="text/css">
+		[class*="test"]{
+			font-size: 14px !important;
+		}
+		div {
+			width: 300px;
+			height: 150px;
+			border: 1px solid red;
+			border-left: 10px solid blue;
+			color: red;
+			background-color: blue;
+			cursor: progress;
+		}
+	</style>
+</head>
+<body>
+<a href="www.google.com" target="_blank" title="google wrbsite">Google</a>
+<a href="www.yahoo.com" target="_top" title="yahoo website">Yahoo</a>
+<a href="www.facebook.com" target="_blank" title="facebook website">Facebook</a>
+<a href="www.iitm.edu">IIT</a>
+<div class="test">
+	Test DIV
+</div>
+<p class="first_test" style="font-size : 2px">This is a test paragraph</p>
+<p class="test">This is another test paragraph</p>
+
+
+
+</body>
+</html>

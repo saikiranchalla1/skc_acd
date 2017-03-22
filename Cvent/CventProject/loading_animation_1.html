@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading Animation</title>
+    <style>
+       /* .line {
+            width: 15px;
+            height:15px;
+            background-color: white;
+            display: inline-block;
+            border-radius: 100%;
+            border: 7px dashed blue;
+            margin: 0 auto;
+            padding: 10px;
+            animation : rotateLoad 1.5s .3s infinite;
+        }*/
+
+        /*.line:nth-last-child(1) {animation : test 0.6s .1s infinite;}*/
+        /*.line:nth-last-child(2) {animation : test 0.6s .2s infinite;}*/
+        /*.line:nth-last-child(3) {animation : test 0.6s .3s infinite;}*/
+
+        @keyframes test {
+            /*0% {width : 15px}*/
+            /*50% {width : 35px}*/
+            /*100% {width : 15px}*/
+            0% {transform: translate(0, 0)}
+            50% {transform: translate(0, 15px)}
+            100% { transform: translate(0,0)}
+
+
+        }
+
+        @keyframes rotateLoad {
+            0% {transform: rotate(0deg)}
+            50% {transform: rotate(180deg)}
+            100% { transform: rotate(360deg)}
+        }
+
+
+        .ball-holder {
+            position: absolute;
+            width: 12px;
+            height: 45px;
+            left :18px;
+            top: 0px;
+        }
+
+        .ball {
+            position: absolute;
+            top: -11px;
+            left: 0px;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            background: aqua;
+        }
+
+        .ring {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            margin: 0 auto;
+            border: 5px solid red;
+            border-radius: 100%;
+        }
+
+        .ball-holder {animation: demoring 1.5s cubic-bezier(.53,.52,.8,.79) infinite}
+        @keyframes demoring {
+            0 {transform: rotate(0deg)}
+            100% {transform: rotate(360deg)}
+        }
+
+
+        .letter-holder{
+            padding: 15px;
+
+        }
+
+        .letter {
+            float: left;
+            font-size: 15px;
+            color: aqua;
+            animation-name: loadingText;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-direction: linear;
+        }
+
+        .l-1{animation-delay: 1s}
+        .l-2{animation-delay: 2s}
+        .l-3{animation-delay: 3s}
+        .l-4{animation-delay: 4s}
+        .l-5{animation-delay: 5s}
+        .l-6{animation-delay: 6s}
+        .l-7{animation-delay: 7s}
+
+        @keyframes loadingText {
+         0% {opacity: 0}
+         100% {opacity: 1}
+        }
+
+        .square {
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            background-color: aqua;
+            animation: squareLoad 50s ease-in infinite;
+        }
+        @keyframes squareLoad {
+            0% {transform: translate(0,0) rotate(0deg)}
+            50% {transform: translate(70px,0) rotate(360deg)}
+            100% {transform: translate(0,0) rotate(0deg)}
+        }
+
+        .line {
+            display: inline-block;
+            width: 15px;
+            height:15px;
+            border-radius: 15px;
+            background-color: aqua;
+            animation: lineModified 1.5s linear infinite;
+        }
+
+        @keyframes lineModified {
+            0% {width: 15px}
+            50%{width: 35px; padding : 5px}
+            100%{width: 15px}
+        }
+
+        .spinner {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            margin: 0 auto;
+        }
+
+        .bubble1, .bubble2 {
+            position: absolute;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            border-radius: 100%;
+            background-color: aqua;
+        }
+
+        .bubble2 {
+            top: auto;
+            bottom: 0;
+        }
+
+
+        .spinner {animation : bubbleAnimateMain 2s linear infinite}
+        .bubble1, .bubble2 { animation : bounce 2s ease-in-out infinite}
+        .bubble2{animation-delay:  -1s}
+
+        @keyframes bubbleAnimateMain {
+            100% {transform: rotate(360deg)}
+
+        }
+
+        @keyframes bounce {
+            0%, 100% {transform: scale(0.0)}
+            50% {transform : scale(1.0)}
+        }
+    </style>
+</head>
+<body>
+<!--<div class="line"></div>-->
+<!--<div class="line"></div>-->
+<!--<div class="line"></div>-->
+
+<!--<div class="ring">-->
+    <!--<div class="ball-holder">-->
+        <!--<div class="ball">-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="letter-holder">-->
+    <!--<div class="l-1 letter">L</div>-->
+    <!--<div class="l-2 letter">o</div>-->
+    <!--<div class="l-3 letter">a</div>-->
+    <!--<div class="l-4 letter">d</div>-->
+    <!--<div class="l-5 letter">i</div>-->
+    <!--<div class="l-6 letter">n</div>-->
+    <!--<div class="l-7 letter">g</div>-->
+<!--</div>-->
+
+<!--<div class="square">-->
+
+<!--</div>-->
+<!--<div class="line">-->
+
+<!--</div>-->
+<div class="spinner">
+    <div class="bubble1"></div>
+    <div class="bubble2"></div>
+</div>
+
+</body>
+</html>

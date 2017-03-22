@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Currency Example</title>
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  
+
+  
+</head>
+<body ng-app="currencyExample">
+  <script>
+  angular.module('currencyExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.amount = 1234.56;
+    }]);
+</script>
+<div ng-controller="ExampleController">
+    <input type="number" ng-model="amount"> <br>
+    default currency symbol ($): <span id="currency-default">{{amount | currency}}</span><br>
+    custom currency identifier (USD$): <span id="currency-custom">{{amount | currency:"USD$"}}</span><br>
+    no fractions (0): <span id="currency-no-fractions">{{amount | currency:"USD$":0}}</span><br>
+    Euro: <span id="currency-no-fractions">{{amount | currency:"&euro;"}}</span><br>
+    Rupees: <span id="currency-no-fractions">{{amount | currency:"&#8377;"}}</span><br>
+</div>
+</body>
+</html>

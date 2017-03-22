@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <title>Hi</title>
+  <script src="angular.js"></script>
+  <script>
+  var app = angular.module("app",[]);
+  app.controller("Ctrl1",function($scope){
+    $scope.name = "Smith";
+    $scope.age = 28;
+    $scope.alertName = function(){
+      alert($scope.name);
+    };
+  });
+  app.directive("testDirective", function(){
+    return {
+      restrict: "EA",
+      scope: {
+        sayName:"&",
+        personAge:"=",
+        personName: "@"
+      },
+      template: "<div><h4>The age is {{personAge}} and name is {{personName}}</h4><button ng-click = 'sayName()'>Click Here to view age</button> <br>MOdify Age: <input type = 'text' ng-model  = 'personAge'><br>Modify Name:<input ng-model = 'personName'></div>",
+      replace:true,
+    };
+  });
+  </script>
+</head>
+<body ng-app = "app">
+ <div ng-controller="Ctrl1">
+  <h2>Hi  Name is :{{name}} and age is {{age}}</h2>
+  <div test-directive  say-name = "alertName()" person-age ="age" person-name = "John {{name}}"></div>
+</div>
+</body>
+</html>

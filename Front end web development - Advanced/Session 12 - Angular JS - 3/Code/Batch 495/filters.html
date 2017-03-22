@@ -1,0 +1,130 @@
+<html>
+<head>
+	<title>AngularJS Filters</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var mod = angular.module('myApp', []);
+	mod.filter('checkFilter', function(){
+		return function(input){
+			return input ? 'Correct' : 'Incorrect';
+		}
+	});
+	mod.controller("myCtrl", function($scope, $filter){
+		$scope.amount = 1234.5678;
+		$scope.currentDate = new Date();
+		$scope.numbers = [1,2,3,4,5,6,7];
+		$scope.letters = "abcdefghijkl";
+		$scope.numLimit = 3;
+		$scope.letterLimit = 3;
+		$scope.friends = [
+			{name : 'John Cena', phone: '555-123-4568'},
+			{name : 'Triple H', phone: '676-131-9098'},
+			{name : 'Undertaker', phone: '555-123-4569'},
+			{name : 'Khali', phone: '787-901-8191'},
+			{name : 'brock lesnar', phone: '909-281-1919'},
+			{name : 'Stonecold', phone: '788-891-9010'},
+		];
+
+		function Person(name, age){
+			this.name = name;
+			this.age = age;
+		}
+
+		$scope.person = new Person('name', 26);
+		$scope.myName = $filter('uppercase')("Sai Kiran");
+		$scope.myName = $filter('orderBy')($scope.myName);
+
+		$scope.modifiedAmt = $filter('currency')(111.2223, 'USD $', 4);
+	});
+</script>
+</head>
+<body ng-app="myApp">
+	<div class="container" ng-controller="myCtrl">
+		<h3>Currency</h3>
+		<p>Basic Currency Filter: {{amount | currency}}</p>
+		<p>Rupee Currency Filter: {{amount | currency: "&#8377;"}}
+		<p>Euro Currency Filter: {{amount | currency: "&euro;"}}</p>
+		<p>US Dollar Currency Filter: {{amount | currency: undefined : 3}}</p>
+		<hr>
+		<h3>Number Filter</h3>
+		<label>Enter the number <input type="text" ng-model="myNum"></label>
+		<p>Default Number Filter: {{myNum | number}}</p>
+		<p>Fraction size 5 Number Filter: {{myNum | number: 5}}</p>
+		<p>Negative Number Filter: {{-myNum | number}}</p>
+		<p>Infinite Number Filter: {{1/0 | number}}</p>
+		<hr>
+		<h3>Date filter</h3>
+		<p>Default Date filter: {{currentDate | date}}</p>
+		<p>Medium Date filter: {{currentDate | date:'medium'}}</p>
+		<p>Short Date filter: {{currentDate | date:'short'}}</p>
+		<p>Formatted Date filter: {{currentDate | date:'yyyy - MMMM - dd EEEE hh:mm:ss:sss a Z'}}</p>
+		<p>Formatted Date filter: {{currentDate | date:'yyyy - MMMM - dd EEEE hh:mm:ss:sss a Z GGGG' : "+0530"}}</p>
+		<hr>
+		<h3>JSON Filter</h3>
+		<pre>JSON filter: {{person | json}}</pre>
+		<pre>JSON filter: {{person | json : 4}}</pre>
+		<hr>
+		<h3>Limit To Filter</h3>
+		<p>Limit to with Numbers {{numbers | limitTo}}</p>
+		<p>Limit to with Numbers {{numbers | limitTo : -3}}</p>
+		<p>Limit to with letters {{letters | limitTo : 4}}</p>
+		<hr>
+		<h3>Order By Filter</h3>
+		<select ng-model = "mySel">
+			<option value="name">Name</option>
+			<option value="phone">Phone</option>
+		</select>
+		<table class="table table-bordered">
+			<thead>
+				<th>Name</th>
+				<th>Phone</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="friend in friends | orderBy: mySel: true">
+					<td>{{friend.name}}</td>
+					<td>{{friend.phone}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h3>Filter Filter</h3>
+		<input type="text" ng-model="myVal.name">
+		<table class="table table-bordered">
+			<thead>
+				<th>Name</th>
+				<th>Phone</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="friend in friends | filter: myVal | orderBy : 'name' | orderBy : phone : '-'">
+					<td>{{friend.name}}</td>
+					<td>{{friend.phone}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h3>Filter used in JS</h3>
+		<p>{{myName}}</p>
+		<p>{{modifiedAmt}}</p>
+		<p>{{true| checkFilter}}</p>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

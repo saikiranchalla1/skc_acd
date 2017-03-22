@@ -1,0 +1,20 @@
+<div class="panel-body">
+	<div class="form-group">
+		<label>Name:</label>
+		<input class="form-control" ng-model="currentProduct.name"></input>
+	</div>
+	<div class="form-group">
+		<label>Category:</label>
+		<input class="form-control" ng-model="currentProduct.category"></input>
+	</div>
+	<div class="form-group">
+		<label>Desciption:</label>
+		<input class="form-control" ng-model="currentProduct.description"></input>
+	</div>
+	<div class="form-group">
+		<label>Price:</label>
+		<input class="form-control" ng-model="currentProduct.price"></input>
+	</div>
+	<button class="btn btn-primary" ng-click="saveEdit(currentProduct)">Save</button>
+	<button class="btn btn-primary" ng-click="cancelEdit(currentProduct)">Cancel</button>
+</div>

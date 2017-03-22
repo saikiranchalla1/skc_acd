@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTTP API</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script type="text/javascript" src="angular-resource-min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	
+	var module = angular.module("myApp", ['ngResource']);
+	module.constant("baseUrl", "http://localhost:5500/products/")
+	module.controller("myCtrl", function($scope, $http, baseUrl, $resource){
+		$scope.displayMode = "list";
+		$scope.currentProduct = null;
+
+		$scope.productsResource = $resource(baseUrl + ":id", {id : "@id"});
+		$scope.listProducts = function(){
+			/*$scope.products = [
+				{id:0, name:"Dummy", description: "Description", category:"Category", price: 2.34},
+				{id:1, name:"Dummy", description: "Description", category:"Category", price: 2.34},
+				{id:2, name:"Dummy", description: "Description", category:"Category", price: 2.34},
+				{id:3, name:"Dummy", description: "Description", category:"Category", price: 2.34},
+			];*/
+			/*$http.get(baseUrl).success(function(data){
+				$scope.products = data;
+			});*/
+
+			$scope.products = $scope.productsResource.query();
+
+		}
+
+		$scope.deleteProduct = function(product){
+			/*$http({
+				method: "DELETE",
+				url: baseUrl + product.id,
+			}).success(function(){
+				$scope.products.splice($scope.products.indexOf(product), 1);
+			});*/
+			product.$delete().then(function(){
+				$scope.products.splice($scope.products.indexOf(product), 1);
+			});
+			$scope.displayMode = "list";
+
+		}
+
+		$scope.createProduct = function(product){
+
+			/*$http.post(baseUrl, product).success(function(newProduct){
+				$scope.products.push(newProduct);
+				$scope.displayMode = "list";
+			});*/
+			
+			new $scope.productsResource(product).$save().then(function(newProduct){
+				$scope.products.push(newProduct);
+				$scope.displayMode = "list";
+			});
+		}
+
+		$scope.updateProduct = function(product){
+			/*$http({
+				url : baseUrl + product.id,
+				method : "PUT",
+				data: product
+			}).success(function(modifiedProduct){
+				for(var i = 0 ; i < $scope.products.length; i++){
+				if($scope.products[i].id == modifiedProduct.id){
+					$scope.products[i] = modifiedProduct;
+					break;
+				}
+			}
+
+			});*/
+
+			product.$save();
+			
+			$scope.displayMode = "list";
+		}
+
+		$scope.editOrCreateProduct = function(product){
+			$scope.currentProduct = product ? product : {};
+			$scope.displayMode = "edit";
+		}
+
+		$scope.saveEdit = function(product){
+			if(angular.isDefined(product.id)){
+				$scope.updateProduct(product);
+			}else{
+				$scope.createProduct(product);
+			}
+		}
+
+		$scope.cancelEdit = function(){
+			if($scope.currentProduct && $scope.currentProduct.$get){
+				$scope.currentProduct.$get();
+			}
+			$scope.currentProduct = {};
+			$scope.displayMode = "list";
+		}
+
+		$scope.listProducts();
+	})
+</script>
+</head>
+<body ng-app="myApp">
+<div class="panel panel-default" ng-controller="myCtrl">
+	<h3 class="panel-heading">Products</h3>
+	<ng-include src="'tableView.html'" ng-show="displayMode == 'list'"></ng-include>
+	<ng-include src="'editorView.html'" ng-show="displayMode == 'edit'"></ng-include>
+	
+</div>
+</body>
+</html>

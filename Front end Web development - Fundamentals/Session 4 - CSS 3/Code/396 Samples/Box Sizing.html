@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Box Sizing</title>
+	<style type="text/css">
+	* {
+		
+	}
+	div {
+		border: 1px solid red;
+	}
+	.div1{
+		width: 300px;
+		height: 100px;
+		border: 1px solid red;
+	}
+
+	.div2{
+		width: 300px;
+		height: 100px;
+		border: 1px solid red;
+		box-sizing: border-box;
+		padding: 50px;
+	}
+	div p{
+		background-color: red;
+	}
+
+	div > p {
+		background-color: yellow;
+	}
+	div + p {
+		background-color: blue;
+	}
+
+	p ~ ul{
+		background-color: violet;
+	}
+	</style>
+</head>
+<body>
+<div class="div1">
+	This is a smaller div (Width:300px, height:100px)
+</div>
+<div class="div2">
+	This is a larger div (width: 300px, height:100px)
+</div>
+<div>
+	<p>This is a para within div</p>
+	<p>This is a para within div</p>
+	<p>This is a para within div</p>
+	<p>This is a para within div</p>
+</div>
+<div>
+	<span>
+		<p>This is an inner para</p>
+	</span>
+</div>
+<!-- <p>This para is outside</p>
+<p>This para is outside</p> -->
+<hr>
+<div>SOme div</div>
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<p>First para</p>
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<h2>One more list</h2>
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+</body>
+</html>

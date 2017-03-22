@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events HTML</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$.noConflict();
+		jQuery(document).ready(function(){
+
+			/*$("p").click(function(){
+			//console.log("paragraph is clicked");
+			$(this).hide();
+		});*/
+			jQuery("p").dblclick(function(){
+				//console.log("paragraph is clicked");
+				jQuery(this).hide();
+			});
+			/*$("p").mouseenter(function(){
+				console.log("paragraph - Mouse Entered");
+			});
+			$("p").mouseleave(function(){
+				console.log("paragraph - Mouse Leave");
+			});*/
+			jQuery("p").mousedown(function(){
+				console.log("paragraph - Mouse Down");
+			});
+			jQuery("p").mouseup(function(){
+				console.log("paragraph - Mouse Up");
+			});
+			jQuery("p").hover(function(){
+				console.log("paragraph - Mouse Enter");
+			},
+			function(){
+				console.log("paragraph - Mouse Leave");
+			});
+			/*$("input").focus(function(){
+				console.log("Focus event triggered");
+				$(this).css("background-color", "red");
+			});
+			$("input").blur(function(){
+				console.log("Focus event triggered");
+				$(this).css("background-color", "white");
+			});*/
+			jQuery("input").on(
+			{
+				focus: function(){
+				console.log("Focus event triggered");
+				jQuery(this).css("background-color", "red");
+				},
+
+				blur: function(){
+				console.log("Focus event triggered");
+				jQuery(this).css("background-color", "white");
+				}
+			}
+			);
+			jQuery("form").submit(function(){
+				console.log("Form Submitted");
+			});
+		});
+
+
+	</script>
+</head>
+<body>
+<p>This is a paragraph</p>
+<p>This is a paragraph</p>
+<p>This is a paragraph</p>
+<p>This is a paragraph</p>
+<p>This is a paragraph</p><br>
+<form>
+	Name: <input type="text" name="name">
+	Email: <input type="email" name="email">
+	File: <input type="file" name="tempFile">
+	<button type="submit" value="Submit">Submit</button>
+</form>
+</body>
+</html>

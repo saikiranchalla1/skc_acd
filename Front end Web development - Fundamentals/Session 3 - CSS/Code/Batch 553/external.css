@@ -1,0 +1,20 @@
+/*a[target] {
+			background-color: orange;
+		}
+		a[target=_blank] {
+			background-color: red;
+		}*/
+		[title~=google] {
+			font-size: 25px;
+		}
+
+		[title |= yahoo] {
+			font-size: 35px;
+		}
+
+		a[href $= ".edu"] {
+			font-size: 5px;
+		}
+		[class*="test"]{
+			font-size: 45px;
+		}

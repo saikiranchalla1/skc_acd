@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Semantic</title>
+    <style>
+        header, section, article, aside, footer {
+            display: block;
+        }
+
+        aside {
+            float: left;
+            width: 150px;
+            height: 450px;
+            background: url("images/aside-bg.png");
+            margin: 0 0 20px 0;
+        }
+
+        section {
+            float: right;
+            width: 430px;
+            padding-left: 10px;
+            margin: 0 0 20px 0;
+            border-left: 3px dotted blue;
+        }
+
+        section h2 {
+
+        }
+        footer {
+            clear: both !important;
+            width: 950px;
+            height: 100px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h4>HTML Semantic Tags</h4>
+</header>
+
+<section>
+<h4>Some heading</h4>
+    <p>This is a demo of the section tag. This is a demo of the section tagThis is a demo of the section tagThis is a demo of the section tagThis is a demo of the section tagThis is a demo of the section tag</p>
+</section>
+
+<section>
+    <h4>Some heading</h4>
+    <article>
+        <p>This is an article tag.</p>
+    </article>
+</section>
+
+<aside>
+    <h4>Aside tag</h4>
+    <p>This is an Aside tag</p>
+</aside>
+<footer>
+    Copyright &copy; CVENT
+</footer>
+</body>
+</html>

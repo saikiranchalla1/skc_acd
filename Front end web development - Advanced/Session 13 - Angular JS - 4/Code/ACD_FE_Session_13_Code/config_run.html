@@ -1,0 +1,25 @@
+<!doctype html>
+<head>
+	<script src = "angular.js"></script>
+	<script>
+angular
+  .module('main', ['module1'])
+  .config(function () { console.log("came here config main module");})
+  .run(function () { console.log("came here run main module"); })
+  .controller('MainController',function(){
+    console.log("inside MyController of main");
+  });
+angular
+  .module('module1', ['module2'])
+  .config(function () {console.log("came here config of module1"); })
+  .run(function () { console.log("came here run of module1"); });
+angular
+  .module('module2', [])
+  .config(function () { console.log("came here config of module2");})
+  .run(function () { console.log("came here run of module2"); });
+	</script>
+</head>
+<body ng-app = "main">
+	<div ng-controller = "MainController">
+	</div>
+</body>

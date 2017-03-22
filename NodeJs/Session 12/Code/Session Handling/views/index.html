@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Session handling in Express JS</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		var email, pass;
+
+		$(document).ready(function(){
+			$('#submit').click(function(){
+				email = $('#email').val();
+				pass = $('#password').val();
+
+				$.post("http://localhost:3009/login", {
+					email : email,
+					pass: pass
+				}, function(data){
+					if(data === 'done'){
+						window.location.href = '/admin';
+					}
+				})
+			});
+		});
+	</script>
+</head>
+<body>
+<input type="text" placeholder="Enter your email" id="email"><br>
+<input type="password" placeholder="Enter the password" id="password">
+
+<input type="button" value="Submit" id="submit">
+</body>
+</html>

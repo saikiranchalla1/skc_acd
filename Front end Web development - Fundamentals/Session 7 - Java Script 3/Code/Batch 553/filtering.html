@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Filtering</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//$("p").not(".intro").css("background-color", "yellow");
+			//$("p").filter(".intro").css("background-color", "yellow");
+
+			//$('div p').last().css("background-color", "yellow");
+			$('p').eq(2).css("background-color", "yellow");
+		});
+	</script>
+</head>
+<body>
+	<p>This is a paragraph</p>
+	<p class="intro">This is a paragraph with class INTRO</p>
+	<p class="intro">This is another paragraph with class INTRO</p>
+	<p>This is a dummy paragraph</p>
+	<hr>
+	<div>
+		<p>This is a paragraph in a DIV</p>
+		<p>This is a paragraph in a DIV</p>
+	</div>
+	<hr>
+	<div>
+		<p>This is a paragraph in a DIV</p>
+		<p>This is a paragraph in a DIV</p>
+	</div>
+</body>
+</html>

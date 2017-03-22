@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$.noConflict();
+   /*$('#txtName').change(function(ev){
+	console.log("Current Value: " + $('#txtName').val());
+   });*/
+	jQuery(':input').focus(function(ev){
+	console.log("Focus event");
+   });
+   jQuery(':input').blur(function(ev){
+	console.log("Blur event");
+   });
+   /*$('form').submit(function(ev){
+   ev.preventDefault();
+	console.log("Form Submitted");
+   });*/
+});
+</script>
+</head>
+<body>
+<button>Click me to test Mouse Events</button><br>
+
+	<form name="someName">
+		Name: <input type="text" name="fullname" id='txtName'><br>
+		Email: <input type="text" name="email">
+		<button type="submit">Submit</form>
+	</form>
+</body>
+</html>

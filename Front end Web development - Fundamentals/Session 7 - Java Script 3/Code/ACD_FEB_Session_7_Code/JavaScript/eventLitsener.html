@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+</head>
+<body>
+	<div id = "container">click here</div>
+	<script type = "text/javascript">
+	var ref = document.getElementById('container');
+	ref.addEventListener('click',showMsgOne);
+	ref.addEventListener('click',showMsgTwo);
+	function showMsgOne(){
+		alert("THIs is message one");
+	}
+	function showMsgTwo(){
+		alert("THIs is message Two");
+	}
+	</script>
+</body>
+</html>

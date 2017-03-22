@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Routing Example</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="angular-route.js"></script>
+	<script type="text/javascript">
+		var mod = angular.module("myApp", ['ngRoute']);
+		mod.config(function($routeProvider){
+			$routeProvider.
+			when('/route1/:param', {
+				templateUrl: 'templates/template1.html',
+				controller : 'RouteController'
+			})
+			.when('/route2/:param', {
+				templateUrl: 'templates/template2.html',
+				controller : 'RouteController'
+			})
+			.otherwise({
+				redirectTo : '/',
+				templateUrl : 'templates/index.html',
+				controller: 'IndexController'
+			})
+		});
+
+		mod.controller("RouteController", function($scope, $routeParams){
+			$scope.param = $routeParams.param;
+		});
+
+		mod.controller("IndexController", function($scope){
+			$scope.message = "Welcome to my Web Page to learn Routing in Angular";
+		})
+	</script>
+</head>
+<body ng-app="myApp">
+<br><br><br>
+<div class="container">
+	<input type="text" name="tb1" ng-model="inp1">
+<input type="text" name="tb2" ng-model="inp2">
+
+<a ng-href="#/route1/{{inp1}}">Route 1</a>
+<a ng-href="#/route2/{{inp2}}">Route 2</a>
+<div ng-view></div>
+</div>
+</body>
+</html>

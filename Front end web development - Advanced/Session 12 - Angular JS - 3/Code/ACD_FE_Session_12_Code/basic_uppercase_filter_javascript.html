@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	</script>
+	<script type="text/javascript">
+	var myModule = angular.module('myModule', []);
+	myModule.controller('MyCtrl', function ($scope,$filter) {
+		$scope.name = $filter('uppercase')("smith");
+		$scope.name = $filter('limitTo')($scope.name, 3, 2);
+		$scope.name = $filter('orderBy')($scope.name, '-');
+		});
+	</script>
+</head>
+<body>
+	<div ng-app="myModule" 
+	<div ng-controller="MyCtrl">
+	<p>Name in uppercase is {{name}}</p>
+	</div>
+ </div>
+</body>
+</html>

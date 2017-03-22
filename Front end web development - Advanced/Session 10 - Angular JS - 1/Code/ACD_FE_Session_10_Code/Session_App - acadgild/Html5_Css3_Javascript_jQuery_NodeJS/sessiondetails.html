@@ -1,0 +1,137 @@
+
+<!doctype>
+<html lang="en">
+<head>
+ <title>FEWB</title>
+<script type="text/javascript" src="Lib/jquery.min.js"></script>
+<script type="text/javascript" src="Lib/jquery.tmpl.min.js"></script>
+<script type="text/javascript" src="JS/main.js"></script>
+<script type ="text/x-jquery-tmpl" id="sessionTmpl">
+			<li>
+                   <div>
+                    <div ="sessionInfo">
+                    <h4 id="sessionName" >${name}</h4>
+                    <h5 >${creator}</h5>
+                        <div>Duration: ${duration} </div>
+                        <p>${details}</p>
+						<button type="button" id ="upButton">UP</button>	
+						votes:
+   						<div id="votesDiv">${votes} </div>
+						<button type="button" id ="downButton">Down</button>	
+					  </div>
+                </div>
+                </li>
+
+</script>
+<script type="text/javascript" >
+$(document).ready(function(){
+    var imgPath = "Img/html5_css3_js.jpg";
+	$('#eventImg').attr("src",imgPath);
+	loadEventDetails();
+	/*
+	$('#sessions').on("click",'#upButton',$.proxy(function(){
+		var sessionName = $(this).find($('#sessionName')).html();
+		var votes = $(this).find($('#votesDiv'));
+		
+		console.log(sessionName);
+		//var sessionName="training on the controllers";
+		for(var i = 0, l = eventDetails.sessions.length; i < l; i++)
+			{
+				if(sessionName == eventDetails.sessions[i].name)
+					{
+						eventDetails.sessions[i].votes+=1;
+						var newVotVal =eventDetails.sessions[i].votes;
+						votes.html(newVotVal);
+						break;
+					}
+			}
+		
+	},this));*/
+	
+	
+	$('#sessions').on("click",'#upButton',function(){
+		var sessioninfo = $(this).parent();
+		console.log(sessioninfo);
+		var sessionName = sessioninfo.find('#sessionName').html();
+		
+	
+		var votes = sessioninfo.find('#votesDiv');
+		
+		console.log(sessionName);
+		for(var i = 0, l = eventDetails.sessions.length; i < l; i++)
+			{
+				if(sessionName == eventDetails.sessions[i].name)
+					{
+						eventDetails.sessions[i].votes+=1;
+						var newVotVal =eventDetails.sessions[i].votes;
+						votes.html(newVotVal);
+						break;
+					}
+			}
+		
+	});
+	
+	
+	
+	$('#sessions').on("click",'#downButton',function(){
+		var sessioninfo = $(this).parent();
+		console.log(sessioninfo);
+		//var sessionName = sessioninfo.find($('#sessionName')).html();
+		var sessionName = sessioninfo.find('#sessionName').html();
+		
+		//var votes = sessioninfo.find($('#votesDiv'));
+		
+		var votes = sessioninfo.find('#votesDiv');
+		
+		console.log(sessionName);
+		//var sessionName="training on the controllers";
+		for(var i = 0, l = eventDetails.sessions.length; i < l; i++)
+			{
+				if(sessionName == eventDetails.sessions[i].name)
+					{
+						eventDetails.sessions[i].votes-=1;
+						var newVotVal =eventDetails.sessions[i].votes;
+						votes.html(newVotVal);
+						break;
+					}
+			}
+		
+	});
+});
+</script>
+<link rel="stylesheet" href="Styles/app.css">
+</head>
+
+
+
+<body>
+<div>WelCome to HTML5 world</div>
+<nav>
+<ul>
+<li>
+<a href="newSession.html">Create New Session</a>
+</li>
+</ul>
+</nav>
+<img id="eventImg" class="headerImg">
+<div id="evntName"></div>
+<div class="container">
+<div id="evntDateTime" class="flexItem">
+<div id="evntDate"></div>
+<div id="evntTime"></div>
+</div>
+<div id="evntLocation" class="flexItem">
+<div id="evntAddress"></div>
+<div id="evntCity"></div>
+<div id="evntPin"></div>
+</div>
+</div>
+ 
+ <ul id="sessions" > 
+               
+ </ul>
+
+
+</body>
+
+</html>

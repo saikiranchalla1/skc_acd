@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Links</title>
+	<style type="text/css">
+		/*a {
+			color: green;
+		}*/
+		/*
+			a:link -- unvisited link
+			a:visited -- visited link
+			a:hover -- user's mouse is over it
+			a:active -- is clicked
+
+			1) a:hover must be after a:link and a:visited
+			2) a:active must be after a:hover;
+		*/
+		a {
+			color: blue;
+		}
+		/*unvisited link */
+		a:link {
+			color: red;
+		}
+		a:visited {
+			color: green;
+		}
+		a:hover {
+			color: black;
+		}
+		a:active {
+			color: orange;
+		}
+	</style>
+</head>
+<body>
+<p>
+	<b>
+		<a href="http://www.google.com" target="_blank">Google</a>
+	</b>
+	<input type="color" name="test">
+</p>
+</body>
+</html>

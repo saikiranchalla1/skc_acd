@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gelocation</title>
+	<script type="text/javascript" src="modernizr-custom.js"></script>
+	<script type="text/javascript">
+		function getLocation() {
+			Modernizr.geolocation
+			/*if(navigator.geolocation){*/
+				if(Modernizr.geolocation){
+				/*navigator.geolocation.watchPosition(showPosition, showError, options);
+					1)	PositionOptions.enableHighAccuracy
+					2)	PositionOptions.timeout
+					3)	PositionOptions.maximumAge
+				*/
+				navigator.geolocation.watchPosition(showPosition, showError);
+			}
+		}
+		function showPosition(position){
+			console.log(position.coords.latitude + '  ' + position.coords.longitude);
+			document.getElementById('para1').innerHTML = 
+			position.coords.latitude + "<br>" + position.coords.longitude;
+		}
+		function showError(error){
+			console.log(error);
+			switch(error.code){
+				case error.PERMISSION_DENIED :
+				break;
+				case error.POSITION_UNAVAILABLE:
+				break;
+				case error.TIMEOUT:
+				break;
+				case error.UNKNOWN_ERROR:
+				break;
+			}
+		}
+</script>
+</head>
+<body>
+<p id="para1"></p>
+<button onclick="getLocation()">Try It</button>
+
+</body>
+</html>

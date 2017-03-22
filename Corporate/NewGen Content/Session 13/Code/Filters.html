@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Filters</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		var mod = angular.module("myApp", []);
+		mod.filter("checkedFilter", function(){
+			return function(input, option1, option2){
+				return input ? 'yes' : 'no';
+			}
+		});
+		mod.controller("myCtrl", function($scope, $filter){
+			$scope.amount = 123.445677;
+			$scope.myCompany = "acadgild";
+			$scope.upperCaseName = $filter('uppercase')($scope.myCompany);
+			$scope.currentDate = new Date();
+			$scope.numbers = [1,2,3,4];
+			$scope.letters = "abcdefghijklmn";
+			$scope.longNumber = 1234123123213;
+			$scope.numLimit = 3;
+			$scope.letterLimit = 3;
+			$scope.person = {
+				name :"AcadGild",
+				age : 50
+			}
+			$scope.friends = [
+             	{name: "John Cena", phone:'555-1276-90', age:20, address:'Street1'},
+                {name: "Triple H", phone:'666-3423-60', age:12, address:'John Street'},
+                {name: "Undertaker", phone:'666-3423-60', age:34, address:'Indiana'},
+				{name: "The Great Khale", phone:'7045-902-890', age:10, address:'Street Triple'},
+                {name: "The Great Khale", phone:'7045-902-889', age:12, address:'Street2'}
+            ];
+            $scope.modifiedAmt = $filter('currency')($scope.amount, 'USD$', 9);
+            $scope.myComparator = function(actual, expected){
+            	console.log(actual);
+            	console.log(expected);
+            	return angular.equals(actual, expected);
+            }
+		});
+	</script>
+</head>
+<body ng-app="myApp">
+<div class="container" ng-controller="myCtrl">
+	<h3>Curreny Filter</h3>
+	<p>Basic Currency Filter : {{amount | currency}}</p>
+	<p>Rupee Currency Filter : {{amount | currency : "&#8377;"}}</p>
+	<p>Euro Currency Filter : {{amount | currency : "&euro;"}}</p>
+	<p>Euro Currency Filter : {{amount | currency : "&euro;" : 4}}</p>
+	<hr>
+	<h3>Date Filter is applied to {{currentDate}}</h3>
+	<p>Basic Date Filter : {{currentDate | date}}</p>
+	<p>YYYY Date Filter : {{currentDate | date : "fullDate"}}</p>
+	<p>YYYY Date Filter : {{currentDate | date : "medium" : "+0500"}}</p>
+	<hr>
+	<h3>Number Filter</h3>
+	<input type="text" name="myNUm" ng-model="myNum">
+	<p>Default Number : {{myNum | number}}</p>
+	<p>Default Number : {{-myNum | number: 6}}</p>
+	<p>Infinite : {{1/0 | number}}</p>
+	<hr>
+	<h3>JSON Filter</h3>
+	<p>{{person}}</p>
+	<pre>{{person | json}}</pre>
+	<pre>{{person | json : 6}}</pre>
+	<hr>
+	<h3>Limit To</h3>
+	<p>Limit to filter with Number: {{numbers | limitTo}}</p>
+	<p>Limit to filter with Number: {{numbers | limitTo : 2}}</p>
+	<p>Limit to filter with Number: {{numbers | limitTo : 2 : -2}}</p>
+	<p>Limit to filter with Letters : {{letters | limitTo : 3: 3}}</p>
+	<hr>
+	<h3>Order By Filter</h3>
+	<select ng-model="myVar">
+		<option value="phone">Phone</option>
+		<option value="name">Name</option>
+		<option value="address">Address</option>
+	</select>
+	<input type="checkbox" name="cb3" ng-model="cbVal">Reverse??
+	<table class="table">
+		<thead>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Address</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="friend in friends | orderBy : myVar : cbVal">
+				<td>{{friend.name}}</td>
+				<td>{{friend.phone}}</td>
+				<td>{{friend.address}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<br><br><br>
+	<hr>
+	<h3>Filter Filter</h3>
+	<input type="text" name="" ng-model="search.phone">
+	<input type="text" name="" ng-model="search.name">
+	<table class="table">
+		<thead>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Address</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="friend in friends | filter : search: myComparator">
+				<td>{{friend.name}}</td>
+				<td>{{friend.phone}}</td>
+				<td>{{friend.address}}</td>
+			</tr>
+		</tbody>
+	</table>
+	{{upperCaseName}}
+	{{modifiedAmt}}
+	{{true | checkedFilter}}
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Filters</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var mod = angular.module("myApp", []);
+	mod.filter('checkFilter', function(){
+		return function(input){
+			return input? 'Correct' :'Incorrect';
+		}
+	});
+	mod.controller("myCtrl", function($scope, $filter){
+		/*$scope.myFunction = function(input){
+			return input? 'Correct' :'Incorrect';
+		}*/
+		$scope.amount = 1234.5678;
+		$scope.currentDate = new Date();
+		$scope.numbers =  [1,2,3,4,5];
+		$scope.letters = 'abcdefghijkl';
+		$scope.longNumber = 1234567782345;
+		$scope.numLimit = 3;
+		$scope.letterLimit = 3;
+
+		$scope.friends = [
+			{name:"John Cena", phone:'555-1234-909', address:'Street 1'},
+			{name:"Undertaker", phone:'555-4421-100', address:'Street 2'},
+			{name:"Shaun Michael", phone:'712-4800-620', address:'Street 1'},
+			{name:"Kane", phone:'707-1236-898', address:'Street 3'},
+			{name:"The Great Khali", phone:'555-1234-909', address:'Street 1'}
+		];
+
+		function Person(name, age){
+			this.name = name;
+			this.age = age;
+		}
+		$scope.person = new Person("Harsh", 26);
+		$scope.myCompany = $filter('uppercase')("acad gild");
+		$scope.mySalary = $filter('currency')('1234.4556', 'USD$', 0);
+	});
+</script>
+</head>
+<body ng-app="myApp">
+<div class="container" ng-controller="myCtrl">
+	<p>Currency Filter: {{amount | currency : "&#8377;"}}</p>
+	<p>Currency Filter (Euro) : {{amount | currency : "&euro;" : 3}}
+	<br>
+	<hr>
+	<input type="text" name="myNum" ng-model="myNum" placeholder="Enter some number...">
+	<p>Default Number Filter: {{myNum | number}}</p>
+	<p>Fraction Size: {{myNum | number : 5}}</p>
+	<p>Negative Number: {{-myNum | number : 5}}</p>
+	<p>Infinite Number: {{1/0 | number : 5}}</p>
+	<hr>
+	<p>Default Date : {{currentDate | date}}</p>
+	<p>Year format: {{currentDate | date : 'yyyy yy y MMMM MMM MM M'}}</p>
+	<p>Medium Date : {{currentDate | date : 'medium'}}</p>
+	<p>Short Date : {{currentDate | date : 'short'}}</p>
+	<p>Default Date with Timezone : {{currentDate | date : 'medium':'+0600'}}</p>
+	<p>Default Date with Timezone : {{currentDate | date : 'medium':'+0500'}}</p>
+	<hr>
+	<pre>{{person}}</pre>
+	<pre>{{person | json}}</pre>
+	<pre>{{person | json : 4}}</pre>
+	<hr>
+	<p>Limit to fitler with Numbers: {{numbers | limitTo}}</p>
+	<p>Limit to fitler with Numbers formatted: {{numbers | limitTo : 2}}</p>
+	<p>Limit to fitler with Numbers formatted: {{numbers | limitTo : 2 : 2}}</p>
+	<p>Limit to fitler with Numbers direction: {{numbers | limitTo : 2 : -2}}</p>
+	<p>Limit to filter with letters:{{letters | limitTo : 3:-3}}</p>
+	<p>Limit to filter with letters:{{letters | limitTo : 3:3}}</p>
+	<hr>
+	<p>{{"AcadGild" | orderBy: '+':false}}</p>
+	<p>{{"AcadGild" | orderBy: '-':false}}</p>
+	<p>{{"AcadGild" | orderBy: '-':true}}</p>
+	<select ng-model='myVar'>
+		<option value="phone">Phone</option>
+		<option value="name">Name</option>
+		<option value="address">Addres</option>
+	</select>
+	<table class="table table-bordered">
+		<thead>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Address</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="friend in friends | orderBy : myVar:false">
+				<td>{{friend.name}}</td>
+				<td>{{friend.phone}}</td>
+				<td>{{friend.address}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<br><br><br>
+	<input type="text" name="filterCd" ng-model="search.name" placeholder="Enter the filter condition">
+	<table class="table table-bordered">
+		<thead>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Address</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="friend in friends | filter:search">
+				<td>{{friend.name}}</td>
+				<td>{{friend.phone}}</td>
+				<td>{{friend.address}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<h4>{{myCompany}}</h4>
+	<h4>{{mySalary}}</h4>
+	<h4>{{false | checkFilter}}</h4>
+	<br><br><br>
+</div>
+</body>
+</html>

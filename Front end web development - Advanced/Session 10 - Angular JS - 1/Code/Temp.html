@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AngularJS Learning</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script type="text/javascript">
+		var myMod = angular.module('myMod',[]);
+		myMod.controller('myCtrl', function($scope, $filter){
+			$scope.firstName = "acadgild";
+			$scope.lastName = "";
+			$scope.firstName = $filter('uppercase')($scope.firstName);
+			$scope.showMessage = function(){
+				alert("Thank You!!!");
+			}
+		});
+		myMod.controller('myCtrl1', function($scope, $filter){
+			$scope.firstName = "Ramesh";
+			$scope.lastName = "Panti";
+			$scope.firstName = $filter('uppercase')($scope.firstName);
+			$scope.showMessage = function(){
+				alert("Thank You!!!");
+			}
+		});
+	</script>
+</head>
+<body ng-app='myMod'>
+	<div ng-init="person={name:'name', age:'32'}">
+		{{ 1 + 2}}
+		{{ 1 == 2}}
+		{{ person.name}}<br>
+		<hr>
+		<div ng-init="numbers=[1,2,3,4,5,5,6]">
+			{{numbers[4]}}
+		</div>	
+	</div>
+	<h3>Two Way data binding</h3>
+	<div ng-controller='myCtrl'>
+		<p>First Name: <input type="text" ng-model="firstName"></p>
+		<p>Last Name: <input type="text" ng-model="lastName"></p>
+		<p ng-show='firstName'>Welcome!!! {{firstName + " " + lastName}}</p>
+		<button ng-click="showMessage()">Click Here</button>
+	</div>
+	<div ng-controller='myCtrl1'>
+		<p>First Name: <input type="text" ng-model="firstName"></p>
+		<p>Last Name: <input type="text" ng-model="lastName"></p>
+		<p ng-show='firstName'>Welcome!!! {{firstName + " " + lastName}}</p>
+		<button ng-click="showMessage()">Click Here</button>
+	</div>
+</body>
+</html>

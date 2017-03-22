@@ -1,0 +1,29 @@
+<html ng-app="customDirectives">
+	<head>
+		<title></title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+		<script>
+			angular.module('customDirectives', [])
+			.directive('directive1', function () {
+				return {
+					restrict: "A",
+					priority: 100,
+					compile: function (element, attributes) {
+						console.log("This is directive with priority 100.")
+					}
+				}
+				}).directive('directive2', function () {
+					return {
+						restrict: "A",
+						priority: 200,
+						compile: function (element, attributes) {
+							console.log("This is directive with priority 200.")
+						}
+					}
+				});
+		</script>
+	</head>
+	<body>
+	<p directive1="" directive2=""></p>
+	</body>
+</html>

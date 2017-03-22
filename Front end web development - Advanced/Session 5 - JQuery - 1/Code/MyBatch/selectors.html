@@ -1,0 +1,104 @@
+<html>
+<head>
+	<title>First jQuery Page</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// $('button').click(function(){
+			// 	$('p').hide();
+			// });
+			$('#btn1').click(function(){
+			 	
+			 		$('p').hide();
+			});
+
+			$('#btn2').click(function(){
+				$('p').show();
+			});
+
+			$('#btn3').click(function(){
+				$('p.test').hide();
+			});
+
+			$('#btn4').click(function(){
+				$('*').hide();
+			});
+
+			$('#btn5').click(function(){
+				$(this).hide();
+			});
+
+			$('#btn6').click(function(){
+				$('p:first').hide();
+			});
+
+			$('#btn7').click(function(){
+				$('ul li:first').hide();
+			});
+
+			$('#btn8').click(function(){
+				$('a[href]').hide();
+			});
+			$('#btn9').click(function(){
+				$("a[target!='_blank']").hide();
+			});
+
+			$('div p').last().css('background-color', 'yellow');
+
+			$('p').eq(1).css('background-color', 'blue');
+
+			$('p').filter('.test').css('background-color', 'orange');
+		});
+
+	</script>
+	<style type="text/css">
+		.test {
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+<p>This is a paragraph</p>
+<p>This is also a paragraph</p>
+<p class="test">This is test paragraph</p>
+<p class="test">This is also a test paragraph</p>
+<div class="test">
+	This is a DIV tag with test class
+	<br><br><br><br>
+</div>
+<ul>
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+	<li>Item 4</li>
+</ul>
+<ul>
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+	<li>Item 4</li>
+</ul>
+<a href="http://www.google.com" target='_blank'>Google.com</a>
+<a href="http://www.yahoo.com">Yahoo.com</a>
+<br><br><br>
+<hr>
+<div style="border:1px solid red">
+	<p>This is a paragraph</p>
+	<p>This is another paragraph</p>
+</div>
+<br><br>
+<div style="border:1px solid blue">
+	<p>This is a Paragraph</p>
+	<p>This is another paragraph</p>
+</div>
+<button id="btn1">Click Here to hide</button>
+<button id="btn2">Click Here to show</button>
+<button id="btn3">Click Here to Hide Test Paragraphs</button>
+<button id="btn4">Ultimate Button</button>
+<button id="btn5">Self Button</button>
+<button id="btn6">Click to hide First Paragraph</button>
+<button id="btn7">Click to hide First Li of First Ul</button>
+<button id="btn8">Click to hide a[href]</button>
+<button id="btn9">Click to hide a[target]</button>
+</body>
+</html>

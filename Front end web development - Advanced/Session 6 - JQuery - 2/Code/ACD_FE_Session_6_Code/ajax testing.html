@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#div1").load("demo_test.txt", null, function( response, status,xhr){
+			console.log(xhr.readyState);
+			console.log(response);
+			console.log(status);
+		});
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Ajax load method demo</h2></div>
+
+<button>Make Ajax Call</button>
+
+</body>
+</html>

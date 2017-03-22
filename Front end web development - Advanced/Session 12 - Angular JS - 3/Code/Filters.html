@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app='myMod'>
+<head>
+	<title>Filters Demo</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+            <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        	var mod = angular.module('myMod', []);
+        	mod.filter('checkFilter', function(){
+        		return function(input){
+        			return input?'Correct':'Incorrect';
+        		}
+        	});
+    		mod.controller('myCtrl', function($scope, $filter){
+    			$scope.amount = 1234.5678;
+    			$scope.currentDate = new Date();
+    			$scope.numbers = [1,2,3,4,5,6,7,8,9];
+    			$scope.letters = "abcdefghijkl";
+    			$scope.longNumber = 12345677892;
+    			$scope.numLimit = 3;
+    			$scope.letterLimit = 3;
+    			$scope.longNumLimit = 3;
+    			$scope.friends = [
+    				{name:'John Cena', phone:'555-1276'},
+    				{name:'Acad Gild', phone:'888-BIG-MARY'},
+    				{name:'Nike', phone:'555-4521'},
+    				{name:'Puma', phone:'567-7684'},
+    				{name:'Woodland', phone:'567-7684'}
+    			];
+    			function Person(name, address){
+    				this.name = name;
+    				this.address = address;
+    			}
+    			$scope.person = new Person('Name', 'Address');
+    			$scope.myCompany = $filter('uppercase')("acad gild");
+    			$scope.myCompany1 = $filter('currency')('1234.45', 'USD$', 0);
+    		});
+        </script>
+</head>
+<body ng-controller = 'myCtrl'>
+	<h3>Currency Filter</h3>
+	<p>Basic Currency Filter : {{amount | currency}}</p>
+	<p>Rupee Currency Filter : {{amount | currency : "&#8377;"}}</p>
+	<p>Euro Currency Filter : {{amount | currency : "&euro;"}}</p>
+	<p>Fratcion Size changed Currency Filter : {{amount | currency : "USD$": 0}}</p>
+	<hr>
+	<label>Enter the Number:<input type="text" ng-model='myNum'></label>
+	<p>No fraction : {{myNum | number : 0}}</p>
+	<p>Default fraction : {{myNum | number}}</p>
+	<p>Fraction Size 5: {{myNum | number: 5}}</p>
+	<p>Negative numbers with fraction : {{-myNum | number}}</p>
+	<p>Infinite : {{1/0 | number}}</p>
+	<hr>
+	<p>Default Date : {{currentDate | date}}</p>
+	<p>Medium Date : {{currentDate | date:'medium'}}</p>
+	<p>Short Date : {{currentDate | date:'short'}}</p>
+	<p>Formatted Date : {{currentDate | date:'yyyy - MMMM - dd With EEEE of Week'}}</p>
+	<p>Formatted Date : {{currentDate | date:'yyyy - MM - dd'}}</p>
+	<p>Formatted Date : {{currentDate | date:'yyyy - M - dd'}}</p>
+	<hr>
+	<pre>JSON Filter : {{person | json}} </pre>
+	<pre>JSON Filter : {{person | json:4}} </pre>
+	<pre>JSON Filter : {{ {'name':'value'} | json}} </pre>
+	<hr>
+	<p>Limit with Numbers{{numbers | limitTo}}</p>
+	<p>Limit with Numbers{{numbers | limitTo: numLimit}}</p>
+	<p>Limit with Letters {{letters | limitTo}}</p>
+	<p>Limit with Letters {{letters | limitTo:letterLimit}}</p>
+	<p>Limit with Letters {{letters | limitTo:letterLimit:-4}}</p>
+	<hr>
+	<table class="table table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Phone</th>
+		</tr>
+		<tr ng-repeat="friends in friends | orderBy:'phone':false">
+			<td>{{friends.name}}</td>
+			<td>{{friends.phone}}</td>
+		</tr>
+	</table>
+	<p>{{"Acadgild"|orderBy:'+':false}}</p>
+	<p>{{"Acadgild"|orderBy:'-':false}}</p>
+	<hr>
+	<p>Testing custom filter {{true| checkFilter}}</p>
+	<p>Testing custom filter {{false| checkFilter}}</p>
+	<p>{{4.557693 | currency : 2}}</p>
+	<br><br><br>
+</body>
+</html>

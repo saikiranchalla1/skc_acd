@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Counting with a local variable.</p>
+
+<button type="button" onclick="myFunction()">Count!</button><br>
+<button type="button" onclick="testing()">Call Me</button>
+
+<p id="demo">0</p>
+
+<script>
+function add() {
+    var counter = 0;
+    return counter += 1;
+}
+
+function myFunction(){
+    document.getElementById("demo").innerHTML = add();
+}
+
+function outerFunc(param){
+	var privateVar = 5;
+  var innerFunc = function (input){
+     alert('param passed to function  is '+ param + 'and private variable is '+privateVar );
+    var sum = privateVar+input+param;
+     alert('addition of private var and input and param is '+sum);
+
+  }
+  return innerFunc;
+}
+var closureFunc = outerFunc(12);
+
+
+function testing(){
+function TicketGenerator(transportMode,classType){
+  var generateTicket = function(destination1,destination2){
+    return classType+transportMode+"--"+destination1+"123"+destination2;
+  }
+  return generateTicket;
+}
+
+var flightTicketGenerator = TicketGenerator("Flight","Business");
+var shipTicketGenerator = TicketGenerator("Ship","Executive");
+console.log(flightTicketGenerator("Chennai","Mysore"));
+console.log(shipTicketGenerator("singapore","USA"));
+      
+}
+</script>
+
+</body>
+</html>

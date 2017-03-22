@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title>Hi</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script>
+  var app = angular.module("app",[]);
+  app.controller("Ctrl1",function($scope){
+    $scope.name = "Smith";
+    $scope.age = 28;
+    $scope.alertName = function(){
+      alert($scope.name);
+    };
+  });
+  app.directive("testDirective", function(){
+    return {
+      restrict: "EA",
+      template: "<div><h4>I am heading inside the directive</h4><button ng-click = 'alertName()'>CLick me</button></div>",
+      replace:true,
+      controller:'Ctrl1'
+    };
+  });
+  </script>
+</head>
+<body ng-app = "app">
+  <h2>Hi  Name is :{{name}} and age is {{age}}</h2>
+  <div test-directive></div>
+</body>
+</html>

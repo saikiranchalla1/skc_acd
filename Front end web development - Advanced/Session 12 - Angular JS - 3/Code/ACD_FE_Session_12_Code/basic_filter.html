@@ -1,0 +1,30 @@
+<!doctype html>
+<htmL >
+  <head>
+    <script src="angular.js" type="text/javascript">
+
+    </script>
+    <script>
+    var app = angular.module('searchModule',[]);
+    </script>
+  </head>
+  <body ng-app = 'searchModule'>
+  <div ng-init="friends = [{name:'John', phone:'555-1276'},
+  {name:'Manish', phone:'800-1234'},
+  {name:'Sumit', phone:'555-4321'},
+  {name:'Aadi', phone:'555-5678'},
+  {name:'Tyler', phone:'555-8765'},
+  {name:'Bantu', phone:'555-5678'}]"></div>
+
+  Search: <input ng-model="searchData">
+  <table id="searchTextResults">
+    <tr><th>Name</th><th>Phone</th></tr>
+    <tr ng-repeat="friend in friends | filter:searchData">
+      <td>{{friend.name}}</td>
+      <td>{{friend.phone}}</td>
+    </tr>
+  </table>
+  
+</body>
+</html>
+

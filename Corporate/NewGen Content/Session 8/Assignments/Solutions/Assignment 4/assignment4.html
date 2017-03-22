@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title></title>
+
+		<script type="text/javascript">
+
+			// Define the person constructor
+			var person = function(firstName){
+			 this.firstName = firstName; //property of person
+			}
+
+			person.prototype.sayHello = function(){
+			  alert("Hello, I'm " + this.firstName);
+			};
+
+
+			// Define the student constructor
+			var student = function(firstName,age){
+
+			  person.call(this, firstName);
+			  
+			 this.age = age;  //property of student
+			}
+
+			// Create a student.prototype object that inherits from person.prototype
+			student.prototype = Object.create(person.prototype);
+
+			// Replace the "sayHello" method
+			student.prototype.sayHello = function(){
+			  alert("Hello, I'm " + this.firstName + ". My age is "
+			              + this.age + ".");
+			};
+
+			// Example usage:
+			var student1 = new student("John ", "25");
+			student1.sayHello();
+
+
+		</script>
+
+	</head>
+
+	<body>
+
+		Refer to code
+
+	</body>
+
+</html>

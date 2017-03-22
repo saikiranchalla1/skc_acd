@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Routing Demo</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+        <script type="text/javascript" src="angular-route.js"></script>
+        <script type="text/javascript">
+        	var module = angular.module('myApp', ['ngRoute']);
+        	module.config(function($routeProvider, $locationProvider){
+        		$routeProvider.
+        			when('/route1/:param',{
+        				templateUrl: 'templates/template1.html',
+        				controller: 'RouteController'
+        			}).
+        			when('/route2/:param',{
+        				templateUrl: 'templates/template2.html',
+        				controller: 'RouteController'
+        			}).
+        			otherwise({
+        				redirectTo : '/',
+        				templateUrl : 'templates/index.html',
+        				controller : 'IndexController'
+        			});
+        		$locationProvider.html5Mode(true);
+        	});
+
+        	module.controller('RouteController', function($scope, $routeParams, $route){
+        		console.log($route.current.params.foo);
+        		console.log($route.current.pathParams);
+        		$scope.param = $routeParams.param;
+        	});
+
+        	module.controller('IndexController', function($scope){
+        		$scope.message = "Welcome to Home Page!!!"
+        	});
+        </script>
+</head>
+<body ng-app='myApp'>
+<div class="container">
+	<input ng-model='myVal1'></input><br/>
+	<input ng-model='myVal2'></input><br/>
+	<a href="#/route1/{{myVal1}}">Route 1</a>
+	<a href="#/route2/{{myVal2}}">Route 2</a>
+<div ng-view></div>
+</div>
+	
+</body>
+</html>

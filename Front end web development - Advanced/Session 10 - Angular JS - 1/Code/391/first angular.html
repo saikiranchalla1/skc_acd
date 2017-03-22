@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Angular JS application</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script type="text/javascript">
+		var module = angular.module("myApp", []);
+		module.controller("myCtrl", function($scope){
+			/*$scope.employee = {
+				name :"Acadgild",
+				age: 50
+			};*/
+		});
+	</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl" ng-init="employee={name:'AcadGild', age :50}">
+		<!-- {{ 1 + 5}} -->
+		<p>Employee Name: {{employee.name}}</p>
+		<p>Employee Age: {{employee.age}}</p>
+	</div>
+	<div>
+		{{ 1 + 5}}
+	</div>
+</body>
+</html>

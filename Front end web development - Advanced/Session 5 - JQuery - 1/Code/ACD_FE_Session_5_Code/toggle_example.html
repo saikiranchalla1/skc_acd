@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<title> First jquery example</title>
+	<script src = "jquery.js"></script>
+	<script>
+	var ref;
+	$(document).ready(function(){
+		ref = $("#container");
+		$("#toggle").on('click',toggleElement);
+
+	})
+
+	function toggleElement(){
+		ref.toggle(3000,runOnComplete);
+	}
+	function runOnComplete(){
+		console.log("The toggling with animation is complete");
+	}
+	</script>
+	<style>
+	#container{
+		border:3px solid green;
+		padding:20px;
+	}
+	
+	</style>
+</head>
+<body>
+	<button  id = "toggle">Show/hide</button>
+	
+	
+	<div id = "container">
+		THis is a text contained within this Div
+	</div>
+
+</body>
+</html>

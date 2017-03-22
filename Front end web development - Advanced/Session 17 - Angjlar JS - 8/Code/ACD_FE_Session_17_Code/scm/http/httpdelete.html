@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Title</title>
+<meta charset="UTF-8" />
+<script src="angular.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+var myModule = angular.module('myModule', 
+[]);
+
+myModule.controller('MyCtrl', function ($scope,$http) {
+
+var model = { "firstname": "Jack",
+"lastname": "Smith" };
+
+$scope.model = model;
+$scope.click = function() { 
+
+$http.delete('slim/todos', {params: {id: '5',name:'Smith'}
+}).success(function(data, status, headers, config) {
+	console.log(data);
+}).error(function(data, status, headers, config) {
+	console.log(data);
+});
+
+alert($scope.model.firstname); 
+};
+});
+
+</script>
+</head>
+<body>
+<div ng-app="myModule" 
+      <div ng-controller="MyCtrl">
+<p>Firstname: <input type="text" ng-model="model.firstname"></p>
+<p>Lastname: <input type="text" ng-model="model.lastname"></p>
+<p>{{model.firstname + " " + model.lastname}}</p>
+
+<button ng-click="click()">Show Number</button>
+
+</div>
+</div>
+</body>
+</html>

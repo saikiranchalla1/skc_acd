@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Handling</title>
+</head>
+<body>
+<button onclick="callMe()">Click Here</button>
+<button id="btn1">Click Here Too!!!</button>
+<button id="btn2">Click For Date</button>
+<button id="btn3">Click to Stop Event</button>
+<p id="para1"></p>
+<br>
+Name: <input type="text" name="fname" id="inp1">
+<script type="text/javascript">
+	function callMe(){
+		alert('Hello!!!');
+	}
+	document.getElementById('btn1').onclick = function(){
+			alert("Hello Again!!!");
+	};
+	document.getElementById('btn2').addEventListener("click", showDate);
+	document.getElementById('btn2').addEventListener("click", showMessage);
+	document.getElementById('btn2').addEventListener("mouseover", logDetails);
+	document.getElementById('btn2').addEventListener("mouseout", logDetailsOut);
+	function showDate(){
+		alert(new Date());
+	}
+	function showMessage(){
+		alert("Thank you for clicking!!!!");
+	}
+	function logDetails(){
+		console.log("mouseover triggered");
+	}
+	function logDetailsOut(event){
+		console.log(event.clientX);
+		console.log(event.clientY);
+		console.log(event.ctrlKey);
+		console.log(event.shiftKey);
+		console.log(event.altKey);
+		console.log("mouseout triggered");
+	}
+	window.addEventListener("resize", function(){
+		document.getElementById('para1').innerHTML = Math.random();
+	});
+	document.getElementById('inp1').addEventListener('change', upperCase);
+	function upperCase(){
+		var x = document.getElementById('inp1');
+		x.value = x.value.toUpperCase();
+	}
+	document.getElementById('btn2').onclick = function(){
+		document.getElementById('btn2').removeEventListener("click", showMessage);
+	}
+	
+</script>
+</body>
+</html>

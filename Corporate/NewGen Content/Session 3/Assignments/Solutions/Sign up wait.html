@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign Up Wait</title>
+	<style type="text/css">
+		div {
+			display: none;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			animation-name: example;
+			animation-duration: 5s;
+			animation-iteration-count: infinite;
+			animation-timing-function: ease-in-out;
+		}
+
+		@keyframes example {
+			from {background-color: red;}
+			to {background-color: blue;}
+			
+		}
+
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<button onclick="callMe()">Sign Up</button>
+	
+	<script type="text/javascript">
+		
+		function callMe(){
+			document.getElementById('div1').style.display = 'block';
+			setTimeout(alertSuccess, 10000);
+		}
+		function alertSuccess(){
+			alert("Sign up Successful");
+			document.getElementById('div1').style.display = 'none';
+		}
+	</script>
+</body>
+</html>

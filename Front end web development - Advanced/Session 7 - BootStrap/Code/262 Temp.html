@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bootstrap Demo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<style type="text/css">
+		/*.breadcrumb > li + li:before {
+		    color: #ccc;
+		    content: "> ";
+		    padding: 0 5px;
+		}*/
+		.breadcrumb > li+li:before {
+		    font-family: 'glyphicons halflings';
+		    content: "\e092" !important;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" style="border: solid">
+		<!-- <div class="row">
+			<div class="col-xs-4" style="background-color: red;">
+				<span class="glyphicon glyphicon-user"></span>
+				<span class="glyphicon glyphicon-envelope"></span>
+				<span class="glyphicon glyphicon-search"></span>
+				<span class="glyphicon glyphicon-trash"></span>
+			</div>
+			<div class="col-xs-4" style="background-color: black;">.col-xs-4</div>
+			<div class="col-xs-4" style="background-color: blue;">.col-xs-4</div>
+		</div> -->
+		<!-- <span class="glyphicon glyphicon-user"></span>
+		<span class="glyphicon glyphicon-envelope"></span>
+		<span class="glyphicon glyphicon-search"></span>
+		<span class="glyphicon glyphicon-trash"></span> -->
+		<!-- <!-- <div class="row">
+			<div class="col-sm-4" style="background-color: red;">.col-sm-4</div>
+			<div class="col-sm-4" style="background-color: black;">.col-sm-4</div>
+			<div class="col-sm-4" style="background-color: blue;">.col-sm-4</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4" style="background-color: red;">.col-md-4</div>
+			<div class="col-md-4" style="background-color: black;">.col-md-4</div>
+			<div class="col-md-4" style="background-color: blue;">.col-md-4</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4" style="background-color: red;">.col-lg-4</div>
+			<div class="col-lg-4" style="background-color: black;">.col-lg-4</div>
+			<div class="col-lg-4" style="background-color: blue;">.col-lg-4</div>
+		</div> -->
+		<!-- <h1>This is H1 <small>This is a small text</small></h1>
+		<h6>This is H6</h6>
+		<small>This is a small text</small>
+		<p>This is a demo <mark>for mark highlighting</mark></p>
+		<blockquote class="blockquote-reverse">
+		<p>This is a sample for displaying the block quote</p>
+		<footer>Ashwin</footer>
+		</blockquote>
+		To take a print use <kbd>ctrl+P</kbd> -->
+		<!-- <table class="table table-hover table-condensed">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Contact</th>
+					<th>Age</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="active">
+					<td>Active</td>
+					<td>Contact 1</td>
+					<td>Age 1</td>
+				</tr>
+				<tr class="success">
+					<td>Success</td>
+					<td>Contact 1</td>
+					<td>Age 1</td>
+				</tr>
+				<tr class="info">
+					<td>Info</td>
+					<td>Contact 1</td>
+					<td>Age 1</td>
+				</tr>
+				<tr class="warning">
+					<td>Warning</td>
+					<td>Contact 1</td>
+					<td>Age 1</td>
+				</tr>
+				<tr class="danger">
+					<td>Danger</td>
+					<td>Contact 1</td>
+					<td>Age 1</td>
+				</tr>
+			</tbody>
+		</table> -->
+		<!-- <button>Default HTML Button</button><br>
+		<button class="btn btn-default btn-block active">Default Button</button><br>
+		<button class="btn btn-primary disabled">Primary Button</button><br>
+		<button class="btn btn-success btn-sm">Success Button</button><br>
+		<button class="btn btn-warning btn-xs">Warning Button</button><br>
+		<button class="btn btn-danger">Danger Button</button><br>
+		<button class="btn btn-info">Info Button</button><br>
+		<button class="btn btn-link">Link Button</button><br>
+		<button class="btn btn-xs">This is XS</button>
+		<button class="btn btn-sm">This is XS</button>
+		<button class="btn btn-md">This is XS</button>
+		<button class="btn btn-lg">This is XS</button> -->
+		<!-- <img src="images\img1.jpg" width="460" height="350"> -->
+		<!-- <ul class="pagination pagination-lg">
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li class="disabled"><a href="#">4</a></li>
+			<li class="active"><a href="#">5</a></li>
+		</ul> -->
+		<ul class="breadcrumb">
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li class="active"><a href="#">5</a></li>
+		</ul>
+		<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Website1</a>
+				</div>
+				<ul class="nav navbar-nav">
+				<li><a href='#'>Home </a></li>
+				<li class="dropdown">
+					<a href='#' data-toggle="dropdown" class="dropdown-toggle" >Admissions
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href='#'>Computer Science</a></li>
+						<li><a href='#'>Electronics</a></li>
+						<li><a href='#'>Mechanical</a></li>
+					</ul>
+				</li>
+				<li><a href='#'>Academics</a></li>
+				<li><a href='#'>Programs</a></li>
+				<li><a href='#'>Page 3 </a></li>
+			</ul>
+			</div>
+		</nav> -->
+		<!-- Name: <input type="text" placeholder="Enter your name..." class="form-control"></input> -->
+		<!-- <form role="form" class="form-horizontal">
+			<div class="form-group">
+				<label for="email" class="control-label col-sm-2 ">Email:</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control input-lg active"  id="email"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="control-label col-sm-2 ">Email:</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="email"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name"  class="control-label col-sm-2">Name:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control input-sm" id="name"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary active">Submit</button>
+				</div>
+		</form> -->
+		<!-- <h4>Tabs</h4>
+		<ul class="nav nav-tabs nav-justified">
+			<li class="active"><a href="#page1">Page1</a></li>
+			<li><a href="#page2" data-toggle="tab">Page2</a></li>
+			<li><a href="#page3" data-toggle="tab">Page3</a></li>
+			<li><a href="#page4" data-toggle="tab">Page4</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="page1" class="tab-pane fade in active">
+				<h4>Page 1</h4>
+				<p>This is content of TAB 1</p>
+			</div>
+			<div id="page2" class="tab-pane fade">
+				<h4>Page 2</h4>
+				<p>This is content of TAB 2</p>
+			</div>
+			<div id="page3" class="tab-pane fade">
+				<h4>Page 3</h4>
+				<p>This is content of TAB 3</p>
+			</div>
+			<div id="page4" class="tab-pane fade">
+				<h4>Page 4</h4>
+				<p>This is content of TAB 4</p>
+			</div>
+		</div> -->
+		<!-- <ul class="nav nav-pills nav-justified">
+			<li class="active"><a href="#">Page1</a></li>
+			<li class="dropdown">
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle">Page2<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="">Sub Page 1</a></li>
+					<li><a href="">Sub Page 2</a></li>
+					<li><a href="">Sub Page 3</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Page3</a></li>
+			<li><a href="#">Page4</a></li>
+			<li><a href="#">Page5</a></li>
+		</ul> -->
+
+		<!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Click to open Modal</button>-->
+		<!--Modal code -->
+		<!--<div class="modal fade" id="modal1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h3 class="modal-title">Modal Header</h3>
+					</div>
+					<div class="modal-body">
+						<p>This is a modal body</p><br><br><br><br><br><br><br><br>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		<div id="carousel1" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carousel1" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel1" data-slide-to="1"></li>
+				<li data-target="#carousel1" data-slide-to="2"></li>
+				<li data-target="#carousel1" data-slide-to="3"></li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="images\img1.jpg" alt="Image 1" width="450" height="350">
+				</div>
+				<div class="item">
+					<img src="images\img2.jpg" alt="Image 1" width="450" height="350">
+				</div>
+				<div class="item">
+					<img src="images\img3.jpg" alt="Image 1" width="450" height="350">
+				</div>
+				<div class="item">
+					<img src="images\img4.jpg" alt="Image 1" width="450" height="350">
+				</div>
+			</div>
+			<a href="#carousel1" class="left carousel-control" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Preious</span>
+			</a>
+			<a href="#carousel1" class="right carousel-control" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</body>
+</html>

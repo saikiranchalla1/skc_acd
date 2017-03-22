@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forms API</title>
+</head>
+<body>
+<form autocomplete="on" id="form1" action="some_page.php" method="get">
+	First Name :<input type="text" name="fName" autofocus placeholder="Enter your first name.."><br>
+	Last Name: <input type="text" name="lName" autocomplete="off"><br>
+	E-Mail:<input type="email" name="usrEmail" autofocus><br>
+	Browser: <input type="" name="browsers" list="browsers">
+	<datalist id="browsers">
+		<option value="Internet Explorer"></option>
+		<option value="Mozilla Firefox"></option>
+		<option value="Google Chrome"></option>
+	</datalist>
+	<br>
+	Images: <input type="file" name="userImgs" multiple>
+	<input type="submit" name="" value="Submit">
+	<input type="submit" name="" value="Submit as Admin" formaction="admin_page.php" formmethod="post" formnovalidate>
+</form>
+	Address: <input type="text" name="usrAddrs" form="form1">
+</body>
+</html>

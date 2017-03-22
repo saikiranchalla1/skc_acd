@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events Html</title>
+	<style type="text/css">
+	div {
+		border: 2px solid;
+		padding: 75px;
+	}
+	</style>
+</head>
+<body>
+<div id="myDiv">
+	<p id="para1">Bubbling Paragraph</p>
+</div>
+
+<div id="myDiv2">
+	<p id="para2">Capturing Paragraph</p>
+</div>
+
+<script type="text/javascript">
+	
+	document.getElementById("para1").addEventListener("click", function(){
+		alert("You have clicked P element");
+	}, false);
+
+	document.getElementById("myDiv").addEventListener("click", function(){
+		alert("You have clicked DIV element");
+	}, false);
+
+
+	document.getElementById("para2").addEventListener("click", function(){
+		alert("You have clicked P element");
+	}, true);
+
+	document.getElementById("myDiv2").addEventListener("click", function(){
+		alert("You have clicked DIV element");
+	}, true);
+</script>
+</body>
+</html>

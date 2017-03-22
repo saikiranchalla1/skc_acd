@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parallax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="jquery.cslider.js"></script>
+    <script src="parallax_js/modernizr.js"></script>
+    <link rel="stylesheet" href="parallax_styles/style.css">
+
+</head>
+<body>
+<div id="da-slider" class="da-slider">
+    <div class="da-slide">
+        <h3>Welcome!!!</h3>
+        <p>This is the first page of the slider. Click on the links below to know more</p>
+        <a href="#" class="da-link">Read Here</a>
+        <div class="da-img">
+            <img src="parallax_imgs/1.png" alt="">
+        </div>
+    </div>
+    <div class="da-slide">
+        <h3>Welcome!!!</h3>
+        <p>This is the first page of the slider. Click on the links below to know more</p>
+        <a href="#" class="da-link">Read Here</a>
+        <div class="da-img">
+            <img src="parallax_imgs/2.png" alt="">
+        </div>
+    </div>
+    <div class="da-slide">
+        <h3>Welcome!!!</h3>
+        <p>This is the first page of the slider. Click on the links below to know more</p>
+        <a href="#" class="da-link">Read Here</a>
+        <div class="da-img">
+            <img src="parallax_imgs/3.png" alt="">
+        </div>
+    </div>
+    <div class="da-slide">
+        <h3>Welcome!!!</h3>
+        <p>This is the first page of the slider. Click on the links below to know more</p>
+        <a href="#" class="da-link">Read Here</a>
+        <div class="da-img">
+            <img src="parallax_imgs/4.png" alt="">
+        </div>
+    </div>
+    <nav class="da-arrows">
+        <span class="da-arrow-prev"></span>
+        <span class="da-arrow-next"></span>
+    </nav>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#da-slider').cslider({
+            autoplay : true;
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Input ELements</title>
+</head>
+<body>
+<form method="get" oninput="x.value=parseInt(a.value) + parseInt(b.value)">
+	<input type="time" name="mytime">
+	<input type="month" name="mymonth">
+	<input type="date" name="mydate" min="1979-12-31">
+	<input type="date" name="mydate" max="2000-12-31">
+	<hr>
+	<input type="number" name="mynum" min="10" max="100" step="10">
+	<input type="color" name="mycolor">
+	<input type="range" name="myrange" min="0" max="10">
+	<input type="url" name="myurl">
+	<input type="tel" name="mytel">
+	<hr><br>
+	<!-- Username: <input type="text" name="usrname">
+	Password: <input type="password" name="mypwd">
+	Encryption: <keygen name="mysecurity"></keygen> -->
+	<br>
+	<br>
+	<br>
+	<input type="range" name="a" id="a" value="50">100+
+	<input type="number" name="b" id="b" value="50">= <output name="x" for="a b"></output><br>
+	<input type="submit" name="formsub">
+</form>
+</body>
+</html>

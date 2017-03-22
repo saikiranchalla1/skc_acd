@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directives In AngularJS</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity=
+"sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var mod = angular.module('myApp', []);
+	mod.controller('myCtrl', function($scope){
+		$scope.snippet = "<span style='color:red'>Hi there!!!</span>";
+		$scope.todos =[
+			{action: "Get Groceries", complete: false},
+			{action: "Call Plumber", complete: false},
+			{action: "Buy Shoes", complete: true},
+			{action: "Buy Flowers", complete: false},
+			{action: "Call Dad", complete: false}
+		];
+		$scope.testFunc = function(){
+			console.log("Clicked");
+		};
+		$scope.testDblFunc = function(){
+			console.log("Double Clicked");
+		}
+		$scope.testBlurFunc = function(){
+			console.log("Blur Event triggered");
+		}
+		$scope.testChangeFunc = function(){
+			console.log("Change Event triggered:" + $scope.myTempVar);	
+		}
+		$scope.personCount = 0;
+	});
+</script>
+
+</head>
+<body ng-app='myApp'>
+	<div class="container" ng-controller='myCtrl'>
+		<input placeholder='type something....' ng-model='temp'/>
+		<p>You have entered == <h3 ng-bind='temp'></h3></p>
+		<Button ng-click='testFunc()'>Click Here</Button>
+		<Button ng-dblclick='testDblFunc()'>Double Click Here</Button>
+		<input placeholder='type something....' ng-blur='testBlurFunc()'/><br>
+		<input ng-init='myTempVar="testing"'placeholder='Ng-change type something....' ng-model= 'myTempVar'ng-change='testChangeFunc()'/>
+		<br>
+		Ng-Show/Hide testing<input type="checkbox" ng-model='myVariable'>
+		<div ng-show='myVariable'>
+			<h3>Acadgild Front end web development - NG-SHOW {{myVariable}}</h3>
+		</div>
+		<div ng-hide='myVariable'>
+			<h3>Acadgild Front end web development - NG-Hide {{myVariable}}</h3>
+		</div>
+		<br>
+		Enter your URL: <input type="text" placeholder='Enter some valid URL' ng-model='myUrl'>
+		<a ng-href='{{myUrl}}'>{{myUrl}}</a>
+		<br>
+		Who? <input type="checkbox" ng-model='myVar'>
+		<select>
+			<option>Student 1</option>
+			<option ng-selected='myVar'>Student 2</option>
+			<option>Student 3</option>
+			<option>Student 4</option>
+		</select>
+		<div ng-non-bindable>
+			Expression Syntax is  {{1 + 3}}.
+		</div>
+		<hr/>
+		
+	<!-- 	<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Action</th>
+					<th>Done?</th>
+					<th>Odd?</th>
+					<th>Even?</th>
+					<th>Middle?</th>
+					<th>First?</th>
+					<th>Last?</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat = 'item in todos'>
+					<td>{{$index + 1}}</td>
+					<td ng-repeat='prop in item'>
+						{{prop}}
+					</td>
+					<td>{{$odd}}</td>
+					<td>{{$even}}</td>
+					<td>{{$middle}}</td>
+					<td>{{$first}}</td>
+					<td>{{$last}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-striped">
+			<tbody>
+				<tr ng-repeat-start='item in todos'>
+					<td>This is Item {{$index + 1}}</td>
+				</tr>
+				<tr>
+					<td>The action is: {{item.action}}</td>
+				</tr>
+				<tr>
+					<td>{{$index}}</td>
+				</tr>
+				<tr>
+					<td>{{$odd}}</td>
+				</tr>
+				<tr ng-repeat-end>
+					<td>Item {{$index}} is {{item.complete ? '' : 'not'}} Complete</td>
+				</tr>
+			</tbody>
+		</table> -->
+		Count:<input type="number" ng-model='personCount'/><br/>
+		Person1:<input type="text" ng-model='person1' /><br/>
+		Person2:<input type="text" ng-model='person2' /><br/>
+		<!--- Example with simple pluralization rules for en locale --->
+			Without Offset:
+			<ng-pluralize count="personCount"
+                when="{'0': 'Nobody is viewing.',
+                       'one': '1 person is viewing.',
+                       'other': '{} people are viewing.'}">
+			</ng-pluralize><br><br/>
+
+			  <!--- Example with offset --->
+			  With Offset(2):
+			  <ng-pluralize count="personCount" offset=2
+							when="{'0': 'Nobody is viewing.',
+								   '1': '{{person1}} is viewing.',
+								   '2': '{{person1}} and {{person2}} are viewing.',
+								   '3': '{{person1}}, {{person2}} and one other person are viewing.',
+								   'other': '{{person1}}, {{person2}} and {} other people are viewing.'}">
+			  </ng-pluralize>
+	</div>
+	
+</body>
+</html>

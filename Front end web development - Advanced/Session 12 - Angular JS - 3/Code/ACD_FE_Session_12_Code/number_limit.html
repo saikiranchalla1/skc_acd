@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" >
+  <head>
+    <script src="angular.js" type="text/javascript">
+    </script>
+<script>
+  angular.module('mainModule', [])
+    .controller('LimitController', ['$scope', function($scope) {
+      $scope.numbers = [1,2,3,4,5,6,7,8,9,12,14];
+      $scope.numLimit = 2;
+    }]);
+</script>
+  </head>
+  <body ng-app = 'mainModule'>
+ <div ng-controller="LimitController">
+  Limit {{numbers}} to: <input type="number" step="1" ng-model="numLimit">
+  <p>Output numbers: {{ numbers | limitTo:numLimit }}</p>
+</div>
+
+
+</body>
+</html>
+

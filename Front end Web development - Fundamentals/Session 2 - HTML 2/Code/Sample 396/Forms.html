@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forms Demo</title>
+	<style type="text/css">
+		area[shape='circle'] {
+			border: solid red;
+		}
+		area[shape="rect"] {
+			border: 1px solid blue;
+		}
+	</style>
+</head>
+<body>
+<form method="get">
+	<!-- Personal Information -->
+	<fieldset>
+	<legend> personal </legend>
+		
+		firstname: <input type="text" name="firstname" value"fname"/><br>
+		lastname: <input type="text" name="lastname" value"lname"/>
+		Gender: <input type="radio" name="gender" value="male" checked>male
+		 <input type="radio" name= "gender" value="female">female
+	</fieldset>
+	<fieldset>
+		<legend>Personal Information</legend>
+		First Name: <input type="text" name="fname"></input> <br>
+		Last Name: <input type="text" name="lname"></input> <br>
+		Gender: Male <input type="radio" name="gender" value="m"></input> Female <input type="radio" value="f" name="gender"></input> Other: <input type="radio" name="gender" value="o"></input>
+	</fieldset>
+	<fieldset>
+		<legend>User Details</legend>
+		User Name:<input type="text"></input>
+		Password: <input type="password"></input>
+		Remember Me? <input type="checkbox"></input>
+	</fieldset>
+	<select name="brand">
+		<optgroup label="International">
+			<option>Audi</option>
+			<option>BMW</option>
+			<option>Ford</option>
+		</optgroup>
+		<optgroup label="Indian">
+			<option>Maruthi</option>
+			<option>Mahendra</option>
+		</optgroup>
+	</select>
+	<!-- Address -->
+	<textarea name="address" rows="10" cols="20">
+		Enter your address here.
+	</textarea>
+	<br>
+	<hr>
+	<h3>Lists</h3>
+	<h4>Unordered List</h4>
+	<ul type="square">
+		<li>List Item1</li>
+		<li>List Item2</li>
+		<li>List Item3</li>
+	</ul>
+	<h4>Ordered List</h4>
+	<ol type="i">
+		<li>List Item1</li>
+		<li>List Item2</li>
+		<li>List Item3</li>
+	</ol>
+	<br><br>
+	<ol type="i" start="4">
+		<li>List Item1</li>
+		<li>List Item2</li>
+		<li>List Item3</li>
+	</ol>
+	<hr>
+	<h1>This is H1 tag</h1>
+	<h2>This is H1 tag</h2>
+	<h3>This is H1 tag</h3>
+	<h4>This is H1 tag</h4>
+	<h6>This is H1 tag</h6>
+	<b>This is a bold Text</b><br>
+	<p>This is some text <small>This is smaller text</small></p>
+	<p>This is normal text and <em>This is emphasized text</em>
+	<p>This is normal text and <strong>This is important text</strong></p>
+	<hr>
+	<h3>Table Demo</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th colspan="2">Phone 1</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Name 1</td>
+				<td>Address 1</td>
+				<td>Phone 1</td>
+				<td>Phone 1</td>
+			</tr>
+			<tr>
+				<td>Name 1</td>
+				<td>Address 1</td>
+				<td>Phone 1</td>
+				<td>Phone 1</td>
+			</tr>
+			<tr>
+				<td>Name 1</td>
+				<td>Address 1</td>
+				<td>Phone 1</td>
+				<td>Phone 1</td>
+			</tr>
+			<tr>
+				<td>Name 1</td>
+				<td>Address 1</td>
+				<td>Phone 1</td>
+				<td>Phone 1</td>
+			</tr>
+			<tr>
+				<td>Name 1</td>
+				<td>Address 1</td>
+				<td>Phone 1</td>
+				<td>Phone 1</td>
+			</tr>
+			<tr>
+				<td>Name 1</td>
+				<td>Address 1</td>
+				<td>Phone 1</td>
+				<td>Phone 1</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<a href="http://www.google.com">
+		<img src="index.jpg" alt="Some default Text" width="200px" height="100px">
+	</a>
+	<img src="index.jpg" alt="Some default Text" width="200px" height="100px" usemap="#mapDemo">
+	<map name="mapDemo">
+		<area shape="circle" coords="0,0,10" alt="Map 1" href="http://www.google.com"></area>
+		<area shape="rect" coords="10,20,30,40" alt="Map 2" href="http://www.acadgild.com"></area>
+	</map>
+	<br>
+	<h3>iFrame Demo</h3>
+	<iframe src="http://websitesetup.org" height="100%" width="100%" scrolling="auto">
+		<p>Browser doesn't support iFrames.</p>
+	</iframe>
+
+	<input type="button" onclick="alert('Hello World')" value="Click Here"></input>
+	<input type="submit" value="Submit" ></input>
+</form>
+</body>
+</html>

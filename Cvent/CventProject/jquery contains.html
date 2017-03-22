@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo of jQuery Contains</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('p:contains("is")').css("text-decoration", "underline");
+
+            //var bool = $.contains(document.getElementsByTagName('div')[0], document.getElementsByTagName('p'));
+            //console.log(bool);
+            var span = document.getElementById("mySPAN");
+            var div = document.getElementById("myDIV").contains(span);
+            console.log(div);
+        });
+    </script>
+</head>
+<body>
+<h3>Welcome to the demo of jQuery Contains method</h3>
+<p>This is a paragraphs</p>
+<p>This is another paragraph</p>
+<span>This is a span tag</span>
+<div id="myDIV">
+    <span>This is a span tag</span>
+    <p>This is a paragraph in a DIV element</p>
+</div>
+</body>
+</html>

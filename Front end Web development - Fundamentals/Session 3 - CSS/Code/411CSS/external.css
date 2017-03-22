@@ -1,0 +1,15 @@
+		/*a[target=_blank] {
+			background-color: red;
+		}
+		a[class] {
+			background-color: blue;
+		}*/
+		/*[title~=picture] {
+			border: 5px solid red;
+		}*/
+		/*[lang|=en] {
+			background-color: red;
+		}*/
+		a[href$='.com']{
+			background-color: blue;
+		}

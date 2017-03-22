@@ -1,0 +1,42 @@
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+</head>
+<body>
+<p> This is an example of a form</p>
+<form method = "get" action = "submitme.php">
+<input type = "text" name = "myname" id = "mynameid">
+<br/><br/>
+Input your comments:<br /><textarea name="comments" rows="2" cols="30">...Your comments here...</textarea><br><br>
+Select your interests: in movies<br />
+<input name="cbimovies[]" value = "horror" type="checkbox" />horror Movies<br />
+<input name="cbimovies[]"  value = "shahrukh" type="checkbox" />Shahrukh Movies<br />
+<input name="cbimovies[]" value = "adventure" type="checkbox" />Adventure Movies<br />
+<br/>
+Select your interests: in books<br />
+<input name="cbibooks[]" value = "books" type="checkbox" />Bookees<br />
+<input name="cbibooks[]" value = "novels" type="checkbox" />novels<br />
+<input name="cbibooks[]" value = "technical" type="checkbox" />techncal books<br />
+<br/>
+Select your interests: in internet<br />
+<input name="cbiinternet[]"  value = "songs" type="checkbox" />Internet songs<br/>
+<input name="cbiinternet[]"  value = "videos" type="checkbox" />Internet videos<br/>
+<input name="cbiinternet[]" value = "gags" type="checkbox" />Internet gags<br/>
+<br/><br/>
+
+<select name="selectinputs" multiple>
+<optgroup label="Text inputs">
+<option>Single line</option>
+<option selected="selected">Password</option>
+<option>Multi-line</option>
+</optgroup>
+<optgroup label="Options">
+<option>Check boxes</option>
+<option>Radio buttons</option>
+<option>Select lists</option>
+</optgroup>
+</select>
+<input type = "submit" value = "Submit"/>
+</form>
+</body>
+</html>

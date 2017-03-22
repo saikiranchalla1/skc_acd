@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8" />
+	<script src="js\lib\angular.min.js" type="text/javascript">
+	</script>
+	<script type="text/javascript">
+	var myModule = angular.module('myModule', []);
+	myModule.controller('MyCtrl', function ($scope) {
+		$scope.location = "New York";
+		$scope.name = "smith";
+		});
+	</script>
+</head>
+<body>
+	<div ng-app="myModule" 
+	<div ng-controller="MyCtrl">
+	<p>{{"Name is "+ name + " and location is " + location}}</p>
+	</div>
+ </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tool Tips Demo</title>
+
+    <style>
+        .tt-wrapper {
+            padding: 0;
+            width: 500px;
+            height: 100px;
+            margin: 100px auto 50px auto;
+        }
+
+        .tt-wrapper li {
+
+            float: left;
+        }
+
+        .tt-wrapper li a {
+            display: block;
+            width: 70px;
+            margin:  0 2px;
+            background: transparent url("tooltip_assets/growcase_the_social_gunman_icons.png") no-repeat top left;
+            position: relative;
+
+        }
+
+        .tt-wrapper li .tt-gplus {
+            background-position: 0px 0px;
+        }
+        .tt-wrapper li .tt-twitter {
+            background-position: -70px 0px;
+        }
+
+        .tt-wrapper li a span:after {
+            bottom: -14px;
+            margin-left: -10px;
+            border-top: 10px solid blue;
+        }
+
+        .tt-wrapper li a:hover span {
+            opacity: 0.8;
+            bottom: 80px;
+        }
+    </style>
+    <link rel="stylesheet" href="tooltip_assets/style.css">
+</head>
+<body>
+<ul class="tt-wrapper">
+    <li><a href="#" class="tt-gplus"><span>Testing</span></a></li>
+    <li><a href="#" class="tt-twitter"><span>Twitter</span></a></li>
+    <li><a href="#" class="tt-linkedin"><span>Twitter</span></a></li>
+    <li><a href="#" class="tt-twitter"><span>Twitter</span></a></li>
+</ul>
+</body>
+</html>

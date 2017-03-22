@@ -1,0 +1,133 @@
+<h2>Order Sheet</h2>
+<form novalidate [formGroup]="orderSheetForm" (ngSubmit) = "onSubmitForm()">
+  <section class="customer-name">
+    <input type="text" placeholder="Your Name" formControlName="customerName">
+    <div *ngIf="customerNameControl.errors" class="errors">
+        <div *ngIf="customerNameControl.errors.required">
+            Required!!!!
+        </div>
+         <div *ngIf="customerNameControl.errors.minlength">
+            Must be atleast 2 characters
+        </div>
+    </div>
+    <div *ngIf="showWelcomeMess" class="welcome-back">
+        Welcome back {{customerNameControl.value}}
+    </div>
+  </section>
+  <section class="size">
+    <h1>Pick your size</h1>
+    <ul>
+      <li>
+        <input id="sizeSmall" type="radio" name="size" value="small" formControlName="size">
+        <label for="sizeSmall">Small</label>
+      </li>
+      <li>
+        <input id="sizeLarge" type="radio" name="size" value="large" formControlName="size">
+        <label for="sizeLarge">Large</label>
+      </li>
+    </ul>
+  </section>
+  <section class="specialty-sandwiches">
+    <h1>Specialty Sandwiches</h1>
+    <label>Me wants:</label>
+    <select formControlName="specialtySandwich">
+      <option value=""></option>
+      <option value="The Grinder">The Grinder</option>
+      <option value="Cordon Bleu">Cordon Bleu</option>
+      <option value="Cali Cheesesteak">Cali Cheesesteak</option>
+    </select>
+  </section>
+  <section class="build-your-own" *ngIf="!orderSheetForm.get('specialtySandwich').value">
+    <h1>Build Your Own</h1>
+    <section>
+      <h1>A Bread</h1>
+      <ul>
+        <li>
+          <input id="breadWheatRoll" type="radio" name="bread" value="wheat roll" formControlName="bread">
+          <label for="breadWheatRoll">Wheat Roll</label>
+        </li>
+        <li>
+          <input id="breadWhiteRoll" type="radio" name="bread" value="white roll" formControlName="bread">
+          <label for="breadWhiteRoll">White Roll</label>
+        </li>
+        <li>
+          <input id="breadSourdoughRoll" type="radio" name="bread" value="sourdough roll" formControlName="bread">
+          <label for="breadSourdoughRoll">Sourdough Roll</label>
+        </li>
+      </ul>
+      <div *ngIf="orderSheetForm.errors" class="errors">
+        <div *ngIf="orderSheetForm.errors.requiredwhen">
+          No Sandwich selected!! Let us know your requirement!!!
+        </div>
+      </div>
+    </section>
+    <section formGroupName="meats">
+      <h1>The Meats</h1>
+      <ul>
+        <li>
+          <input id="meatHam" type="checkbox" formControlName="meatHam">
+          <label for="meatHam">Ham</label>
+        </li>
+        <li>
+          <input id="meatTurkey" type="checkbox" formControlName="meatTurkey">
+          <label for="meatTurkey">Turkey</label>
+        </li>
+        <li>
+          <input id="meatRoastBeef" type="checkbox" formControlName="meatRoastBeef">
+          <label for="meatRoastBeef">Roast Beef</label>
+        </li>
+      </ul>
+    </section>
+    <section formGroupName="cheeses">
+      <h1>The Cheeses</h1>
+      <ul>
+        <li>
+          <input id="cheeseProvolone" type="checkbox" formControlName="cheeseProvolone">
+          <label for="cheeseProvolone">Provolone</label>
+        </li>
+        <li>
+          <input id="cheeseCheddar" type="checkbox" formControlName="cheeseCheddar">
+          <label for="cheeseCheddar">Cheddar</label>
+        </li>
+        <li>
+          <input id="cheeseSwiss" type="checkbox" formControlName="cheeseSwiss">
+          <label for="cheeseSwiss">Swiss</label>
+        </li>
+      </ul>
+    </section>
+    <section formGroupName="veggiesAndSuch">
+      <h1>Veggies 'n Such</h1>
+      <ul>
+        <li>
+          <input id="veggieLettuce" type="checkbox" formControlName="veggieLettuce">
+          <label for="veggieLettuce">Lettuce</label>
+        </li>
+        <li>
+          <input id="veggieTomato" type="checkbox" formControlName="veggieTomato" >
+          <label for="veggieTomato">Tomato</label>
+        </li>
+        <li>
+          <input id="veggieMustard" type="checkbox" formControlName="veggieMustard">
+          <label for="veggieMustard">Mustard</label>
+        </li>
+      </ul>
+    </section>
+  </section>
+  <section class="weird-requests">
+    <h1>Weird Requests</h1>
+    <ul>
+      <li>
+        <input type="text">
+        <button type="button" title="Remove Request">Remove</button>
+      </li>
+    </ul>
+    <button type="button">Add a Request</button>
+  </section>
+  <section>
+    <h1>Other Notes</h1>
+    <textarea formControlName="otherNotes"></textarea>
+  </section>
+  <button type="submit" [disabled]="!orderSheetForm.valid">Place Order</button>
+  <button type="button" (click) = "onResetForm()">Reset</button>
+</form>
+<debug-panel [data]= "orderSheetForm.value"></debug-panel>

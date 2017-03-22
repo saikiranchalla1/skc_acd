@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+
+  #parent{
+    padding:10px;
+    border:3px solid green;
+  }
+  #child{
+    padding:5px;
+    border:3px solid blue;
+  }
+  </style>
+  <title>Hi</title>
+  <script src="angular.js"></script>
+  <script>
+  var app = angular.module("app",[]);
+  app.controller("Ctrl1",function($scope){
+    $scope.name = "Harry";
+    $scope.alertName = function(){
+      alert($scope.name);
+    };
+  });
+  app.directive("testDirective", function(){
+    return {
+      restrict: "A",
+      scope: false,
+      template: "<div>Your name is : {{name}}"+
+      "Change your name witht the input: <input type='text' ng-model='name' /></div>",
+      replace:true
+    };
+  });
+  </script>
+</head>
+<body ng-app = "app">
+ <div ng-controller="Ctrl1" id = "parent">
+  <h2 ng-click="alertName()">Hi  {{name}}, Click to alert your name</h2>
+  <div id = "child" test-directive></div>
+</div>
+</body>
+</html>

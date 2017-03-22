@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('homeCtrl', function ($scope, $http) {
+			
+		  $http({method : 'GET', url : 'employees.json'}).
+            success(function(data){
+              $scope.employee = data;  
+            })
+            .error(function(){
+                
+          });
+
+		});
+
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="homeCtrl">
+
+
+			  <table border="2px">
+			    <tr>
+			      <th>  Name</th>
+			      <th>  Age</th>
+			      <th>  Employee Id</th>
+			      <th>  Salary </th>
+
+			    </tr>
+			    <tr>
+			      <td>{{employee.name}}</td>
+			      <td>{{employee.age}}</td>
+			      <td>{{employee.employeeId}}</td>
+			      <td>{{employee.salary}}</td>
+
+			    </tr>
+			  </table>
+
+		</div>
+				
+</center>
+
+
+</body>
+</html>

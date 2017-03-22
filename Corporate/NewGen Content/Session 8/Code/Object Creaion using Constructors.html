@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object Creation using Constructor</title>
+</head>
+<body>
+<p id="para1"></p>
+<script type="text/javascript">
+	function person(fname, lname, age){
+		this.firstName = fname;
+		this.lastName = lname;
+		this.age = age;
+	}
+
+	var myObj = new person('John', 'Cena', 50);
+	document.getElementById('para1').innerHTML = myObj.firstName + ' ' + myObj.lastName + ' is aged ' + myObj.age;
+</script>
+</body>
+</html>

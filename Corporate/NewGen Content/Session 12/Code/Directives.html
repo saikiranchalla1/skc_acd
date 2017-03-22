@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directives</title>
+	<title>One way data binding</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		var module = angular.module("myApp", []);
+		module.controller("myCtrl", function($scope){
+			$scope.clickFunc = function(){
+				console.log("Click Event is triggered");
+			}
+			$scope.dblClickFunc = function(){
+				console.log("Double Click Event is triggered");	
+			}
+			$scope.blurFunc = function(){
+				console.log("Blur Event is triggered");		
+			}
+
+			$scope.todos = [
+				{action: "Action 1", complete:true},
+				{action: "Action 2", complete:false},
+				{action: "Action 3", complete:false},
+				{action: "Action 4", complete:true},
+				{action: "Action 5", complete:false},
+				{action: "Action 6", complete:false},
+				{action: "Action 7", complete:true}
+
+			];
+			$scope.changeFunc = function(){
+				console.log("Change Function is triggered " + $scope.tempVar );
+			}
+		});
+	</script>
+</head>
+<body>
+<br><br><br>
+<div class="container" ng-app="myApp" ng-controller="myCtrl">
+	<input type="text" name="name" placeholder="enter some text" ng-model="temp">
+	<p ng-show="temp">You have entered <h4 ng-bind="temp"></h4></p>
+	<button ng-click="clickFunc()">Click Here</button>
+	<button ng-dblclick="dblClickFunc()">Click Here</button>
+	<input type="text" name="tb1" placeholder="some text.." ng-blur="blurFunc()">
+	<input type="text" name="tb2" placeholder="enter some text" ng-change="changeFunc()" ng-model="tempVar">
+	<br>
+	<input type="checkbox" name="cb1" ng-model="myVariable">Show/hide
+	<br>
+	<p>{{myVariable}}</p>
+	<div ng-show="myVariable">
+		Ng-Show Directive
+	</div>
+	<div ng-hide="myVariable">
+		Ng-Hide Directive
+	</div>
+	<br>
+	Enter your URL: <input type="text" name="url1" ng-model="myUrl">
+	<a ng-href="{{myUrl}}">{{myUrl}}</a>
+	<br>
+	<h4>{{[1,2,3,4,5][2]}}</h4>
+	The output of <h4 ng-non-bindable>{{[1,2,3,4,5][2]}}</h4> is <h4>{{[1,2,3,4,5][2]}}</h4>
+	<br><br>
+	<hr>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Action</th>
+				<th>Complete?</th>
+				<th>Odd?</th>
+				<th>Even?</th>
+				<th>Middle?</th>
+				<th>First?</th>
+				<th>Last?</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat = "item in todos">
+				<td>{{$index + 1}}</td>
+				<td>{{item.action}}</td>
+				<td>{{item.complete ? 'Complete' : 'Not Complete'}}</td>
+				<td>{{$odd}}</td>
+				<td>{{$even}}</td>
+				<td>{{$middle}}</td>
+				<td>{{$first}}</td>
+				<td>{{$last}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<br><br>
+	<input type="checkbox" name="" ng-model="myVar">
+	<select>
+		<option>Student 1</option>
+		<option>Student 2</option>
+		<option ng-selected="myVar">Student 3</option>
+		<option>Student 4</option>
+	</select>
+	<br><br><br>
+</div>
+</body>
+</html>

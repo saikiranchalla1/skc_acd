@@ -1,0 +1,37 @@
+describe("First Test", function(){
+	//AAA = Arrange, Act and Assert
+
+	//Arrange
+	var counter = 0;
+	beforeEach(function(){
+		counter = 0;
+	});
+
+	it("increment value", function(){
+		//Act
+		counter++;
+
+		//Assert
+		expect(counter).toEqual(1);
+		/*
+			1) expect(x).toBe(obj) --- same objects
+			2) expect(x).toMatch(regexp)
+			3) expect(x).toBeDefined()
+			4) expect(x).toBeUndefined()
+			5) expect(x).toBeNull()
+			6) expect(x).toBeTruthy()
+			7) expect(x).toBeFalsy()
+			8) expect(x).toBeGreaterThan(y)
+			9) expect(x).toContain(y)
+			expect(x).not.toEqual(y)
+		*/
+	});
+
+	it("decreements value", function(){
+		//Act
+		counter--;
+
+		//Assert
+		expect(counter).toEqual(-1);
+	});
+});

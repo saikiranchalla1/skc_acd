@@ -1,0 +1,43 @@
+a {
+    cursor: crosshair;
+}
+div {
+    /*border: 2px solid red;*/
+    border-top: 1px solid red;
+    border-bottom: 1px solid blue;
+
+    /*border-width: 10px;*/
+    color : red;
+    cursor: help;
+}
+
+div.static {
+    position: static;
+    border : 2px solid blue;
+}
+
+div.relative{
+    position: relative;
+    border: 2px solid yellow;
+    left: 30px;
+    width:400px;
+    height: 200px;
+}
+
+div.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 2px solid brown;
+}
+
+div.absolute {
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    border: 2px solid black;
+    width: 200px;
+    height: 100px;
+    background-image: url("index.jpg");
+}

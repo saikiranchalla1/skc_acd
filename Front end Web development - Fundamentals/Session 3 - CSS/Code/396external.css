@@ -1,0 +1,40 @@
+p {
+			background-color: red;
+		}
+
+		#mypara {
+			background-color: yellow;
+		}
+
+		.mystyle {
+			background-color: blue;
+		}
+
+		div.mystyle {
+			background-color: black;
+		}
+
+		a[target] {
+			background-color: yellow;
+		}
+
+		a[target=_blank] {
+			background-color: red;
+		}
+
+		a[href~="acadgild"] {
+			background-color: blue;
+		}
+
+		[href|=http] {
+			background-color: black;
+		}
+
+
+		img[title~=johnny] {
+			border: 1px solid yellow;
+		}
+
+		[lang|=en] {
+			background: yellow;
+		}

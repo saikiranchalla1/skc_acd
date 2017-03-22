@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Object Constructor Demo</title>
+</head>
+<body>
+<p id="myPara"></p>
+<script type="text/javascript">
+	function person(first, last, age, married){
+		this.first = first;
+		this.last = last;
+		this.age = age;
+		this.married = married;
+	}
+
+	var myFather = new person('John', 'Cena', 30, false);
+	
+	var myObject = new Object();
+	myObject.first = 'My Object';
+	myObject.last = 'My Object Last';
+
+	document.getElementById('myPara').innerHTML = myFather.first + " " + myFather.last + " is " + myFather.age  + " years old";
+</script>
+</body>
+</html>

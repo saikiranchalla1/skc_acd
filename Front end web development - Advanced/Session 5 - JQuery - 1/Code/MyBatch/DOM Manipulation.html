@@ -1,0 +1,106 @@
+<html>
+<head>
+	<title>DOM Manipulation</title>
+	<style type="text/css">
+		div {
+			border: 1px solid red;
+			width: 300px;
+			height: 150px;
+		}
+
+		.important {
+			font-weight: bold;
+			font-size: 24px;
+		}
+
+		.red {
+			color: red;
+		}
+	</style>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btn1').click(function(){
+				$('p').append(" <b>This is appended text </b>");
+
+				$('ol').append('<li>Item 4</li>');
+			});
+
+			$('#btn2').click(function(){
+				$('p').prepend('<b>This is prepended text </b>');
+				$('ol').prepend('<li>Item -1</li>');
+			});
+
+			$('#btn3').click(function(){
+				$('p').after(" <b>This is after text </b>");
+
+				$('ol').after('<b>Item 4</b>');
+			});
+
+			$('#btn4').click(function(){
+				$('p').before('<b>This is before text </b>');
+				$('ol').before('<b>Item -1</b>');
+			});
+			$('#btn5').click(function(){
+				$('div').remove();
+			});
+			$('#btn6').click(function(){
+				$('div').empty();
+			});
+
+
+			$('#btn7').click(function(){
+				$('p, li').addClass('red important');
+				$('div').addClass('red important');
+			});
+			$('#btn8').click(function(){
+				$('p, li').removeClass('red');
+				$('div').removeClass('red');
+			});
+
+			$('#btn9').click(function(){
+				$('h1').toggleClass('red');
+			});
+
+			$('#btn10').click(function(){
+				var temp = $('div').css('width');
+				// alert(temp);
+				$('h1').html(temp);
+			});
+
+			$('#btn11').click(function(){
+				// var temp = $('div').css('width', '400px');
+				var temp = $('div').css({
+					'border' : '20px solid blue',
+					'height' : '200px'
+				});
+				$('h1').html(temp.text());
+			});
+		});
+	</script>
+</head>
+<body>
+<p>This is a paragraph</p>
+<p>This is another paragraph</p>
+<ol>
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+</ol>
+<div>
+	This is a DIV element
+</div>
+<h1>Toggle Class</h1>
+<button id="btn1">Click Here to Append</button>
+<button id="btn2">Click Here to Prepend</button>
+<button id="btn3">Click Here to After</button>
+<button id="btn4">Click Here to Before</button>
+<button id="btn5">Click Here to Remove DIV</button>
+<button id="btn6">Click Here to Empty DIV</button>
+<button id="btn7">Click Here to Add Class</button>
+<button id="btn8">Click Here to Remove Class</button>
+<button id="btn9">Click Here to Toggle Class</button>
+<button id="btn10">Click Here to Get CSS Details</button>
+<button id="btn11">Click Here to Modify CSS</button>
+</body>
+</html>

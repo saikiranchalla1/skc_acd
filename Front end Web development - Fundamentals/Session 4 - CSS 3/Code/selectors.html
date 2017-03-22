@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Transitions Example</title>
+	<style type="text/css">
+		/*div p {
+			background-color: yellow;
+		}*/
+		div > p {
+			background-color: yellow;
+		}
+		input:enabled {
+			background-color: red;
+		}
+		input:disabled {
+			background-color: yellow;
+		}
+		input:valid {
+			background-color: blue;
+		}
+		input:in-range {
+			border: 5px solid yellow;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<h2>thIS IS A h2 tag</h2>
+	<p>this is a paragraph</p>
+</div>
+<div>
+	<span><p>This is not going to be styled</p></span>
+</div>
+<p>This is another paragraph</p>
+<input type="email"></input>
+<input type="number" readonly required min="5" max="10"></input>
+</body>
+</html>

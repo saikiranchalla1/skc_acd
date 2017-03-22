@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Storage Type</title>
+
+</head>
+<body>
+<div id="mydiv"></div>
+<button onclick="clickCounter()" type="button">Click Me!!!</button>
+<script type="text/javascript">
+		function clickCounter(){
+			if(typeof(Storage) !== "undefined"){
+				if(sessionStorage.clickCount){
+					sessionStorage.clickCount = Number(sessionStorage.clickCount) + 1;
+				}else{
+					sessionStorage.clickCount = 1;
+				}
+				document.getElementById("mydiv").innerHTML = sessionStorage.clickCount;
+			}else{
+				alert("Not Supported!!!!")
+			}
+		}
+	</script>
+</body>
+</html>

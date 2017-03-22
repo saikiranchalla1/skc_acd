@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8" />
+	<script src="angular.js" type="text/javascript">
+	</script>
+	<script type="text/javascript">
+	var myModule = angular.module('myModule', []);
+	myModule.controller('MyCtrl', function ($scope) {
+		$scope.firstname= 'John';
+		$scope.lastname= 'Doe';
+		$scope.click = function() { 
+			alert("first name is "+$scope.firstname+"and last name is "+$scope.lastname); 
+		};
+	});
+	</script>
+</head>
+<body>
+	<div ng-app="myModule" 
+	<div ng-controller="MyCtrl">
+		<p>Firstname: <input type="text" ng-model="firstname"></p>
+		<p>Lastname: <input type="text" ng-model="lastname"></p>
+		<p>{{firstname}}</p>
+		<button ng-click="click()">Show Name</button>
+	</div>
+</div>
+</body>
+</html>

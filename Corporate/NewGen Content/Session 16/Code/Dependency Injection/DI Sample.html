@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DI Demo</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		var module = angular.module("myApp", ['customServices']);
+		module.config(function(logServicesProvider){
+			logServicesProvider.debugEnabled(true).messageCounterEnabled(true);
+		});
+		module.controller("myCtrl", function($scope, logService, logServices){
+			$scope.data = {
+				cities: ["Delhi", "Kolkata", "Mumbai"],
+				totalClicks : 0
+			};
+
+
+			$scope.$watch('data.totalClicks', function(newValue){
+				/*console.log("Total Click Count: "  + newValue);*/
+				logService.log("Total Click Count: "  + newValue);
+			});
+
+
+		});
+		module.directive("triButton", function(logService, debugService, errorService, logServices){
+			return {
+				scope : {
+					counter: "=counter"
+				},
+				link : function(scope, element, attrs){
+					element.on("click", function(event){
+						/*console.log("Button Click: " + event.target.innerText);*/
+						/*logService.log("Button Click: " + event.target.innerText);*/
+						/*debugService.log("Button Click: " + event.target.innerText);
+						errorService.log("Button Click: " + event.target.innerText);*/
+						logServices.log("Button Click: " + event.target.innerText);
+						scope.$apply(function(){
+							scope.counter++;
+						});
+					})
+				}
+			}
+		});
+
+		/* Another module starts for defining services */
+		var servicesMod = angular.module("customServices", []);
+		servicesMod.factory("logService", function(){
+			var messageCount = 0;
+			return {
+				log: function(msg){
+					console.log("(LOG " + messageCount++ + ")" + msg );
+				}
+			}
+		});
+
+		var BaseLogger = function(){
+			this.messageCount = 0;
+			this.log = function(msg){
+				console.log(this.msgType + ":" + (this.messageCount++) + "  " + msg);
+			}
+		}
+
+		var debugLogger = function () {};
+		debugLogger.prototype = new BaseLogger();
+		debugLogger.prototype.msgType = "Debug";
+
+		var errorLogger = function() {};
+		errorLogger.prototype = new BaseLogger();
+		errorLogger.prototype.msgType = "Error";
+
+		servicesMod.service("debugService", debugLogger);
+		servicesMod.service("errorService", errorLogger);
+
+		/*Provider Service */
+		servicesMod.provider("logServices", function(){
+			var counter = true;
+			var debug = true;
+			return {
+				messageCounterEnabled : function(setting){
+					if(angular.isDefined(setting)){
+						counter = setting;
+						return this;
+					}else{
+						return counter;
+					}
+				},
+				debugEnabled : function(setting){
+					if(angular.isDefined(setting)){
+						debug = setting;
+						return this;		
+					}else{
+						return debug;
+					}
+				},
+				$get : function(){
+					return {
+						messageCount : 0,
+						log: function(msg){
+							if(debug){
+								console.log("(Log " + (counter ? " + " + this.messageCount++ + ")" : ")" ) + ") " + msg);
+							}
+						}
+					}
+				}
+			}
+		});
+		module.value("fooValue", 'Some string');
+		module.constant("fooConstant" {
+			config1: true,
+			config2 : 'Some String'
+		});
+	</script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+	<div class="well">
+		<div class="btn-group" tri-button counter="data.totalClicks" source="data.cities">
+			<button class="btn btn-default" ng-repeat="city in data.cities">
+				{{city}}
+			</button>
+		</div>
+	</div>
+</div>
+</body>
+</html>

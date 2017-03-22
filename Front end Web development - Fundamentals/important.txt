@@ -1,0 +1,15 @@
+Firefox Developer Edition :https://www.mozilla.org/en-US/firefox/developer/
+
+MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+Sublime: https://www.sublimetext.com/3
+
+
+Before we start: 
+
+https://www.tutorialspoint.com/cprogramming/c_decision_making.htm
+https://www.tutorialspoint.com/cprogramming/c_loops.htm
+
+Google Drive Link:
+http://bit.ly/acdfrontendfundamentals 
+https://drive.google.com/drive/folders/0B3vG6UQj7moyakNsdFJFMWxsQms?usp=sharing

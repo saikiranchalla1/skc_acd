@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Storage Type</title>
+
+</head>
+<body>
+<div id="mydiv"></div>
+<button onclick="clickCounter()" type="button">Click Me!!!</button>
+<script type="text/javascript">
+		function clickCounter(){
+			if(typeof(Storage) !== "undefined"){
+				if(localStorage.clickCount){
+					localStorage.clickCount = Number(localStorage.clickCount) + 1;
+				}else{
+					localStorage.clickCount = 1;
+				}
+				document.getElementById("mydiv").innerHTML = localStorage.clickCount;
+			}else{
+				alert("Not Supported!!!!")
+			}
+		}
+	</script>
+</body>
+</html>

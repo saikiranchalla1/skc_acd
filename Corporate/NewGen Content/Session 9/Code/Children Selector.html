@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Children Selector</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style type="text/css">
+		.descendants *{
+			display: block;
+			border: 1px solid blue;
+			padding: 5px;
+			margin: 15px;
+		}
+		.myClass {
+			width: 400px;
+			height: 400px;
+		}
+
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			/*$("ul").children().css({
+				"color" : "red",
+				"border" : "1px solid red"
+			});*/
+			/*$("span").parent().css({
+				"color" : "orange",
+				"border" : "1px solid red"
+			});*/
+			$("li").next().css({
+				"color" : "lightgrey",
+				"border" : "1px solid red"
+			});
+		});
+	</script>
+</head>
+<body class="descendants">
+Ancestor (Great-grandparent)
+<div style="width:500px;">(grand-parent)
+	<ul>(direct parent)
+		<li> (child)
+			<span>(Grand Child)</span>
+		</li>
+		<li> (child)
+			<span>(Grand Child)</span>
+		</li>
+		<li> (child)
+			<span>(Grand Child)</span>
+		</li>
+		<li> (child)
+			<span>(Grand Child)</span>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

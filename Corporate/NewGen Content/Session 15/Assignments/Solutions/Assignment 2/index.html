@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angular.js"></script>
+
+	<title>Assignment Solution </title>
+
+	<script type="text/javascript">
+	
+		var myApp = angular.module('myApp', []);
+
+		myApp.controller('homeCtrl', function ($scope) {
+
+		});
+
+		myApp.directive("myElementDirective", function(){
+	        return {
+	            restrict : 'E',
+	            template : 'First alert is from Element directive',
+	            link: function($scope, element, attrs) {
+		            alert("Hello, This alert is from element directive");
+		        }
+	        }
+    	});
+
+    	myApp.directive("myAttributeDirective", function(){
+	        return {
+	            restrict : 'A',
+	            template : 'Second alert is from Attribute directive',
+	            link: function($scope, element, attrs) {
+		            alert("Hello, This alert is from Attribute directive");
+		        }
+	        }
+    	});
+
+    	myApp.directive("myClassDirective", function(){
+	        return {
+	            restrict : 'C',
+	            template : 'Third alert is from Class directive',
+	            link: function($scope, element, attrs) {
+		            alert("Hello, This alert is from Class directive");
+		        }
+
+	        }
+    	});
+  
+
+	</script>
+
+
+</head>
+
+<body>
+
+<center>
+
+		<div ng-controller="homeCtrl">
+
+			<my-element-directive>
+			</my-element-directive>
+			
+			<div my-attribute-directive>
+
+        	</div>
+
+        	<div class="my-class-directive">
+        		
+        	</div>
+
+		</div>
+				
+</center>
+
+
+</body>
+</html>

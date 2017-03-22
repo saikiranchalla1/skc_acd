@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First JS</title>
+	<!-- <script type="text/javascript" src="myjs.js"></script> -->
+
+	<script type="text/javascript">
+		
+		function multiply(a, b){
+			//function body
+			return a * b;
+
+		}
+		/*var a = prompt("A:");
+		var b = prompt("B:");
+		alert(multiply(a,b));
+*/
+		var currentDt = new Date()
+		if(currentDt.getHours() < 6){
+			console.log("Good Morning");
+		}else if(currentDt.getHours() == 7){
+			console.log("He is in a Session");
+		}else {
+			console.log("Current Hours is :" + currentDt.getHours());
+		}
+
+
+		var currentDay = new Date().getDay();
+		switch(5){
+			case 0: console.log("Sunday");
+					break;
+			case 1: console.log("Monday");
+					break;
+			case 2: console.log("Tuesday");
+					break;
+			case 3: console.log("Wednesday");
+					break;
+			case 4: console.log("Thursday");
+					break;
+			case 5:
+			case 6:
+			case 7: console.log("Some Good Day!!!");
+					break;
+			default: console.log("End of World!!!!");
+		}
+	</script>
+</head>
+<body>
+<h4>Hi, you are learning JS</h4>
+
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>

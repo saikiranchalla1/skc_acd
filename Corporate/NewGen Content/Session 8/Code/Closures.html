@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Closures</title>
+</head>
+<body>
+<button type="button" onclick="myFunction()">Click Me!!!</button>
+<p id="para1"></p>
+<script type="text/javascript">
+	
+	function myFunction(){
+		/*var a = 5;*/
+
+		document.getElementById('para1').innerHTML = add();
+	}
+/*	function add(){
+		var counter = 0;
+		function plus() {counter += 1;}
+		plus();
+		return counter;
+	}*/
+
+	var add = (function(){
+		var counter = 0;
+		return function() {return counter += 1;}
+	})();
+</script>
+</body>
+</html>

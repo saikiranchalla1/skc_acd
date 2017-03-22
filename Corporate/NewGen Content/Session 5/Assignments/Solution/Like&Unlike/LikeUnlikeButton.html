@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Problem 01 - Like / Unlike Button</title>
+		<meta charset = "UTF-8">
+		<link type="text/css" rel="stylesheet" href="01_styles.css" />
+	</head>
+	<body>
+		<input type="button" id="likeUnlikeButton"
+		onclick="change()" value="Like"/>
+		<script>
+			var elem = document.getElementById('likeUnlikeButton');
+			function change() {
+				if (elem.value=='Like') {
+					elem.value = 'Unlike';
+					elem.style.backgroundColor = '#ff6347';
+				}
+				else {
+					elem.value = 'Like';
+					elem.style.backgroundColor = '#87ceeb';
+				}
+				
+			}
+		</script>
+	</body>
+</html>

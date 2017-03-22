@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>Geo-location API</title>
+</head>
+<body>
+	<button onclick="getLocaltion()">Click Here</button>
+	<button onclick="stopWatch()">Click Here</button>
+	<p id="para"></p>
+	<script type="text/javascript">
+		var x = document.getElementById('para');
+		var iCtr = 0;
+		function getLocaltion () {
+			// body...
+			if(navigator.geolocation){
+				// navigator.geolocation.getCurrentPosition(showPosition, showError);
+				navigator.geolocation.watchPosition(showPosition);
+			}else{
+				x.innerHTML = "Geolocation is not supported b the browser";
+			}
+		}
+
+		function showPosition (position) {
+			// body...
+			console.log("Show Position Called: " + iCtr++);
+			x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+		}
+		function stopWatch(){
+			navigator.geolocation.clearWatch(showPosition);
+		}
+		function showError(error){
+			switch(error.code){
+				case error.PERMISSION_DENIED :
+						x.innerHTML = "PERMISSION DENIED";
+						break;
+				case error.POSITION_UNAVAILABLE :
+						x.innerHTML = "Location info not available";
+						break;
+				case error.TIMEOUT :
+						x.innerHTML = "Timeout error";
+						break;
+				case error.UNKNOWN_ERROR :
+						x.innerHTML = "Unknown Error";
+			}
+		}
+	</script>
+</body>
+</html>

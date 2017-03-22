@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>Directives Scope</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/ng-template" id="scopeTemplate">
+		<div class="panel-body">
+			<!-- <p>Name: <input ng-model="data.name"/></p>
+			 <p>City: <input ng-model="city"/></p>
+			 <p>Country: <input ng-model="Country"/></p> 
+			<p>Data Value : <input ng-model="local"></p>-->
+			<p>Name: {{local}}, City: {{cityFn()}}</p>
+		</div>
+
+	</script>
+	<script type="text/javascript">
+		var mod = angular.module("myApp", []);
+		mod.directive("scopeDemo", function(){
+			return {
+				// template :"<div class='panel-body'>Name:<input ng-model='name'/></div>",
+				template : function(){
+					return angular.element(
+						document.querySelector("#scopeTemplate")).html();
+				},
+				scope: {
+					local : "=nameprop",
+					cityFn : "&city"
+				}
+			}
+		});
+		mod.controller("firstCtrl", function($scope){
+
+		});
+		mod.controller("secondCtrl", function($scope){
+
+		});
+		mod.controller("myCtrl", function($scope){
+			$scope.data = {
+				name : "AcadGild",
+				defaultCity : "Hyderabad"
+			};
+			$scope.city = "London";
+			$scope.getCity = function(name){
+				return name == "AcadGild" ? $scope.data.defaultCity : "Unknown";
+			}
+		})
+	</script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl" class="panel panel-default">
+		<div class="panel-body">
+			Direct Binding: <input ng-model="data.name"/>
+		</div>
+		<div class="panel-body" scope-demo nameprop="data.name" city="getCity(data.name)"></div>
+		<!-- <div class="panel-body" scope-demo></div> -->
+	</div>
+</body>
+</html>

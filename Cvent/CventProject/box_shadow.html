@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Box SHadow</title>
+    <style>
+        div {
+            /*width: 300px;*/
+            /*height:100px;*/
+            /*background-color: blue;*/
+            /*box-shadow: 10px 10px 5px grey;*/
+            position: relative;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+            background: white;
+        }
+
+        div img {
+            width: 100%;
+            border: 1px solid grey;
+            border-style: inset;
+        }
+
+        div::after {
+            content : "<a href='http://www.google.com'>google.com</a>";
+            position: absolute;
+            /*z-index: -1;*/
+            box-shadow: 0 15px 20px rgba(0,0,0, 0.3);
+            width: 75%;
+            left: 15%;
+            height:100px;
+            bottom : 0;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="image2.jpg" alt="" width="500" height="400">
+</div>
+</body>
+</html>

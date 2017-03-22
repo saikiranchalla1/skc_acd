@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Circle Area
+		</title>
+		<meta charset="UTF-8" />
+		<script type="text/javascript" src="javascript/circle-area.js">
+			
+		</script>
+	</head>
+	<body>
+		<h1>
+			Circle Area
+		</h1>
+		<p>
+			Write a JavaScript function calcCircleArea(r) that takes as a parameter the radius of a rectangle and calculates and returns its area. Put the function in a file named circle-area.js. Write a HTML page circle-area.html that includes the script circle-area.js and calculates and prints in the page body the area of circles of size r=7, r=1.5 and r=20.
+		</p>
+		<p id="first">
+			<script>
+				document.getElementById("first").innerHTML = "r = " + 7 + "; area = " + calcCircleArea(7);
+			</script>
+		</p>
+		<p id="second">
+			<script>
+				document.getElementById("second").innerHTML = "r = " + 1.5 + "; area = " + calcCircleArea(1.5);
+			</script>
+		</p>
+		<p id="third">
+			<script>
+				document.getElementById("third").innerHTML = "r = " + 20 + "; area = " + calcCircleArea(20);
+			</script>
+		</p>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<title>Rootscope</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var mod = angular.module("myMod",[]);
+	mod.run(function($rootScope){
+		$rootScope.appName = "My Application";
+	});
+
+	mod.controller("myCtrl1", function($scope){
+		$scope.lastName= "Acad";
+		$scope.firstName = "Gild";
+		$scope.appName = "Not My Application";
+	});
+
+	mod.controller("myCtrl2", function($scope){
+		$scope.lastName= "Last";
+		$scope.firstName = "Name";
+	})
+
+
+	mod.controller("myChild1", function($scope){
+		$scope.name = "Child 1";
+	});
+	mod.controller("myChild2", function($scope){
+		$scope.name = "Child 2";
+	});
+
+	mod.controller("myParent", function($scope){
+		$scope.name = "Parent Controller";
+		$scope.lName = "Last Name from parent";
+	});
+</script>
+</head>
+<body>
+<div class="container">
+	<div ng-app="myMod">
+		<p>The application's name is {{appName}}</p>
+		<div ng-controller="myCtrl1">
+			<p>Name is {{lastName}} + {{firstName}}</p>
+			<!-- <p>{{$rootScope.appName}}</p> -->
+			<p>Modified application name is {{appName}}</p>
+		</div>
+		<div ng-controller="myCtrl2">
+			<p>Name is {{lastName}} + {{firstName}}</p>
+			<p>{{appName}}</p>
+		</div>
+
+		<hr>
+		<div ng-controller="myParent">
+		{{name}}
+			<div ng-controller="myChild1">
+				{{name}}
+				{{lName}}
+				<p>Parent Name: {{$parent.name}}</p>
+			</div>
+			<div ng-controller="myChild2">
+				{{name}}
+				{{lName}}
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

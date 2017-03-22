@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Caching Example</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var module = angular.module("myApp", []);
+	module.controller("myCtrl", function($scope, $cacheFactory){
+		$scope.cache = $cacheFactory('cacheId');
+		$scope.keys = [];
+		$scope.put = function(key, value){
+			if(angular.isUndefined($scope.cache.get(key))){
+				$scope.keys.push(key);
+			}
+			$scope.cache.put(key, value);
+		}		
+	})
+</script>
+</head>
+<body ng-app="myApp">
+<br><br><br>
+<div class="container" ng-controller="myCtrl">
+	<input type="text" name="tb1" ng-model="newCacheKey" placeholder="key">
+	<input type="text" name="tb2" ng-model="newCacheValue" placeholder="value">
+
+	<button ng-click="put(newCacheKey, newCacheValue)">Cache</button>
+
+	<br><br>
+	<h3>Cached Values</h3>
+	<div ng-repeat="key in keys">
+		<span ng-bind="key">:</span>
+		<b ng-bind="cache.get(key)"></b>
+		<button ng-click="cache.remove(key)">Remove</button>
+	</div>
+
+	<button ng-click="cache.removeAll()">Remove All</button>
+	<button ng-click="cache.destroy()">Destroy</button>
+
+	<br><br>
+	<p>Cache Information</p>
+	<div ng-repeat="(key, value) in cache.info()">
+		<span ng-bind="key">:</span>
+		<b ng-bind="value"></b>
+	</div>
+</div>
+
+
+</body>
+</html>

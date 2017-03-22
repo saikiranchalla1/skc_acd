@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM Demo</title>
+	<style type="text/css">
+		.myclass {
+			background-color: red;
+		}
+		.someclass{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+<h3>My First DOM Page</h3>
+<p id="mypara"></p>
+<button type="button" onclick="document.getElementById('mypara').style.color='red'">Click</button>
+<div></div>
+<span class="myclass">Span 1</span>
+<span class="myclass">Span 2</span>
+<span class="myclass">Span 3</span>
+<p class="someclass">Testing</p>
+<p class="someclass">Testing</p>
+<p class="someclass">Testing</p>
+<img src="">
+<script type="text/javascript">
+		document.getElementById("mypara").innerHTML = "Hello World!!!";
+		document.getElementsByTagName("div")[0].innerHTML = "Modified by DOM";
+		document.getElementsByClassName("myclass")[2].innerHTML = "This is also modified by DOM";
+		document.querySelectorAll(".someclass")[2].innerHTML = "Modified by <h2>Query Selector</h2>";
+		document.write(new Date());
+		document.getElementsByTagName("img")[0].src = "image1.jpg";
+		document.getElementById("mypara").style.color = "blue";
+</script>
+</body>
+</html>

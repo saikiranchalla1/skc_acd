@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geolocation</title>
+
+</head>
+<body>
+<div id="mydiv"></div>
+<button onclick="getLocation()" type="button">Click Me!!!</button>
+<script type="text/javascript">
+	function getLocation(){
+		if(navigator.geolocation){
+			navigator.geolocation.watchPosition(showPosition, showError);
+		}else{
+			alert("Not Supported!!!");
+		}
+	}
+
+	function showPosition(position){
+		console.log(new Date());
+		document.getElementById("mydiv").innerHTML = "Latitude:" + position.coords.latitude + "<br> Longitude: " + position.coords.longitude;
+	}
+
+	function showError(error){
+		console.log(new Date());
+		switch(error.code){
+			case error.PERMISSION_DENIED:
+			case error.POSITION_UNAVAILABLE:
+			case error.TIMEOUT:
+			case error.UNKNOWN_ERROR:
+					alert(error.message);
+					console.log(error);
+		}
+	}
+</script>
+</body>
+</html>

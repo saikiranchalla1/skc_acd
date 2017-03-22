@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animations</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            -webkit-animation-name: demo;
+            -moz-animation-name: demo;
+            -o-animation-name: demo;
+            animation-name: demo;
+            -webkit-animation-duration: 5s;
+            -moz-animation-duration: 5s;
+            -o-animation-duration: 5s;
+            animation-duration: 5s;
+            -webkit-animation-delay: 5s;
+            -moz-animation-delay: 5s;
+            -o-animation-delay: 5s;
+            animation-delay: 5s;
+            -webkit-animation-iteration-count: infinite;
+            -moz-animation-iteration-count: infinite;
+            -o-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-direction: alternate;
+            -moz-animation-direction: alternate;
+            -o-animation-direction: alternate;
+            animation-direction: alternate;
+        }
+
+
+        @keyframes demo {
+            /*from {background-color: red;}*/
+            /*to {background-color: yellow;}*/
+
+            0% {background-color: red; top: 0px; left: 0px;}
+            25% {background-color: yellow; left: 200px; top: 0px}
+            50% {background-color: blue; left: 200px; top: 200px}
+            75% {background-color: brown;left: 0px; top: 200px}
+            100% {background-color: green;left: 0px; top: 0px}
+        }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+body{
+	background-color:black;
+	color:white;
+	}
+	
+	label
+	{
+		padding-left:5px;
+		padding-right:5px;
+	}
+	
+	.container
+	{
+		display:flex;
+		flex-directin: row;
+		padding: 10px;
+		margin:10px;
+		
+	}
+	.flexItem
+	{
+		padding: 10px;
+		margin:10px;
+	}
+	
+	.headerImg
+	{
+		height:100px;
+		width:200px;
+	}
+	
+	a
+	{
+		color:red;
+	}
+		
+	.field
+	{
+	 	width:100px;
+	 	float:left	;
+	 	font-weight:bold;
+	}
+	 
+	 .control
+	 {
+	 	width:200px;
+	 	float:left;
+	 	font-weight:bold;
+	 
+	 }
+	 
+	p[data-attr1="fieldLayout"]
+	{
+		padding:20px;
+		clear:both;
+	}
+	[data-footer]
+	{
+		margin-left:200px;
+		
+	}
+	.required
+	{
+		border-color:red;
+	}
+	

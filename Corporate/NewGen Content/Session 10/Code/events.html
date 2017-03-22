@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events Demo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			/*$("p").dblclick(function(){
+				$(this).hide();
+			});
+			$("p").mouseenter(function(){
+				console.log("Mouse Enter");
+			});
+			$("p").mouseleave(function(){
+				console.log("Mouse Leave");
+			});
+			$("p").mousedown(function(){
+				console.log("Mouse Down");
+			});
+			$("p").mouseup(function(){
+				console.log("Mouse Up");
+			});
+			$("#fname").focus(function(){
+				console.log("Input focus");
+			});
+			$("#fname").blur(function(){
+				console.log("Input blur");
+			});*/
+			/*$("p").on({
+				mouseenter: function(){
+					console.log("Mouse Enter");
+				},
+				mouseleave: function(){
+					console.log("Mouse Leave");
+				}
+			});*/
+			$("#div1").delegate("p", "click", function(){
+				$(this).css("background-color", "red");
+			});
+			$("input").on("focus", function(){
+				console.log("Input focus");
+			});
+			$("#btn1").click(function(){
+				/*$("#div1").append("<p>This is newly added</p>");*/
+				$("input").change();
+			});
+			$("input").change(function(){
+				var temp = $(this).val();
+				console.log(temp);
+			});
+			/*$(":password").change(function(){
+				var temp = $(this).val();
+				console.log(temp);
+			});*/
+			$(":password").css({
+				'width' : '300px',
+				'height' : '300px'
+			});
+		});
+	</script>
+
+</head>
+<body>
+<p>Click on this para</p><br>
+<input type="text" name="name" id="fname" onchange="alert(this.value)">
+<input type="password" name="pwd">
+<div id="div1">
+	<p>This is already present in div</p>
+</div>
+<button id="btn1">Click Here</button>
+</body>
+</html>

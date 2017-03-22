@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directives Scope</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/ng-template" id="scopeTemplate">
+		<div class="panel-body">
+			<!-- <p>Name: <input type="text" name="name" ng-model="data.name"></p>
+			<p>City: <input type="text" name="city" ng-model="city"></p>
+			<p>Country <input type="text" name="city" ng-model="country"></p> -->
+			<div class="panel-body">
+				<!-- <p>Data Value: {{local}}</p> -->
+				<!-- <p>Data Value <input type="text" name="tb1" ng-model="local"></p> -->
+				<p>Name: {{local}}, City: {{cityFn()}}</p>
+			</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var module = angular.module("myApp", []);
+		module.directive("scopeDemo", function(){
+			return {
+				/*template: '<div class="panel-body"> Name : <input ng-model="name"/></div>',
+				scope: true*/
+				template : function(){
+					return angular.element(document.querySelector("#scopeTemplate")).html();
+				},
+				scope : {
+					local : "=nameprop",
+					cityFn : "&city"
+				}
+			}
+		});
+		/*module.controller("scopeCtrl1", function($scope){
+			//Some lines of code
+		});
+		module.controller("scopeCtrl2", function($scope){
+			//Some lines of code
+		});*/
+		module.controller("myCtrl", function($scope){
+			$scope.data = {
+				name : "Tarang"
+			};
+			$scope.city = "Delhi";
+			$scope.getCity = function(val){
+				if(val === "Tarang"){
+					return "Delhi";
+				}else{
+					return "Unknown";
+				}
+			}
+		});
+	</script>
+</head>
+<body ng-app="myApp">
+<br><br><br>
+<div class="container" ng-controller="myCtrl">
+	<input type="text" name="name" ng-model="data.name">
+	<div class="panel-body" scope-demo nameprop="data.name" city="getCity(data.name)"></div>
+<!-- 	<div class="panel-body" scope-demo>
+		
+	</div> -->
+</div>
+</body>
+</html>

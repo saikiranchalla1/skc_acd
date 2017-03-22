@@ -1,0 +1,90 @@
+<html>
+<head>
+	<title>jQuery Setup</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// $("button").click(function(){
+			// 	$("p").hide();
+
+			// })
+			$("#btn1").click(function(){
+				//$("#myPara").hide();
+				//$(".myClass").hide();
+				//$("*").hide();
+				//$(this).hide();
+				//$('p#myPara').hide();
+				//$('p:first').hide();
+				//$('div div p').hide();
+				//$('ul li:first-child').hide();
+				//$(':password').css("background-color", "blue");
+				//$(":radio").wrap("<span style='background-color:red'>")
+				//$("a[href!='http://www.facebook.com']").hide();
+				$("tr:odd").css("background-color", "yellow");
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>This is the first DIV element</div>
+<p>This is a paragraph</p>
+<p id="myPara">This is also a paragraph</p>
+<div id="myPara">This is a DIV with ID of myPara</div>
+<p class="myClass">This is yet another paragraph</p>
+<div>
+	<div>
+		<p>This is a P element in a DIV</p>
+		<p>This is a second P element in a DIV</p>
+		<span>This is a SPAN element in a DIV</span>
+	</div>
+</div>
+<ul>
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+</ul>
+<ul>
+	<li>Item 4</li>
+	<li>Item 5</li>
+	<li>Item 6</li>
+</ul>
+<form>
+	Name : <input type="text" name="user">
+	Password: <input type="password" name="password">
+	Male : <input type="radio" name="gender" value="m">
+	Female : <input type="radio" name="gender" value="f">
+</form>
+<a href="http://www.google.com">Google.com</a>
+<a href="http://www.yahoo.com">Yahoo.com</a>
+<a href="http://www.facebook.com">Facebook.com</a>
+
+<table border="1">
+	<tr>
+		<th>Name</th>
+		<th>Phone</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>2</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>4</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>5</td>
+	</tr>
+</table>
+<button id="btn1">Click Me</button>
+
+</body>
+</html>

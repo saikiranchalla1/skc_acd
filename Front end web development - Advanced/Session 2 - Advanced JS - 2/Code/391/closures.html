@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Closures Demo</title>
+  </head>
+  <body>
+    <button type="button" onclick="myFunction()">Click</button>
+    <p id="myPara"></p>
+    <select class="" name="test" multiple="" id="mySel">
+      <option>Option 1</option>
+      <option>Option 1</option>
+      <option>Option 1</option>
+      <option>Option 1</option>
+      <option>Option 1</option>
+      <option>Option 1</option>
+      <option>Option 1</option>
+    </select>
+    <script type="text/javascript">
+    // var counter = 0;
+    // function add(){
+    //   return counter += 1;
+    // }
+    // function add(){
+    //   var counter = 0;
+    //   function plus(){
+    //     counter += 1;
+    //   }
+    //   plus();
+    //   return counter;
+    // }
+    // var add = function (){
+    //
+    // }
+    var add = (function (){
+      var counter = 0;
+      return function() {
+        return counter += 1;
+      }
+    })();
+      function myFunction(){
+        document.getElementById("myPara").innerHTML = add();
+      }
+    </script>
+  </body>
+</html>

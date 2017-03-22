@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object Creation</title>
+</head>
+<body>
+<p id="para1"></p>
+<br>
+<p id="para2"></p>
+<script type="text/javascript">
+	function person(firstName, lastName, age){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+
+	var myObj1 = new person("First", "Name", 50);
+	var myObj2 = new person("Second", "Name", 50);
+
+	var newObj = Object.create(myObj1);
+	console.log(myObj1.firstName);
+	console.log(newObj.firstName);
+</script>
+</body>
+</html>

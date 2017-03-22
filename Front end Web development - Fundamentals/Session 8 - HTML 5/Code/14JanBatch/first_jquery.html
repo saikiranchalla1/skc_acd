@@ -1,0 +1,119 @@
+<html>
+<head>
+	<title>jQuery Setup</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('button').click(function(){
+				//$('p').hide();
+				//$('#para').hide();
+				//$('.myclass').hide();
+
+				//$("*").hide();
+
+				//$(this).hide();
+
+				//$('p:first').hide();
+
+				//$('[href]').hide();
+
+				//$("a[target!='_blank']").hide();
+
+				//$('p:even').hide();
+
+
+				//$(':checkbox').hide();
+
+				//$(':enabled').hide();
+
+				//$('p:eq(1)').hide();
+
+				//$('p:lt(1)').hide();
+
+				//$('p').filter('p.myclass').hide();
+				$('p').not('p.myclass').hide();
+			});
+
+			// $('button').eq(1).mouseleave(function(){
+			// 	console.log("Second Button clicked");
+			// });
+
+			$('button').eq(1).hover(function(){
+				console.log("Second Button mouse enter");
+			}, function(){
+				console.log("Second Button mouse leave");
+			});
+
+			// $(':text').focus(function(){
+			// 	$(this).css('border', '2px solid red');
+			// });
+			// $(':text').blur(function(){
+			// 	$(this).css('border', '2px solid yellow');
+			// });
+
+
+			// $(':text').on('focus', function(){
+			// 	$(this).css('border', '2px solid red');
+			// });
+
+			$(':text').on({
+				focus : function(){
+					$(this).css('border', '2px solid red');
+				},
+
+				blur : function(){
+					$(this).css('border', '2px solid blue');
+				},
+
+				keypress : function(){
+					console.log('Key Pressed');
+				},
+
+				change : function(){
+					console.log('change event triggered');
+				}
+			});
+
+			$('form').submit(function(){
+				console.log('Form submitted');
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<p>1) This is a paragraph</p>
+	<p id="para">2) This is a paragraph with ID of Para</p>
+	<p class="myclass">3) This is a paragraph with class of MyClass</p>
+	<p>4) This is a paragraph</p>
+	<p>This is another paragraph</p>
+	<p class="myclass" >This is yet another paragraph with class of MyClass</p>
+	<p class="myclass">This is one more with class of MyClass</p>
+	<p>One More</p>
+	<p>Last one!!!</p>
+
+
+	<br><br><br>
+	<a href="http://www.google.com">Google</a>
+	<a href="http://www.yahoo.com" target="_blank">Yahoo</a>
+	<input type="radio" name="gender">Male
+	<input type="radio" name="gender">Female <br><br>
+	<input type="checkbox">Veg?
+
+	<br><br><br>
+	<input type="text">
+	<input type="text" disabled>
+	<input type="text">
+	<input type="text" disabled>
+
+	<br><br><br>
+	<a href="mailto:saikiranchalla@gmail.com">Mail</a>
+	<form action="">
+		Name:<input>
+		<input type="submit">
+	</form>
+<button>Click Here</button>
+<button>Click Here</button>
+</body>
+</html>

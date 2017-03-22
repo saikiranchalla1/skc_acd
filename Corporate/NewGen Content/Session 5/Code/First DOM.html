@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM Example</title>
+	<style type="text/css">
+		/*div{
+			background-color: orange;
+		}*/
+	</style>
+</head>
+<body>
+<p id="para1"></p>
+<br>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<br>
+<p class="myClass"></p>
+<p class="myClass"></p>
+<p class="myClass"></p>
+<p class="myClass"></p>
+<p class="myClass"></p>
+<p class="myClass"></p>
+<br>
+<div id="myDiv">This is MY Div element</div>
+<div id="parentDiv">
+	<div id="childDiv">
+		This is child DIV
+	</div>
+</div>
+<script type="text/javascript">
+	document.getElementById('para1').innerHTML = '<h3>Hello World!!!</h3>';
+	var x = document.getElementsByTagName('div');
+	for (var i = 0; i < x.length; i++) {
+		x[i].innerHTML = "DIV with position:" + i;
+	}
+	var paraX = document.getElementsByClassName("myClass");
+	for (var i = 0; i < paraX.length; i++) {
+		paraX[i].innerHTML = "PARAGRAPH with class MyClass at location: " + i;
+	}
+	document.getElementById("myDiv").style.width = '300px';
+	document.getElementById("myDiv").style.height = '300px';
+	document.getElementById("myDiv").style.border = '1px solid red';
+	document.getElementById("myDiv").style.backgroundColor = 'orange';
+	document.getElementById("myDiv").class = 'myClass';
+	document.getElementById("myDiv").setAttribute('attribute', 'value');
+
+	var newDiv = document.createElement('div');
+	var newText = document.createTextNode("Hi, I'm newly added!!!");
+	newDiv.appendChild(newText);
+	var currentDiv = document.getElementById("myDiv");
+	document.body.insertBefore(newDiv, currentDiv);
+	/*var element = document.getElementsByTagName('body');
+	for (var i = 0; i < element.length; i++) {
+		element.removeChild(element.firstChild);
+	}*/
+	var element = document.getElementById('parentDiv');
+	while(element.firstChild){
+		element.removeChild(element.firstChild);
+	}
+</script>
+</body>
+</html>

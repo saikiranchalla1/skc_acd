@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang='en' ng-app='app'>
+  <head>
+    <title>Hi</title>
+    <script src="angular.js"></script>
+  </head>
+  <body>
+    <div hello><h3> hey i am h3 level heading</h3><p> i am a paragraph</p></div>
+<script>
+  var appModule = angular.module('app', []);
+  appModule.directive('hello', function() {
+    return {
+      restrict:'A',
+      template: '<div>Hi there <h3 ng-transclude></h3></div>',
+      transclude: true,
+      replace: true
+    };
+  });
+</script>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AngulAir</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script type="text/javascript" src="angular-resource.min.js"></script>
+	<script type="text/javascript" src="services.js"></script>
+	<script type="text/javascript" src="angular-route.min.js"></script>
+	<script type="text/javascript">
+		var mod = angular.module("myApp", ['ngRoute','airlineServices']);
+		mod.config(airlineRouter);
+		mod.controller('Airport1Ctrl',function($scope,$routeParams){
+			$scope.currentAirport = $scope.airports[$routeParams.airport1];
+		});
+		mod.controller('Airport2Ctrl',function($scope,$routeParams){
+			$scope.currentAirport = $scope.airports[$routeParams.airport2];
+		});
+		function airlineRouter($routeProvider){
+			$routeProvider
+				.when('/', {
+					templateUrl: 'partials/destinations.html',
+					controller : function($scope, Airport, $resource){
+						$scope.setActive('destinations');
+						console.log($resource('/airports').query());
+						$scope.airports = Airport.query();
+					}
+				})
+				.when('/airports/:airportCode',{
+					templateUrl: 'partials/airport.html',
+					controller: function($scope, $routeParams){
+						$scope.currentAirport = $scope.airports[$routeParams.airportCode];
+					}
+				})
+				.when('/airports/:airport1/:airport2',{
+					templateUrl: 'partials/two_airports.html',
+					controller: function($scope, $routeParams){
+						$scope.currentAirport = $scope.airports[$routeParams.airportCode];
+					}
+				})
+				.when('/flights',{
+					template : "<h4>Flights {{airports | json}}</h4>",
+					controller: function($scope){
+						$scope.setActive('flights');
+					}
+				})
+				.when('/reservations',{
+					template : "<h4>Your reservations {{airports | json}}</h4>",
+					controller: function($scope){
+						$scope.setActive('reservations');
+					}
+				})
+		}
+		mod.controller("myCtrl", function($scope){
+			$scope.sidebarUrl = "partials/airport.html";
+			$scope.airportTemplate = "partials/airport.html"
+			$scope.currentAirport = null;
+			$scope.editAirport = function(code){
+					$scope.editing = $scope.airports[code];	
+				}
+			$scope.setAirport = function(code){
+					$scope.currentAirport = $scope.airports[code];
+				}
+			function ReservationsCtrl($scope){
+				$scope.setActive('reservations');
+			}
+			$scope.formUrl = "partials/form.html";
+			
+			$scope.setActive = function(type){
+				$scope.destinationsActive = '';
+				$scope.flightsActive = '';
+				$scope.reservationsActive = '';
+
+				$scope[type + 'Active'] = 'active';
+			}
+			
+		});
+	</script>
+</head>
+<body ng-app='myApp'>
+	<div class="container" ng-controller="myCtrl">
+		<h1>AngulAir</h1>
+		<ul class="nav nav-pills">
+			<li ng-class="destinationsActive">
+				<a href="#/">Destinations</a>
+			</li>
+			<li ng-class="flightsActive">
+				<a href="#/flights">Flights</a>
+			</li>
+			<li ng-class="reservationsActive">
+				<a href="#/reservations">Reservations</a>
+			</li>
+		</ul>
+
+		<div ng-view></div>
+		<!-- <div class="pull-left span6">
+			<ul>
+				<li ng-repeat="airport in airports">
+					<a href="" ng-click="setAirport(airport.code)">
+						{{airport.code}} - {{airport.city | uppercase}} -
+					</a>
+					<a href="" ng-click="editAirport(airport.code)">
+						Edit
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="span5" ng-include src="sidebarUrl"></div>
+		<div class="span12" ng-include src="formUrl"></div>
+		<!-- <ng-include class="span5" src="sidebarUrl"></ng-include>
+	</div> -->
+</body>
+</html>

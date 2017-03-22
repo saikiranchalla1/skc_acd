@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<title> First jquery example</title>
+	<script src = "jquery.js"></script>
+	<script>
+	var ref;
+	$(document).ready(function(){
+		ref = $("#container");
+	})
+	function append(){
+		var html = "<div class = 'child'> Hey i am added dynamically using append</div>";
+		ref.append(html);
+	}
+	function prepend(){
+		var html = "<div class = 'child'> Hey i am added dynamically using Prepend</div>";
+		ref.prepend(html);	
+	}
+	function before(){
+		var html = "<div class = 'child'> Hey i am added dynamically using Before</div>";
+		ref.before(html);
+	}
+	function after(){
+		var html = "<div class = 'child'> Hey i am added dynamically using After</div>";
+		ref.after(html);
+	}
+	function replace(){
+		var html = "<div class = 'child'> Hey i am added dynamically using html function</div>";
+		ref.html(html);	
+	}
+	function removeDiv(){
+		ref.remove();
+	}
+	</script>
+	<style>
+	#container{
+		border:3px solid green;
+		padding:20px;
+	}
+	.child{
+		border:2px solid blue;
+	}
+	</style>
+</head>
+<body>
+	<button onclick = "append()">Append</button>
+	<button onclick = "prepend()">Prepend</button>
+	<button onclick = "before()">Before</button>
+	<button onclick = "after()">After</button>
+	<button onclick = "replace()">Replace</button>
+	<button onclick = "removeDiv()">Remove </button>
+	<div id = "container">
+		THis is a text contained within this Div
+	</div>
+
+</body>
+</html>

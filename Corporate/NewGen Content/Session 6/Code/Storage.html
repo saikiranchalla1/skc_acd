@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Storage API</title>
+
+</head>
+<body>
+<p id="para1"></p>
+<script type="text/javascript">
+		if (typeof(Storage) !== "undefined") {
+			localStorage.setItem("lastname", "divjot");
+			document.getElementById('para1').innerHTML = localStorage.getItem("lastname");
+			localStorage.removeItem("lastname");
+			document.getElementById('para1').innerHTML = localStorage.getItem("lastname");
+		}else{
+			alert("Storage API is not supported");
+		}
+	</script>
+</body>
+</html>

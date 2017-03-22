@@ -1,0 +1,119 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@3.6.0
+3 info using node@v5.6.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly loadAllDepsIntoIdealTree Finishing
+20 silly idealTree:prePrune server@0.0.0
+20 silly idealTree:prePrune +-- buffer-crc32@0.2.5
+20 silly idealTree:prePrune +-- bytes@0.2.0
+20 silly idealTree:prePrune +-- commander@0.6.1
+20 silly idealTree:prePrune +-- connect@2.7.5
+20 silly idealTree:prePrune | +-- buffer-crc32@0.1.1
+20 silly idealTree:prePrune | `-- desktop.ini
+20 silly idealTree:prePrune +-- cookie-signature@1.0.0
+20 silly idealTree:prePrune +-- cookie@0.0.5
+20 silly idealTree:prePrune +-- debug@2.2.0
+20 silly idealTree:prePrune +-- desktop.ini
+20 silly idealTree:prePrune +-- express@3.1.2
+20 silly idealTree:prePrune +-- formidable@1.0.11
+20 silly idealTree:prePrune +-- fresh@0.1.0
+20 silly idealTree:prePrune +-- methods@0.0.1
+20 silly idealTree:prePrune +-- mime@1.2.6
+20 silly idealTree:prePrune +-- mkdirp@0.3.5
+20 silly idealTree:prePrune +-- ms@0.7.1
+20 silly idealTree:prePrune +-- pause@0.0.1
+20 silly idealTree:prePrune +-- qs@0.5.1
+20 silly idealTree:prePrune +-- range-parser@0.0.4
+20 silly idealTree:prePrune `-- send@0.1.0
+21 silly loadIdealTree Finishing
+22 silly currentTree server@0.0.0
+22 silly currentTree +-- buffer-crc32@0.2.5
+22 silly currentTree +-- bytes@0.2.0
+22 silly currentTree +-- commander@0.6.1
+22 silly currentTree +-- connect@2.7.5
+22 silly currentTree | +-- buffer-crc32@0.1.1
+22 silly currentTree | `-- desktop.ini
+22 silly currentTree +-- cookie-signature@1.0.0
+22 silly currentTree +-- cookie@0.0.5
+22 silly currentTree +-- debug@2.2.0
+22 silly currentTree +-- desktop.ini
+22 silly currentTree +-- express@3.1.2
+22 silly currentTree +-- formidable@1.0.11
+22 silly currentTree +-- fresh@0.1.0
+22 silly currentTree +-- methods@0.0.1
+22 silly currentTree +-- mime@1.2.6
+22 silly currentTree +-- mkdirp@0.3.5
+22 silly currentTree +-- ms@0.7.1
+22 silly currentTree +-- pause@0.0.1
+22 silly currentTree +-- qs@0.5.1
+22 silly currentTree +-- range-parser@0.0.4
+22 silly currentTree `-- send@0.1.0
+23 silly idealTree server@0.0.0
+23 silly idealTree +-- buffer-crc32@0.2.5
+23 silly idealTree +-- bytes@0.2.0
+23 silly idealTree +-- commander@0.6.1
+23 silly idealTree +-- connect@2.7.5
+23 silly idealTree | `-- buffer-crc32@0.1.1
+23 silly idealTree +-- cookie-signature@1.0.0
+23 silly idealTree +-- cookie@0.0.5
+23 silly idealTree +-- debug@2.2.0
+23 silly idealTree +-- desktop.ini
+23 silly idealTree +-- express@3.1.2
+23 silly idealTree +-- formidable@1.0.11
+23 silly idealTree +-- fresh@0.1.0
+23 silly idealTree +-- methods@0.0.1
+23 silly idealTree +-- mime@1.2.6
+23 silly idealTree +-- mkdirp@0.3.5
+23 silly idealTree +-- ms@0.7.1
+23 silly idealTree +-- pause@0.0.1
+23 silly idealTree +-- qs@0.5.1
+23 silly idealTree +-- range-parser@0.0.4
+23 silly idealTree `-- send@0.1.0
+24 silly generateActionsToTake Starting
+25 silly install generateActionsToTake
+26 warn checkPermissions Missing write access to C:\Users\chkiran\Google Drive\Acad Gild\Front end web development - Advanced\Session 21 - Project II\Project 262\server\node_modules\connect\node_modules\desktop.ini
+27 silly rollbackFailedOptional Starting
+28 silly rollbackFailedOptional Finishing
+29 silly runTopLevelLifecycles Starting
+30 silly runTopLevelLifecycles Finishing
+31 silly install printInstalled
+32 warn enoent ENOENT: no such file or directory, open 'C:\Users\chkiran\Google Drive\Acad Gild\Front end web development - Advanced\Session 21 - Project II\Project 262\server\node_modules\desktop.ini\package.json'
+33 warn server@0.0.0 No repository field.
+34 warn server@0.0.0 license should be a valid SPDX license expression
+35 verbose stack Error: EPERM: operation not permitted, access 'C:\Users\chkiran\Google Drive\Acad Gild\Front end web development - Advanced\Session 21 - Project II\Project 262\server\node_modules\connect\node_modules\desktop.ini'
+35 verbose stack     at Error (native)
+36 verbose cwd C:\Users\chkiran\Google Drive\Acad Gild\Front end web development - Advanced\Session 21 - Project II\Project 262\server
+37 error Windows_NT 6.3.9600
+38 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+39 error node v5.6.0
+40 error npm  v3.6.0
+41 error path C:\Users\chkiran\Google Drive\Acad Gild\Front end web development - Advanced\Session 21 - Project II\Project 262\server\node_modules\connect\node_modules\desktop.ini
+42 error code EPERM
+43 error errno -4048
+44 error syscall access
+45 error Error: EPERM: operation not permitted, access 'C:\Users\chkiran\Google Drive\Acad Gild\Front end web development - Advanced\Session 21 - Project II\Project 262\server\node_modules\connect\node_modules\desktop.ini'
+45 error     at Error (native)
+45 error  { [Error: EPERM: operation not permitted, access 'C:\Users\chkiran\Google Drive\Acad Gild\Front end web development - Advanced\Session 21 - Project II\Project 262\server\node_modules\connect\node_modules\desktop.ini']
+45 error   errno: -4048,
+45 error   code: 'EPERM',
+45 error   syscall: 'access',
+45 error   path: 'C:\\Users\\chkiran\\Google Drive\\Acad Gild\\Front end web development - Advanced\\Session 21 - Project II\\Project 262\\server\\node_modules\\connect\\node_modules\\desktop.ini' }
+46 error Please try running this command again as root/Administrator.
+47 verbose exit [ -4048, true ]

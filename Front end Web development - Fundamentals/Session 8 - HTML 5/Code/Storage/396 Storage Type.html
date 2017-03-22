@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Storage Type</title>
+
+</head>
+<body>
+<div id="mydiv"></div>
+<script type="text/javascript">
+		if(typeof(Storage) !== "undefined"){
+			localStorage.setItem("fname", "AcadGild");
+			document.getElementById("mydiv").innerHTML = localStorage.getItem("fname");
+		}else{
+			alert("Your Browser doesn't support Storage API")
+		}
+	</script>
+</body>
+</html>

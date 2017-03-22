@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+	<style type = "text/css">
+	#click-div{
+		border:2px solid green;
+	}
+	</style>
+	<script type = "text/javascript" src = "jquery.js"></script>
+	<script  type = "text/javascript">
+	$(document).ready(function(){
+		$("#click-div").on('click',clickCallback);
+	})
+	function clickCallback() {
+		alert($(this).text());
+	}
+
+	</script>
+</head>
+<body>
+	<div id = "click-div">
+		Hello..Welcome to Acad Gild!
+	</div>
+</body>
+</html>

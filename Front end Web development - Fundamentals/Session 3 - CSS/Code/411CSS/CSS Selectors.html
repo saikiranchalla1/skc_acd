@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Selectors</title>
+	<style type="text/css">
+		/*p {
+			background-color: blue;
+		}
+		#para1 {
+			background-color: red;
+		}*/
+		/*p.classname {
+			text-align: center;
+			color: blue;
+		}
+		p.class2 {
+			font-size: 150%;
+		}*/
+		/*h1 {
+			text-align: center;
+			color: blue;
+		}
+		h4{
+			text-align: center;
+			color: blue;
+		}*/
+		h1, h4, p {
+			text-align: center;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+<p class="classname class2">This is a paragraph</p>
+<a href="http://www.google.com">Google</a>
+<p class="classname">This is second paragraph</p>
+<div class="classname class2">
+	<p id="para1">This is a paragraph in the DIV</p>
+</div>
+<div>
+	<span class="classname class2">
+		<p>This is a nested paragraph</p>
+	</span>
+</div>
+<h1>Heading 1</h1>
+<h4>Heading 4</h4>
+</body>
+</html>

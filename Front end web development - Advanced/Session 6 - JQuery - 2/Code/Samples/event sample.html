@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>Learning JQuery Events</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            
+            /*window.onload = function(){
+                document.getElementById('para1').addEventListener('click',callMe);
+                function callMe(){
+                    alert("paragraph clicked");
+                }
+            }*/
+            $(document).ready(function(){
+              $("#para1").on("click",function(){
+                    alert("paragraph clicked");
+                });
+                 $("p").on({
+                     click : function(){
+                         alert("Click event");
+                     },
+                     mouseleave: function(){
+                         alert("Mouse leave");
+                     },
+                     mousedown:function(){
+                         alert("Mouse Down");
+                     }
+                 })
+                 $("#para1").dblclick(function(){
+                    alert("paragraph clicked");
+                });
+                $("#para1").mouseenter(function(){
+                    console.log("Mouse enter triggered");
+                });
+                $("#para1").mouseleave(function(){
+                    console.log("Mouse leave triggered");
+                });
+                 $("#para1").mousedown(function(){
+                    console.log("Mouse down triggered");
+                });
+                 $("#para1").mouseup(function(){
+                    console.log("Mouse up triggered");
+                });
+                 $("#para1").hover(function(){
+                    console.log("Mouse up triggered");
+                });
+                /*$(":input").keydown(function(){
+                  // $(this).css('background-color',"brown");
+                    console.log("Key Down");
+                });
+                 $(":input").keyup(function(){
+                  //$(this).css('background-color',"red");
+                     console.log("Key Up");
+                });
+                $(":input").keypress(function(){
+                  //$(this).css('background-color',"red");
+                     console.log("Key press " + $(this).val());
+                });*/
+                  $(":input").keypress(function(){
+                  //$(this).css('background-color',"red");
+                     console.log("Key press " + $(this).val());
+                      $(this).val("Some text");
+                });
+                  $(":checkbox").mousedown(function(){
+                  //$(this).css('background-color',"red");
+                     //console.log("Key press " + $(this).val());
+                      console.log($(this).attr("checked"));
+                });
+				$('#name').blur(function(){
+					console.log('Blur Event triggered');
+				});
+				$('#name').focus(function(){
+					console.log('Focus Event triggered');
+				});
+				$('#name').hover(function(){
+					console.log('Hover Event triggered');
+				});
+                $("#form1").submit(function(){
+                  alert("form submitted");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <p id="para1">This is  simple paragraph</p>
+       
+        <form id="form1">
+             Name: <input type="text" autofocus id='name'/><br>
+        Address: <input type="text"/><br>
+        Re-enter Password: <input type="password"/><br>
+        Preference: <input type="checkbox"/>Some pref
+            <input type="submit"/>
+        </form>
+    </body>
+</html>

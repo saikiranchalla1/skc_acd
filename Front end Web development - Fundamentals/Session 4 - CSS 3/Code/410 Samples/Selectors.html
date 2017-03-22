@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selectors</title>
+	<style type="text/css">
+		/*div p {
+			background-color: yellow;
+		}*/
+		/*div > p {
+			background-color: yellow;
+		}*/
+		div {
+			border: 1px solid red;
+		}
+		/*div + p {
+			background-color: yellow;
+		}*/
+		div ~ p {
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+<!-- <div>
+	<h3>This is a heading</h3>
+	<p>This is a paragraph</p>
+	<p>This is second paragraph</p>
+	<p>This is third paragraph</p>
+</div>
+<p>This is a paragraph outside the DIV</p>
+<div>
+	<span>
+		<p>This is a paragraph inside a SPAN tag</p>
+	</span>
+</div> -->
+<div>
+	<h3>This is a heading</h3>
+	<p>This is a paragraph</p>
+</div>
+<p>This is a paragraph which is SIBLING to DIV element</p>
+<p>This is another pargraph with adjacent sibling as P</p>
+</body>
+</html>

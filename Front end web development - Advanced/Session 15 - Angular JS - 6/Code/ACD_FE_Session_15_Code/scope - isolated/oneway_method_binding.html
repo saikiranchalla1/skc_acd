@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>Hi</title>
+  <script src="angular.js"></script>
+  <script>
+  var app = angular.module("app",[]);
+  app.controller("Ctrl1",function($scope){
+    $scope.name = "Smith";
+    $scope.alertName = function(){
+      alert($scope.name);
+      return "yoo";
+    };
+  });
+  app.directive("testDirective", function(){
+    return {
+      restrict: "EA",
+      scope: {sayName:"&"},
+      template: "<button ng-click = 'sayName()'>Click Here</button>",
+      replace:true,
+    };
+  });
+  </script>
+</head>
+<body ng-app = "app">
+ <div ng-controller="Ctrl1">
+  <h2 ng-click="alertName()">Hi  {{name}}, Click to alert your name</h2>
+  <div test-directive sayName = "alertName()"></div>
+</div>
+</body>
+</html>

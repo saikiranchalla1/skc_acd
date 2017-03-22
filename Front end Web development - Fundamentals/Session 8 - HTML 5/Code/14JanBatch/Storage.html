@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Sotrage API</title>
+</head>
+<body>
+	<button onclick="clickCounter()">Click Here</button>
+<div id="result"></div>
+<script type="text/javascript">
+	if(typeof(Storage) !== "undefined"){
+		localStorage.setItem("lastname", "Acadgild");
+
+		document.getElementById('result').innerHTML = localStorage.getItem("lastname");
+	}else {
+		document.getElementsById("result").innerHTML = "Local Storage Not Supported";
+	}
+
+	//localStorage.removeItem("lastname");
+
+	// function clickCounter(){
+	// 	if(typeof(Storage) !==  "undefined"){
+	// 		if(localStorage.clickcount){
+	// 			localStorage.clickcount = Number(localStorage.clickcount) + 1;
+	// 		}else {
+	// 			localStorage.clickcount = 1;
+	// 		}
+
+	// 		document.getElementById('result').innerHTML = localStorage.clickcount;
+	// 	}
+	// }
+
+	function clickCounter(){
+		if(typeof(Storage) !==  "undefined"){
+			if(sessionStorage.clickcount){
+				sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+			}else {
+				sessionStorage.clickcount = 1;
+			}
+
+			document.getElementById('result').innerHTML = sessionStorage.clickcount;
+		}
+	}
+</script>
+</body>
+</html>

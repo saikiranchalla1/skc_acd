@@ -1,0 +1,50 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<title>Geolocation</title>
+
+    <script src="modernizr-custom.js"></script>
+</head>
+<body>
+    <button onclick="getLocation()">Click Here</button>
+    <p id="para1"></p>
+    <script type="text/javascript">
+		
+		var myVar = document.getElementById("para1");
+
+		function getLocation(){
+			if(Modernizr.geolocation){
+				/*navigator.geolocation.getCurrentPosition(showPosition, showError);*/
+                navigator.geolocation.watchPosition(showPosition, showError);
+			}else{
+				myVar.innerHTML = "Geolocation is not SUPPORTED";
+			}
+
+		}
+
+		function showPosition(position){
+			myVar.innerHTML = "Latitude: " + position.coords.latitude + " <br>Longitude: " + position.coords.longitude; 
+            var tempVar = position.coords.latitude + "," + position.coords.longitude;
+            var imgUrl = "http://maps.googleapis.com/maps/api/staticmap?center=" + tempVar+"&zoom=14&size=400x400&sensor=false";
+            myVar.innerHTML = "<img src='" + imgUrl + "'/>";
+            console.log(position.coords.accuracy);
+            console.log(position.coords.altitude);
+            console.log(position.coords.heading);
+            console.log(position.coords.speed);
+		}
+        
+        function showError(error){
+            switch(error.code) {
+                case error.PERMISSION_DENIED :
+                    myVar.innerHTML = "User denied Permission!!!";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                case error.TIMEOUT:
+                case error.UNKNOWN_ERROR:
+                    myVar.innerHTML = "Some creepy Error";
+                    break;
+            }
+        }
+	</script>
+</body>
+</html>
