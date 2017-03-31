@@ -36,6 +36,12 @@ var Server = function () {
         this.app = (0, _express2.default)();
         this.fs = _fs2.default;
 
+        var accountSid = 'ACff124a8e851cc580c3c0fb0f0ea69fb2';
+        var authToken = '21195476b272ecafc163909c8b570dad';
+
+        var twilio = require('twilio');
+        this.twilioClient = new twilio.RestClient(accountSid, authToken);
+
         // this.upload = multer({dest: 'uploads/'});
         this.dataFile = _path2.default.join(__dirname, '../data.json');
     }
